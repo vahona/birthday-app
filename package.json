@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/vahona/birthday-app/issues"
   },
-  "homepage": "https://github.com/vahona/birthday-app#readme"
+  "homepage": "https://github.com/vahona/birthday-app#readme",
+  "dependencies": {
+    "regenerator-runtime": "^0.13.7"
+  }
 }
