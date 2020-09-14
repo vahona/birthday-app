@@ -9,29 +9,20 @@ console.log(response);
 
 // Fetch 
 async function fetchPeople() {
+const response = await fetch(dataurl);
+const data = await response.json();
+return data;
 
-await fetch('./people.json').then(response => {
-    return response.json();
-}).then(data => {
-    document.getElementsByClassName(".tablebody").innerHTML = data;
-    console.log(data)
-}).catch(function () {
-   this.dataError = true
-});
 
 }
 
-fetchPeople()
+fetchPeople();
 
 
 // Create html
 
 async function displayDatalist() {
     const persons = await fetchPeople();
-
-    // const sortPeople = persons.sort((a, b) => {
-    //     return b.birthday - a.birthday;
-    // });
 
     const html = persons.map(person => {
        return `
@@ -41,23 +32,51 @@ async function displayDatalist() {
     <td>${person.lastName}</td>
     <td>${person.firstName}</td>
     <td>${person.birthday}</td>
-    <td>
+    <td class = "icons">
       <button class="edit">
-        <img src="./assets/icon_edit" alt="edit">
+        <img class = "icons__image" src="assets/icon_edit.png" alt="edit">
       </button>
       <button class="delete">
-        <img src="./assets/delete.png/" alt="delete">
+        <img class = "icons__image" src="assets/delete.png" alt="delete">
       </button>
     </td>
   </tr>
-  `;
+  `
     }).join('');
 
     tbody.innerHTML = html;
     
 
-    console.log(html);
+    // console.log(html);
 
 }
 
 displayDatalist();
+
+const editPerson = e => {
+
+}
+
+
+const ediPerson = id => {
+  const same = data.find(person => person.id === id);
+
+  console.log(same)
+}
+
+
+
+// Editing function
+
+const handleClick = e => {
+    const editButton = e.target.closest('.edit');
+    const deleteButton = e.target.closest('.delete');
+
+    if(editButton) {
+
+    }
+
+    if (deleteButton) {
+
+    }
+}

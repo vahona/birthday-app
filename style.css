@@ -28,4 +28,13 @@ tr {
     padding: 2rem 2rem;
 }
 
+.icons {
+    display: flex;
+    margin: 2rem;
+}
+
+.icons__image {
+    width: 20px;
+    height: 20px;
+}
 
