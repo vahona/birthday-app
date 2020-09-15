@@ -19,13 +19,22 @@ thead {
     background-color: white;
 }
 
+/* td {
+    background-color: white;
+} */
+
 tr {
     display: grid;
     grid-auto-flow: column;
-    grid-template-columns: repeat(5, minmax(300px, 1fr));
+    grid-template-columns: repeat(5, minmax(10%, 1fr));
     place-items: center;
     gap: 30px;
     padding: 2rem 2rem;
+}
+
+tr.row {
+    background-color: rgb(248, 103, 50);
+    color: white;
 }
 
 .icons {
@@ -37,4 +46,11 @@ tr {
     width: 20px;
     height: 20px;
 }
+
+img {
+    border-radius: 50%;
+}
+
+
+
 
