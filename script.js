@@ -1,10 +1,10 @@
 
 
+
 const dataurl = "./people.json";
 const tbody = document.querySelector('tbody');
 const container = document.querySelector('.tablebody');
 // const response = fetch(dataurl);
-
 
 // console.log(response);
 
@@ -14,26 +14,21 @@ async function fetchPeople() {
   console.log(response);
   const data = await response.json();
     return data;
-
-
 }
 
-fetchPeople();
+// fetchPeople();
 
 // Create html
 
 async function displayDatalist() {
     const persons = await fetchPeople();
-
     // Sort the movie
-
     const sortePeople = persons.sort((a, b) => {
       return b.birthday - a.birthday;
-    })
-
+    });
     const html = sortePeople.map(person => {
        return `
-    <tr data-id="${person.id}" class="row">
+    <tr id= "${person.id}" class="row">
     <td><img src="${person.picture}" alt="${person.firstName + ' ' + person.lastName}"/></td>
     <td>${person.lastName}</td>
     <td>${person.firstName}</td>
@@ -66,9 +61,13 @@ displayDatalist();
 // }
 
 async function editPersonpopup(id) {
+
+  // const fetch = fetchPeople();
+
   const response = await fetch(dataurl);
   const data = await response.json();
-  // console.log(data);
+
+  console.log(data);
   const result = data.find(person => person.id === id);
   console.log(result);
   const popup = document.createElement('form');
@@ -94,7 +93,8 @@ async function editPersonpopup(id) {
 
   document.body.appendChild(popup);
   popup.classList.add('open');
-  console.log(popup)
+  console.log(popup);
+
 }
 
 // Deleting the birthday
@@ -103,11 +103,84 @@ async function deletePerson (e) {
 
 }
 
+async function deletePersonPopup (id) {
+  const response = await fetch(dataurl);
+  const data = await response.json();
+
+  const deleteOne = data.find(person => person.id === id);
+  console.log(deleteOne);
+  const popup = document.createElement('article');
+  popup.classList.add('.confirm');
+  popup.insertAdjacentHTML('afterbegin', `
+    <p class="deleteparagraph">
+      Are you sure you want to delete this person
+    </p>
+    <div class="container__buttom">
+      <button class="confirm_buttom yes__sure"> Yes </button>
+      <button class="confirm_buttom no__want"> No </button>
+    </div>`);
+
+    document.body.appendChild(popup);
+    popup.classList.add('.confirm');
+
+    console.log(popup);
+
+  const confirm = e => {
+
+    const yes = e.target.matches('.yes__sure');
+    const no = e.target.matches('.no__want');
+
+    if (yes) {
+      e.preventDefault();
+      const deleteCo = data.filter(person => person.id !== id);
+      persons = deleteCo;
+      fetchPeople(deleteCo);
+      console.log(deleteCo);
+      const remove = popup.style.display = 'none';
+      remove;
+    }
+
+    else if (no) {
+      const remove = popup.style.display = 'none';
+      remove;
+
+    }
+
+  }
+
+  window.addEventListener('click', confirm)
+
+    
+
+}
+
+// Local storage function
+
+// Empty array
+
+let peopleItems = [];
+
+ function recordToLocalStorage () {
+   localStorage.setItem('peopleItems', JSON.stringify(peopleItems));
+}
+
+function restoreLocalStorage () {
+  const IspeopleItems = JSON.parse(localStorage.getItem('peopleItems'));
+
+  if(IspeopleItems) {
+    peopleItems.push(... peopleItems);
+  }
+
+  container.dispatchEvent(new CustomEvent('itemUpdated'))
+}
+
+
+
 // Event listner function
 
-async function handleClick (e){
+async function handleClick(e){
     const editButton = e.target.matches('.edit');
-   const deletButton = e.target.matches('.delete');
+    const deletButton = e.target.matches('.delete');
   
 
     if(editButton) {
@@ -117,10 +190,15 @@ async function handleClick (e){
    
     if(deletButton) {
       const id = deletButton.id;
+      deletePersonPopup(id);
 
     }
 
 }
+
+// Event listener
+
+container.addEventListener('itemUpdated', restoreLocalStorage);
 
 window.addEventListener('click', handleClick);
 
