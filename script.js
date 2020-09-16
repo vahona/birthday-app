@@ -1,9 +1,8 @@
 
-
-
 const dataurl = "./people.json";
 const tbody = document.querySelector('tbody');
 const container = document.querySelector('.tablebody');
+
 // const response = fetch(dataurl);
 
 // console.log(response);
@@ -23,12 +22,12 @@ async function fetchPeople() {
 async function displayDatalist() {
     const persons = await fetchPeople();
     // Sort the movie
-    const sortePeople = persons.sort((a, b) => {
+    const sortePeople = await persons.sort((a, b) => {
       return b.birthday - a.birthday;
-    });
-    const html = sortePeople.map(person => {
+    })
+    const html = await sortePeople.map(person => {
        return `
-    <tr id= "${person.id}" class="row">
+    <tr data-id= "${person.id}" class="row">
     <td><img src="${person.picture}" alt="${person.firstName + ' ' + person.lastName}"/></td>
     <td>${person.lastName}</td>
     <td>${person.firstName}</td>
@@ -60,36 +59,37 @@ displayDatalist();
   
 // }
 
-async function editPersonpopup(id) {
+const editPersonpopup = async function(id) {
 
-  // const fetch = fetchPeople();
-
+  // const persons = await fetchPeople();
   const response = await fetch(dataurl);
   const data = await response.json();
 
   console.log(data);
-  const result = data.find(person => person.id === id);
+  const result = await data.find(person => person.id === id);
+  // debugger
+  // bug result is undefine
   console.log(result);
   const popup = document.createElement('form');
   popup.classList.add('.popupedit');
   popup.insertAdjacentHTML('afterbegin', `
   <fieldset style="border: none;">
-    <label for="${result.lastName}">LastName</label><br>
-    <input type="text" value="${result.lastName}" id="${result.lastName}">
+    <label for="">LastName</label><br>
+    <input type="text" value="klkjsdfj" id="">
   </fieldset>
   <fieldset style="border: none;">
-    <label for="${result.firstNam}">FisrtName</label><br>
-    <input type="text" value="${result.firstName}" id="${result.firstNam}">
+    <label for="">FisrtName</label><br>
+    <input type="text" value="sajd" id="">
   </fieldset style="border: none;">
   <fieldset style="border: none;">
-    <label for="${result.birthday}">Birthday</label><br>
-    <input type="text" value="${result.birthday}" id="${result.birthday}">
+    <label for="">Birthday</label><br>
+    <input type="text" value="123478454959" id="">
   </fieldset>
   <div class="button-sub">
     <button class="button__save">Save</button>
     <button class="button__cancel">Cancel</button>
   </div>
-  `).join('');
+  `);
 
   document.body.appendChild(popup);
   popup.classList.add('open');
@@ -103,7 +103,7 @@ async function deletePerson (e) {
 
 }
 
-async function deletePersonPopup (id) {
+async function deletePersonPopup(id) {
   const response = await fetch(dataurl);
   const data = await response.json();
 
@@ -150,7 +150,6 @@ async function deletePersonPopup (id) {
 
   window.addEventListener('click', confirm)
 
-    
 
 }
 
@@ -165,6 +164,7 @@ let peopleItems = [];
 }
 
 function restoreLocalStorage () {
+
   const IspeopleItems = JSON.parse(localStorage.getItem('peopleItems'));
 
   if(IspeopleItems) {

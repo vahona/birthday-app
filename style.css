@@ -54,15 +54,28 @@ img {
 
 article {
     background-color: whitesmoke;
-    width: 50%;
+    width: 30%;
     position: fixed;
     top: 50%;
     left: 35%;
-    height: 10%;
+    height: 20%;
+    right: 0;
+    bottom: 50%;
+    padding: 3rem;
+    
+
+}
+
+form {
+    width:  30%;
+    background-color: thistle;
+    height: 40%;
+    position: fixed;
+    top: 30%;
+    left: 20%;
     right: 0;
     bottom: 50%;
     padding: 2rem;
-
 }
 
 
