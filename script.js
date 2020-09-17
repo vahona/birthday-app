@@ -5,7 +5,7 @@ const tbody = document.querySelector('tbody');
 const container = document.querySelector('.tablebody');
 
 // const response = fetch(dataurl);
-
+let peopleStore = [];
 // console.log(response);
 
 // Fetch 
@@ -13,17 +13,21 @@ async function fetchPeople() {
   const response = await fetch(dataurl);
   console.log(response);
   const data = await response.json();
+  peopleStore = [...data];
+  console.log(peopleStore);
+  displayDatalist(peopleStore);
     return data;
+
 }
 
-// fetchPeople();
+fetchPeople();
 
 // Create html
 
-async function displayDatalist() {
-    const persons = await fetchPeople();
+async function displayDatalist(peopleStore) {
+    // const persons = await fetchPeople();
     // Sort the movie
-    const sortePeople = await persons.sort((a, b) => {
+    const sortePeople = peopleStore.sort((a, b) => {
       return b.birthday - a.birthday;
     })
     const html = await sortePeople.map(person => {
@@ -60,11 +64,12 @@ displayDatalist();
 const editPersonpopup = async function(id) {
 
   // const persons = await fetchPeople();
-  const response = await fetch(dataurl);
-  const data = await response.json();
+  // const response = await fetch(dataurl);
+
+  // const data = await response.json();
 
   console.log(data);
-  const result = data.find(person => person.id === id);
+  const result = peopleStore.find(person => person.id === id);
 
   const popup = document.createElement('form');
   popup.classList.add('.popupedit');
@@ -97,29 +102,29 @@ const editPersonpopup = async function(id) {
 
 }
 
-async function editPerson(e) {
-  const response = await fetch(dataurl);
-  const data = await response.json();
-  const editPersoninfo = data.filter(person => person.id !== id);
-  e.preventDefault();
-  editPersoninfo = e.target;
-  const editChange = {
+// async function editPerson(e) {
+//   // const response = await fetch(dataurl);
+//   // const data = await response.json();
+//   const editPersoninfo = data.filter(person => person.id !== id);
+//   e.preventDefault();
+//   editPersoninfo = e.target;
+//   const editChange = {
 
-    picture: editPersoninfo.picture.value,
-    lastName: editPersoninfo.lastName.value,
-    firstName: editPersoninfo.firstName.value,
-    birthday: editPersoninfo.birthday.value,
+//     picture: editPersoninfo.picture.value,
+//     lastName: editPersoninfo.lastName.value,
+//     firstName: editPersoninfo.firstName.value,
+//     birthday: editPersoninfo.birthday.value,
 
-  }
+//   }
 
-  console.log();
+//   console.log();
 
-  editPersoninfo.push(editChange);
-  editconfirm.reset();
+//   editPersoninfo.push(editChange);
+//   editconfirm.reset();
 
-  container.dispatchEvent(new CustomEvent('pleaseUpdateTheList'));
+//   container.dispatchEvent(new CustomEvent('pleaseUpdateTheList'));
 
-}
+// }
 
 // Deleting the birthday
 
@@ -128,10 +133,10 @@ async function deletePerson (e) {
 }
 
 async function deletePersonPopup(id) {
-  const response = await fetch(dataurl);
-  const data = await response.json();
+  // const response = await fetch(dataurl);
+  // const data = await response.json();
 
-  const deleteOne = data.find(person => person.id === id);
+  const deleteOne = peopleStore.find(person => person.id === id);
   console.log(deleteOne);
   const popup = document.createElement('article');
   popup.classList.add('.confirm');
@@ -151,19 +156,16 @@ async function deletePersonPopup(id) {
 
   const confirm = async function(e) {
 
-    const yes = e.target.closest('.yes__sure');
+    const removeEl = e.target.closest('.yes__sure');
     const no = e.target.closest('.no__want');
 
-    if (yes) {
-      const response = await fetch(dataurl);
-      const data = await response.json();
+    if(removeEl) {
       e.preventDefault();
-      const deleteCo = data.filter(person => person.id !== id);
-      data = deleteCo.style.display = 'none';
-      // fetchPeople(deleteCo);
-      editPerson();
-      // const remove = popup.style.display = 'none';
-      // remove;
+      const deletePeople = peopleStore.filter(person => person.id !== id);
+      console.log(deletePeople);
+      displayDatalist(deletePeople);
+      
+      
     }
 
     else if (no) {
@@ -185,9 +187,9 @@ async function deletePersonPopup(id) {
 
 let peopleItems = [];
 
-//  function recordToLocalStorage() {
+// //  function recordToLocalStorage() {
     
-// }
+// // }
 
 //  async function restoreLocalStorage() {
 //   const response = await fetch(dataurl);
@@ -204,7 +206,7 @@ let peopleItems = [];
 
 //  async function recordeLocalStorage() {
 //    e.preventDefault();
-//    let restoreThePeopleItems = JSON.parse(localStorage.getItem('peopleItems')):[],
+//    let restoreThePeopleItems = JSON.parse(localStorage.getItem('peopleItems')),
 //    restoreThePeopleItems = outputs;
 
 // //
@@ -244,7 +246,7 @@ async function handleClick(e){
   // Event listener
 
   // container.addEventListener('itemUpdated', restoreLocalStorage);
-  container.addEventListener('pleaseUpdateTheList', editPerson);
+  // container.addEventListener('pleaseUpdateTheList', editPerson);
 
   window.addEventListener('click', handleClick);
 
