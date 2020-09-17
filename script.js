@@ -1,4 +1,5 @@
 
+
 const dataurl = "./people.json";
 const tbody = document.querySelector('tbody');
 const container = document.querySelector('.tablebody');
@@ -55,9 +56,6 @@ displayDatalist();
 
 // Editing the person's birhtday
 
-// async function editPerson (e) {
-  
-// }
 
 const editPersonpopup = async function(id) {
 
@@ -71,6 +69,10 @@ const editPersonpopup = async function(id) {
   const popup = document.createElement('form');
   popup.classList.add('.popupedit');
   popup.insertAdjacentHTML('afterbegin', `
+  <fieldset style="border: none;">
+    <label for="${result.picture}">Url image</label><br>
+    <input type="url" value="${result.picture}" id="${result.id}">
+  </fieldset>
   <fieldset style="border: none;">
     <label for="${result.id}">LastName</label><br>
     <input type="text" value="${result.lastName}" id="${result.id}">
@@ -92,6 +94,30 @@ const editPersonpopup = async function(id) {
   document.body.appendChild(popup);
   popup.classList.add('open');
   console.log(popup);
+
+}
+
+async function editPerson(e) {
+  const response = await fetch(dataurl);
+  const data = await response.json();
+  const editPersoninfo = data.filter(person => person.id !== id);
+  e.preventDefault();
+  editPersoninfo = e.target;
+  const editChange = {
+
+    picture: editPersoninfo.picture.value,
+    lastName: editPersoninfo.lastName.value,
+    firstName: editPersoninfo.firstName.value,
+    birthday: editPersoninfo.birthday.value,
+
+  }
+
+  console.log();
+
+  editPersoninfo.push(editChange);
+  editconfirm.reset();
+
+  container.dispatchEvent(new CustomEvent('pleaseUpdateTheList'));
 
 }
 
@@ -123,19 +149,21 @@ async function deletePersonPopup(id) {
 
     console.log(popup);
 
-  const confirm = e => {
+  const confirm = async function(e) {
 
-    const yes = e.target.matches('.yes__sure');
-    const no = e.target.matches('.no__want');
+    const yes = e.target.closest('.yes__sure');
+    const no = e.target.closest('.no__want');
 
     if (yes) {
+      const response = await fetch(dataurl);
+      const data = await response.json();
       e.preventDefault();
       const deleteCo = data.filter(person => person.id !== id);
-      persons = deleteCo;
-      fetchPeople(deleteCo);
-      console.log(deleteCo);
-      const remove = popup.style.display = 'none';
-      remove;
+      data = deleteCo.style.display = 'none';
+      // fetchPeople(deleteCo);
+      editPerson();
+      // const remove = popup.style.display = 'none';
+      // remove;
     }
 
     else if (no) {
@@ -157,27 +185,43 @@ async function deletePersonPopup(id) {
 
 let peopleItems = [];
 
- function recordToLocalStorage () {
-   localStorage.setItem('peopleItems', JSON.stringify(peopleItems));
-}
+//  function recordToLocalStorage() {
+    
+// }
 
-function restoreLocalStorage () {
+//  async function restoreLocalStorage() {
+//   const response = await fetch(dataurl);
+//   console.log(response);
+//   const data = await response.json();
+//   peopleItems.push(... data);
+//   localStorage.setItem('peopleItems', JSON.stringify('peopleItems'));
 
-  const IspeopleItems = JSON.parse(localStorage.getItem('peopleItems'));
+//   //
 
-  if(IspeopleItems) {
-    peopleItems.push(... peopleItems);
-  }
+//   container.dispatchEvent(new CustomEvent('itemUpdated'));
 
-  container.dispatchEvent(new CustomEvent('itemUpdated'))
-}
+// }
 
+//  async function recordeLocalStorage() {
+//    e.preventDefault();
+//    let restoreThePeopleItems = JSON.parse(localStorage.getItem('peopleItems')):[],
+//    restoreThePeopleItems = outputs;
+
+// //
+
+//    container.dispatchEvent(new CustomEvent('itemUpdated'));
+
+//  }
+
+ 
 
 // Event listner function
 
 async function handleClick(e){
     const editButton = e.target.closest('.edit');
     const deletButton = e.target.closest('.delete');
+  
+
   
 
     if(editButton) {
@@ -192,11 +236,15 @@ async function handleClick(e){
 
     }
 
+
+
 }
+
 
   // Event listener
 
-  container.addEventListener('itemUpdated', restoreLocalStorage);
+  // container.addEventListener('itemUpdated', restoreLocalStorage);
+  container.addEventListener('pleaseUpdateTheList', editPerson);
 
   window.addEventListener('click', handleClick);
 
