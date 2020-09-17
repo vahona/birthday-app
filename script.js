@@ -27,7 +27,7 @@ async function displayDatalist() {
     })
     const html = await sortePeople.map(person => {
        return `
-    <tr data-id= "${person.id}" class="row">
+    <tr data-id= "${person.id}" class="row row-container">
     <td><img src="${person.picture}" alt="${person.firstName + ' ' + person.lastName}"/></td>
     <td>${person.lastName}</td>
     <td>${person.firstName}</td>
@@ -66,24 +66,22 @@ const editPersonpopup = async function(id) {
   const data = await response.json();
 
   console.log(data);
-  const result = await data.find(person => person.id === id);
-  // debugger
-  // bug result is undefine
-  console.log(result);
+  const result = data.find(person => person.id === id);
+
   const popup = document.createElement('form');
   popup.classList.add('.popupedit');
   popup.insertAdjacentHTML('afterbegin', `
   <fieldset style="border: none;">
-    <label for="">LastName</label><br>
-    <input type="text" value="klkjsdfj" id="">
+    <label for="${result.id}">LastName</label><br>
+    <input type="text" value="${result.lastName}" id="${result.id}">
   </fieldset>
   <fieldset style="border: none;">
-    <label for="">FisrtName</label><br>
-    <input type="text" value="sajd" id="">
+    <label for="${result.id}">FisrtName</label><br>
+    <input type="text" value="${result.firstName}" id="${result.id}">
   </fieldset style="border: none;">
   <fieldset style="border: none;">
-    <label for="">Birthday</label><br>
-    <input type="text" value="123478454959" id="">
+    <label for="${result.id}">Birthday</label><br>
+    <input type="text" value="${result.birthday}" id="${result.id}">
   </fieldset>
   <div class="button-sub">
     <button class="button__save">Save</button>
@@ -175,17 +173,17 @@ function restoreLocalStorage () {
 }
 
 
-
 // Event listner function
 
 async function handleClick(e){
-    const editButton = e.target.matches('.edit');
-    const deletButton = e.target.matches('.delete');
+    const editButton = e.target.closest('.edit');
+    const deletButton = e.target.closest('.delete');
   
 
     if(editButton) {
-      const id = editButton.id;
+      const id = e.target.closest(".row-container").dataset.id;
       editPersonpopup(id);
+    
     }
    
     if(deletButton) {
@@ -196,10 +194,10 @@ async function handleClick(e){
 
 }
 
-// Event listener
+  // Event listener
 
-container.addEventListener('itemUpdated', restoreLocalStorage);
+  container.addEventListener('itemUpdated', restoreLocalStorage);
 
-window.addEventListener('click', handleClick);
+  window.addEventListener('click', handleClick);
 
-// tbody.addEventListener('click', editPerson)
+  // tbody.addEventListener('click', editPerson)
