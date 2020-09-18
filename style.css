@@ -54,6 +54,7 @@ img {
 
 article {
     background-color: whitesmoke;
+    border: steelblue solid 5px;
     width: 30%;
     position: fixed;
     top: 50%;
@@ -66,16 +67,39 @@ article {
 
 }
 
+.confirm_buttom {
+    background-color: brown;
+    color: white;
+    padding: 0.5rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    border-radius: 5px;
+}
+
+.button__cancel, .button__save {
+   background-color: rgb(226, 43, 220);
+   border-radius: 5px;
+   padding: 0.5rem;
+   color: white;
+}
+
 form {
     width:  30%;
-    background-color: thistle;
-    height: 40%;
+    opacity: 0.8;
+    background-color: rgb(233, 200, 233, 0.5);
+    border: turquoise 3px solid;
+    height: 50%;
     position: fixed;
     top: 30%;
     left: 20%;
     right: 0;
     bottom: 50%;
     padding: 2rem;
+}
+
+input {
+    padding: 0.5rem;
+    opacity: 1;
 }
 
 

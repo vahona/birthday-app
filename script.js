@@ -25,11 +25,10 @@ fetchPeople();
 // Create html
 
 async function displayDatalist(peopleStore) {
-    // const persons = await fetchPeople();
-    // Sort the movie
     const sortePeople = peopleStore.sort((a, b) => {
       return b.birthday - a.birthday;
     })
+
     const html = await sortePeople.map(person => {
        return `
     <tr data-id= "${person.id}" class="row row-container">
@@ -59,16 +58,16 @@ async function displayDatalist(peopleStore) {
 displayDatalist();
 
 // Editing the person's birhtday
-
+const editPeople = async function(id) {
+  const people = peopleStore.find(person => person.id === id);
+  const show = editPersonpopup(people);
+  if (show) {
+    peopleStore(show);
+  }
+}
 
 const editPersonpopup = async function(id) {
 
-  // const persons = await fetchPeople();
-  // const response = await fetch(dataurl);
-
-  // const data = await response.json();
-
-  console.log(data);
   const result = peopleStore.find(person => person.id === id);
 
   const popup = document.createElement('form');
@@ -100,37 +99,26 @@ const editPersonpopup = async function(id) {
   popup.classList.add('open');
   console.log(popup);
 
+
+
+ popup.addEventListener('submit', e => {
+   e.preventDefault();
+   const changes = peopleStore.filter(person => person.id !== id);
+   const saveChange = e.currentTarget.closest('.button__save');
+
+   changes.picture = picture.value;
+   changes.lastName = lastName.value;
+   changes.firstName = firstName.value;
+   changes.birthday = birthday.value;
+   editPersonpopup(result);
+ });
+
+
 }
 
-// async function editPerson(e) {
-//   // const response = await fetch(dataurl);
-//   // const data = await response.json();
-//   const editPersoninfo = data.filter(person => person.id !== id);
-//   e.preventDefault();
-//   editPersoninfo = e.target;
-//   const editChange = {
-
-//     picture: editPersoninfo.picture.value,
-//     lastName: editPersoninfo.lastName.value,
-//     firstName: editPersoninfo.firstName.value,
-//     birthday: editPersoninfo.birthday.value,
-
-//   }
-
-//   console.log();
-
-//   editPersoninfo.push(editChange);
-//   editconfirm.reset();
-
-//   container.dispatchEvent(new CustomEvent('pleaseUpdateTheList'));
-
-// }
 
 // Deleting the birthday
 
-async function deletePerson (e) {
-
-}
 
 async function deletePersonPopup(id) {
   // const response = await fetch(dataurl);
@@ -162,6 +150,7 @@ async function deletePersonPopup(id) {
     if(removeEl) {
       e.preventDefault();
       const deletePeople = peopleStore.filter(person => person.id !== id);
+      peopleStore = deletePeople;
       console.log(deletePeople);
       displayDatalist(deletePeople);
       
@@ -222,9 +211,6 @@ let peopleItems = [];
 async function handleClick(e){
     const editButton = e.target.closest('.edit');
     const deletButton = e.target.closest('.delete');
-  
-
-  
 
     if(editButton) {
       const id = e.target.closest(".row-container").dataset.id;
@@ -243,11 +229,5 @@ async function handleClick(e){
 }
 
 
-  // Event listener
-
-  // container.addEventListener('itemUpdated', restoreLocalStorage);
-  // container.addEventListener('pleaseUpdateTheList', editPerson);
-
   window.addEventListener('click', handleClick);
 
-  // tbody.addEventListener('click', editPerson)
