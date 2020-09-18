@@ -69,25 +69,24 @@ const editPeople = async function(id) {
 const editPersonpopup = async function(id) {
 
   const result = peopleStore.find(person => person.id === id);
-
   const popup = document.createElement('form');
-  popup.classList.add('.popupedit');
+  popup.classList.add('popupedit');
   popup.insertAdjacentHTML('afterbegin', `
   <fieldset style="border: none;">
-    <label for="${result.picture}">Url image</label><br>
-    <input type="url" value="${result.picture}" id="${result.id}">
+    <label for="picture">Url image</label><br>
+    <input type="url" value="${result.picture}" id="picture">
   </fieldset>
   <fieldset style="border: none;">
-    <label for="${result.id}">LastName</label><br>
-    <input type="text" value="${result.lastName}" id="${result.id}">
+    <label for="lastname">LastName</label><br>
+    <input type="text" value="${result.lastName}" id="lastname">
   </fieldset>
   <fieldset style="border: none;">
-    <label for="${result.id}">FisrtName</label><br>
-    <input type="text" value="${result.firstName}" id="${result.id}">
+    <label for="firstname">FisrtName</label><br>
+    <input type="text" value="${result.firstName}" id="firstname">
   </fieldset style="border: none;">
   <fieldset style="border: none;">
-    <label for="${result.id}">Birthday</label><br>
-    <input type="text" value="${result.birthday}" id="${result.id}">
+    <label for="birthday">Birthday</label><br>
+    <input type="text" value="${result.birthday}" id="birthday">
   </fieldset>
   <div class="button-sub">
     <button class="button__save">Save</button>
@@ -97,22 +96,21 @@ const editPersonpopup = async function(id) {
 
   document.body.appendChild(popup);
   popup.classList.add('open');
-  console.log(popup);
-
-
 
  popup.addEventListener('submit', e => {
+
+   const saveChange = e.currentTarget;
    e.preventDefault();
-   const changes = peopleStore.filter(person => person.id !== id);
-   const saveChange = e.currentTarget.closest('.button__save');
+console.log("gsGJH",saveChange);
 
-   changes.picture = picture.value;
-   changes.lastName = lastName.value;
-   changes.firstName = firstName.value;
-   changes.birthday = birthday.value;
-   editPersonpopup(result);
+   result.picture = picture.value;
+   result.lastName = lastname.value;
+   result.firstName = firstname.value;
+   result.birthday = birthday.value;
+   result.id = id;
+   displayDatalist(peopleStore);
+  //  editPersonpopup(result);
  });
-
 
 }
 
