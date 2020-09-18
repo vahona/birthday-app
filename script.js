@@ -3,6 +3,7 @@
 const dataurl = "./people.json";
 const tbody = document.querySelector('tbody');
 const container = document.querySelector('.tablebody');
+const addButon = document.querySelector('.add-people')
 
 // const response = fetch(dataurl);
 let peopleStore = [];
@@ -25,6 +26,7 @@ fetchPeople();
 // Create html
 
 async function displayDatalist(peopleStore) {
+  
     const sortePeople = peopleStore.sort((a, b) => {
       return b.birthday - a.birthday;
     })
@@ -56,15 +58,7 @@ async function displayDatalist(peopleStore) {
 }
 
 displayDatalist();
-
-// Editing the person's birhtday
-const editPeople = async function(id) {
-  const people = peopleStore.find(person => person.id === id);
-  const show = editPersonpopup(people);
-  if (show) {
-    peopleStore(show);
-  }
-}
+// Edite People
 
 const editPersonpopup = async function(id) {
 
@@ -168,6 +162,58 @@ async function deletePersonPopup(id) {
 
 }
 
+
+// Adding the list
+
+addButon.addEventListener('click', function addNewPeople() {
+  
+  const popup = document.createElement('form');
+  popup.classList.add('popupadd');
+  popup.insertAdjacentHTML('afterbegin', `
+  <fieldset style="border: none;">
+    <label for="picture">Url image</label><br>
+    <input type="url" value="" id="picture" required>
+  </fieldset>
+  <fieldset style="border: none;">
+    <label for="lastname">LastName</label><br>
+    <input type="text" value="" id="" required>
+  </fieldset>
+  <fieldset style="border: none;">
+    <label for="firstname">FisrtName</label><br>
+    <input type="text" value="" id="firstname" required>
+  </fieldset style="border: none;">
+  <fieldset style="border: none;">
+    <label for="birthday">Birthday</label><br>
+    <input type="text" value="" id="birthday" required>
+  </fieldset>
+  <div class="button-sub">
+    <button class="add__button">Add</button>
+  </div>
+  `);
+  
+  document.body.appendChild(popup);
+  popup.classList.add('add');
+
+  popup.addEventListener('submit', e => {
+
+    const addNewOne = e.currentTarget;
+    e.preventDefault();
+    addNewOne.picture = picture.value;
+    addNewOne.lastName = lastname.value;
+    addNewOne.firstName = firstname.value;
+    addNewOne.birthday = birthday.value;
+    addNewPeople();
+    //  editPersonpopup(result);
+  });
+
+});
+
+
+// Generate the new list in the list of people
+
+
+
+
 // Local storage function
 
 // Empty array
@@ -175,34 +221,24 @@ async function deletePersonPopup(id) {
 let peopleItems = [];
 
 // //  function recordToLocalStorage() {
-    
 // // }
-
 //  async function restoreLocalStorage() {
 //   const response = await fetch(dataurl);
 //   console.log(response);
 //   const data = await response.json();
 //   peopleItems.push(... data);
 //   localStorage.setItem('peopleItems', JSON.stringify('peopleItems'));
-
 //   //
-
 //   container.dispatchEvent(new CustomEvent('itemUpdated'));
-
 // }
-
 //  async function recordeLocalStorage() {
 //    e.preventDefault();
 //    let restoreThePeopleItems = JSON.parse(localStorage.getItem('peopleItems')),
 //    restoreThePeopleItems = outputs;
-
 // //
-
 //    container.dispatchEvent(new CustomEvent('itemUpdated'));
-
 //  }
 
- 
 
 // Event listner function
 
@@ -224,8 +260,10 @@ async function handleClick(e){
 
 
 
+
 }
 
 
   window.addEventListener('click', handleClick);
+  // peopleStore.addEventListener('pleaseAddTheList', addNewPeople);
 

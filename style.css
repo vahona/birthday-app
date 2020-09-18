@@ -102,5 +102,33 @@ input {
     opacity: 1;
 }
 
+.delete {
+
+}
+
+.add-people {
+    padding-left: 2rem;
+    padding-right: 2rem;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    border-radius: 30px;
+    background-color: yellow;
+    text-transform: uppercase;
+}
+
+.popupadd {
+    background-color: rgb(27, 27, 27);
+    color: white;
+}
+
+.add__button {
+    padding: 0.5rem;
+    background-color: yellow;
+    border-radius: 20px;
+    padding-left: 1rem;
+    padding-right: 20px;
+    
+}
+
 
 
