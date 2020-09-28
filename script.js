@@ -1,15 +1,17 @@
 
+// Grabe some element I might need
 
 const dataurl = "./people.json";
 const tbody = document.querySelector('tbody');
 const container = document.querySelector('.tablebody');
 const addButon = document.querySelector('.add-people')
 
-// const response = fetch(dataurl);
-let peopleStore = [];
-// console.log(response);
+// Create an empty array to store the people.json
 
-// Fetch 
+let peopleStore = [];
+
+
+// Fetch the file in the people.json 
 async function fetchPeople() {
   const response = await fetch(dataurl);
   console.log(response);
@@ -58,7 +60,8 @@ async function displayDatalist(peopleStore) {
 }
 
 displayDatalist();
-// Edite People
+
+// Popup for editing people
 
 const editPersonpopup = async function(id) {
 
@@ -91,6 +94,8 @@ const editPersonpopup = async function(id) {
   document.body.appendChild(popup);
   popup.classList.add('open');
 
+  // Add event listener for the edit and save or not save the change
+
  popup.addEventListener('submit', e => {
 
    const saveChange = e.currentTarget;
@@ -103,18 +108,16 @@ console.log("gsGJH",saveChange);
    result.birthday = birthday.value;
    result.id = id;
    displayDatalist(peopleStore);
-  //  editPersonpopup(result);
+
  });
+
 
 }
 
 
-// Deleting the birthday
-
+// Function for deleting the birthday
 
 async function deletePersonPopup(id) {
-  // const response = await fetch(dataurl);
-  // const data = await response.json();
 
   const deleteOne = peopleStore.find(person => person.id === id);
   console.log(deleteOne);
@@ -134,10 +137,16 @@ async function deletePersonPopup(id) {
 
     console.log(popup);
 
-  const confirm = async function(e) {
+    // Fuction to confirm the deletion of the birthday
+
+    const confirm = async function(e) {
+
+    // Grabing all the button
 
     const removeEl = e.target.closest('.yes__sure');
     const no = e.target.closest('.no__want');
+ 
+    // Condition for all the button
 
     if(removeEl) {
       e.preventDefault();
@@ -145,8 +154,7 @@ async function deletePersonPopup(id) {
       peopleStore = deletePeople;
       console.log(deletePeople);
       displayDatalist(deletePeople);
-      
-      
+
     }
 
     else if (no) {
@@ -157,11 +165,9 @@ async function deletePersonPopup(id) {
 
   }
 
-  window.addEventListener('click', confirm)
-
+  window.addEventListener('click', confirm);
 
 }
-
 
 // Adding the list
 
@@ -176,7 +182,7 @@ addButon.addEventListener('click', function addNewPeople() {
   </fieldset>
   <fieldset style="border: none;">
     <label for="lastname">LastName</label><br>
-    <input type="text" value="" id="" required>
+    <input type="text" value="" id="lastname" required>
   </fieldset>
   <fieldset style="border: none;">
     <label for="firstname">FisrtName</label><br>
@@ -195,30 +201,32 @@ addButon.addEventListener('click', function addNewPeople() {
   popup.classList.add('add');
 
   popup.addEventListener('submit', e => {
-
-    const addNewOne = e.currentTarget;
     e.preventDefault();
-    addNewOne.picture = picture.value;
-    addNewOne.lastName = lastname.value;
-    addNewOne.firstName = firstname.value;
-    addNewOne.birthday = birthday.value;
+    const addNewOne = e.currentTarget;
+    const newList = {
+      picture : addNewOne.picture.value,
+      lastName : addNewOne.lastname.value,
+      firstName : addNewOne.firstname.value,
+      birthday : addNewOne.birthday.value,
+    };
+
+    console.log(newList);
+
+    peopleStore.push(newList);
+    addNewOne.reset();
     addNewPeople();
     //  editPersonpopup(result);
+
+
   });
 
 });
 
 
-// Generate the new list in the list of people
-
-
-
 
 // Local storage function
 
-// Empty array
 
-let peopleItems = [];
 
 // //  function recordToLocalStorage() {
 // // }
@@ -258,11 +266,7 @@ async function handleClick(e){
 
     }
 
-
-
-
 }
-
 
   window.addEventListener('click', handleClick);
   // peopleStore.addEventListener('pleaseAddTheList', addNewPeople);

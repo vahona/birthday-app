@@ -13,22 +13,26 @@ header {
 
 body {
     font-family: roboto;
+    margin-inline-start: auto;
+    margin-inline-end: auto;
+    max-width: 100%;
+}
+
+table {
+    max-width: 100%;
 }
 
 thead {
     background-color: white;
 }
 
-/* td {
-    background-color: white;
-} */
 
 tr {
     display: grid;
     grid-auto-flow: column;
     grid-template-columns: repeat(5, minmax(10%, 1fr));
     place-items: center;
-    gap: 30px;
+    gap: 10%;
     padding: 2rem 2rem;
 }
 
@@ -105,6 +109,8 @@ input {
 .delete {
 
 }
+
+
 
 .add-people {
     padding-left: 2rem;
