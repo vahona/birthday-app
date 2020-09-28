@@ -12,19 +12,26 @@
   - confirm function is created to generate the event listeren to the button in popup 
 
   - addNewPeople function is created to add a new list ikf the user want to add new one
+  - handleClick function generate the event listener to the edite and delete list
 
-  - If you had more time, what area of your project would you improve?
+
 
 ## The area to improve if I had more time
-- Did you learn anything new while working on this project?
+  - If you had more time, what area of your project would you improve?
+  - If I had more time I probably continue my project and refactore it because I did not finish it yet.
+
 
 ## New thing I could get
-- What was the most challenging part for you?
+- This project lets me know more about fetching which I did not really understand before.
+
 
 ## The most challenging part for me
-- Would you like a new explanation about a specific topic?
+- What was the most challenging part for you?
+- The most challenging part for me is the fetching data from file and 
+
 
 ## More explanation
-- Any other comments?
+- What you done is good, I really need more practice
+
 
 ## Any comments
