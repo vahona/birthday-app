@@ -204,6 +204,7 @@ addButon.addEventListener('click', function addNewPeople() {
     e.preventDefault();
     const addNewOne = e.currentTarget;
     const newList = {
+      id: addNewOne.id,
       picture : addNewOne.picture.value,
       lastName : addNewOne.lastname.value,
       firstName : addNewOne.firstname.value,
@@ -224,9 +225,8 @@ addButon.addEventListener('click', function addNewPeople() {
   const addForm = document.querySelector(".popupadd");
 
   document.addEventListener("click", function(event) {
-    if (event.target.closest(".popupadd")) return;
-
-    addForm.classList.add("hidden");
+   
+    addForm.classList.remove("hidden");
   });
 
 });
