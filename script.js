@@ -1,6 +1,8 @@
 
 // Grabe some element I might need
 
+
+
 const dataurl = "./people.json";
 const tbody = document.querySelector('tbody');
 const container = document.querySelector('.tablebody');
@@ -86,8 +88,8 @@ const editPersonpopup = async function(id) {
     <input type="text" value="${result.birthday}" id="birthday">
   </fieldset>
   <div class="button-sub">
-    <button class="button__save">Save</button>
-    <button class="button__cancel">Cancel</button>
+    <button class="button__save" type="submit">Save</button>
+    <a href="./anylink" class="button__cancel" type="button">Cancel</a>
   </div>
   `);
 
@@ -194,11 +196,14 @@ addButon.addEventListener('click', function addNewPeople() {
   </fieldset>
   <div class="button-sub">
     <button class="add__button">Add</button>
+    <a href="./link" class="close"> Close </a>
   </div>
   `);
   
   document.body.appendChild(popup);
   popup.classList.add('add');
+
+
 
   popup.addEventListener('submit', e => {
     e.preventDefault();
@@ -218,29 +223,23 @@ addButon.addEventListener('click', function addNewPeople() {
     addNewOne.reset();
     addNewPeople();
     //  editPersonpopup(result);
-
-
+  
   });
 
   const addForm = document.querySelector(".popupadd");
 
-  document.addEventListener("click", function(e) {
-    if(e.target.closest(".popupadd")) return;
-
+  document.addEventListener("click", function (e) {
+    if (e.target.closest(".popupadd")) return;
     addForm.classList.add("hidden");
 
   });
 
-  console.log(addForm);
+
  
 });
 
 
-
-
-
 // Local storage function
-
 
 
 //  function recordToLocalStorage() {
@@ -256,8 +255,7 @@ addButon.addEventListener('click', function addNewPeople() {
 // }
 //  async function recordeLocalStorage() {
 //    e.preventDefault();
-//    let restoreThePeopleItems = JSON.parse(localStorage.getItem('peopleItems')),
-//    restoreThePeopleItems = outputs;
+//    let restoreThePeopleItems = JSON.parse(localStorage.getItem('peopleItems'));
 // //
 //    container.dispatchEvent(new CustomEvent('itemUpdated'));
 //  }

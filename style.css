@@ -149,6 +149,19 @@ input {
 }
 
 
+.button__cancel {
+    text-decoration: none;
+    border: 1px solid gainsboro;
+
+}
+
+.close {
+    text-decoration: none;
+    background-color: yellow;
+    color: black;
+    padding: 0.5rem;
+    border-radius: 16px;
+}
 
 
 

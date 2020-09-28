@@ -17,7 +17,6 @@
 
 
 ## The area to improve if I had more time
-  - If you had more time, what area of your project would you improve?
   - If I had more time I probably continue my project and refactore it because I did not finish it yet.
 
 
@@ -27,11 +26,12 @@
 
 ## The most challenging part for me
 - What was the most challenging part for you?
-- The most challenging part for me is the fetching data from file and 
-
+- The most challenging part for me is the fetching data from file and.
 
 ## More explanation
-- What you done is good, I really need more practice
+- What you have done is good, I really need more practice
 
 
 ## Any comments
+
+
