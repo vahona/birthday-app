@@ -213,6 +213,7 @@ addButon.addEventListener('click', function addNewPeople() {
     console.log(newList);
 
     peopleStore.push(newList);
+    displayDatalist(peopleStore);
     addNewOne.reset();
     addNewPeople();
     //  editPersonpopup(result);
@@ -220,7 +221,17 @@ addButon.addEventListener('click', function addNewPeople() {
 
   });
 
+  const addForm = document.querySelector(".popupadd");
+
+  document.addEventListener("click", function(event) {
+    if (event.target.closest(".popupadd")) return;
+
+    addForm.classList.add("hidden");
+  });
+
 });
+
+
 
 
 
