@@ -224,11 +224,15 @@ addButon.addEventListener('click', function addNewPeople() {
 
   const addForm = document.querySelector(".popupadd");
 
-  document.addEventListener("click", function(event) {
-   
-    addForm.classList.remove("hidden");
+  document.addEventListener("click", function(e) {
+    if(e.target.closest(".popupadd")) return;
+
+    addForm.classList.add("hidden");
+
   });
 
+  console.log(addForm);
+ 
 });
 
 
@@ -239,8 +243,8 @@ addButon.addEventListener('click', function addNewPeople() {
 
 
 
-// //  function recordToLocalStorage() {
-// // }
+//  function recordToLocalStorage() {
+// }
 //  async function restoreLocalStorage() {
 //   const response = await fetch(dataurl);
 //   console.log(response);

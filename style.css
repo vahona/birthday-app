@@ -125,6 +125,10 @@ input {
 .popupadd {
     background-color: rgb(27, 27, 27);
     color: white;
+    margin-inline-start: auto;
+    margin-inline-end: auto;
+    left: -30%;
+
 }
 
 .add__button {
@@ -139,6 +143,17 @@ input {
 .hidden {
     display: none;
 }
+
+input {
+    max-width: 100%;
+}
+
+
+
+
+
+
+
 
 
 
