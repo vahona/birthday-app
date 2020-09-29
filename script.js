@@ -1,8 +1,6 @@
 
 // Grabe some element I might need
 
-
-
 const dataurl = "./people.json";
 const tbody = document.querySelector('tbody');
 const container = document.querySelector('.tablebody');
@@ -89,7 +87,7 @@ const editPersonpopup = async function(id) {
   </fieldset>
   <div class="button-sub">
     <button class="button__save" type="submit">Save</button>
-    <a href="./anylink" class="button__cancel" type="button">Cancel</a>
+    <button class="button__cancel" type="button">Cancel</button>
   </div>
   `);
 
@@ -102,7 +100,6 @@ const editPersonpopup = async function(id) {
 
    const saveChange = e.currentTarget;
    e.preventDefault();
-console.log("gsGJH",saveChange);
 
    result.picture = picture.value;
    result.lastName = lastname.value;
@@ -112,6 +109,7 @@ console.log("gsGJH",saveChange);
    displayDatalist(peopleStore);
 
  });
+
 
 
 }
@@ -195,8 +193,8 @@ addButon.addEventListener('click', function addNewPeople() {
     <input type="text" value="" id="birthday" required>
   </fieldset>
   <div class="button-sub">
-    <button class="add__button">Add</button>
-    <a href="./link" class="close"> Close </a>
+    <button class="add__button" type="submit">Add</button>
+    <button class="close" type="button"> Close </button>
   </div>
   `);
   
@@ -216,8 +214,7 @@ addButon.addEventListener('click', function addNewPeople() {
       birthday : addNewOne.birthday.value,
     };
 
-    console.log(newList);
-
+    console.log(addNewOne);
     peopleStore.push(newList);
     displayDatalist(peopleStore);
     addNewOne.reset();
@@ -226,17 +223,27 @@ addButon.addEventListener('click', function addNewPeople() {
   
   });
 
-  const addForm = document.querySelector(".popupadd");
-
-  document.addEventListener("click", function (e) {
-    if (e.target.closest(".popupadd")) return;
-    addForm.classList.add("hidden");
+  popup.addEventListener('click', e => {
+    const cancelTheChange = e.target.closest('.close');
+    if(cancelTheChange) {
+    const remove = popup.style.display = 'none';
+    remove;
+    }
 
   });
 
-
  
 });
+
+
+
+
+
+
+
+
+
+
 
 
 // Local storage function

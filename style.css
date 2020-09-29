@@ -7,6 +7,11 @@ html {
     
 }
 
+
+.edit {
+    margin-inline-end: 1rem;
+}
+
 header {
     color: white;
 }
