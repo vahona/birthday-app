@@ -107,8 +107,12 @@ const editPersonpopup = async function(id) {
    result.birthday = birthday.value;
    result.id = id;
    displayDatalist(peopleStore);
+  console.log(birthday);
+   saveChange;
 
  });
+
+ // Close the popup when the user does not want the change they have made in the person's information
 
   popup.addEventListener('click', e => {
     const cancelTheChange = e.target.closest('.button__cancel');
@@ -120,7 +124,6 @@ const editPersonpopup = async function(id) {
   });
 
 }
-
 
 // Function for deleting the birthday
 
@@ -230,6 +233,8 @@ addButon.addEventListener('click', function addNewPeople() {
   
   });
 
+  // Close the popup when the user does need to add a new person 
+
   popup.addEventListener('click', e => {
     const cancelTheChange = e.target.closest('.close');
     if(cancelTheChange) {
@@ -243,36 +248,19 @@ addButon.addEventListener('click', function addNewPeople() {
 });
 
 
-
-
-
-
-
-
-
-
-
-
 // Local storage function
 
+  function restoreLocalStorage() {
+    localStorage.setItem('peopleStore', JSON.stringify('peopleStore'));
+    container.dispatchEvent(new CustomEvent('itemUpdated'));
+}
+  function recordeLocalStorage() {
+   e.preventDefault();
+    let restoreThePeopleItems = JSON.parse(localStorage.getItem('peopleStore'));
+   container.dispatchEvent(new CustomEvent('itemUpdated'));
 
-//  function recordToLocalStorage() {
-// }
-//  async function restoreLocalStorage() {
-//   const response = await fetch(dataurl);
-//   console.log(response);
-//   const data = await response.json();
-//   peopleItems.push(... data);
-//   localStorage.setItem('peopleItems', JSON.stringify('peopleItems'));
-//   //
-//   container.dispatchEvent(new CustomEvent('itemUpdated'));
-// }
-//  async function recordeLocalStorage() {
-//    e.preventDefault();
-//    let restoreThePeopleItems = JSON.parse(localStorage.getItem('peopleItems'));
-// //
-//    container.dispatchEvent(new CustomEvent('itemUpdated'));
-//  }
+   
+ }
 
 
 // Event listner function
@@ -296,5 +284,6 @@ async function handleClick(e){
 }
 
   window.addEventListener('click', handleClick);
-  // peopleStore.addEventListener('pleaseAddTheList', addNewPeople);
+container.addEventListener('itemUpdated', restoreLocalStorage);
+ 
 
