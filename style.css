@@ -76,6 +76,10 @@ article {
 
 }
 
+tr:hover {
+    background-color: rgba(90, 187, 209, 0.5);
+}
+
 .confirm_buttom {
     background-color: brown;
     color: white;

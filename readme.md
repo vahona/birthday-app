@@ -14,7 +14,7 @@
   - addNewPeople function is created to add a new list ikf the user want to add new one
   - handleClick function generate the event listener to the edite and delete list
   - There is an error of sort undefine, I try to sort it but it did not work
-  
+
 
 
 
@@ -27,8 +27,9 @@
 
 
 ## The most challenging part for me
-- What was the most challenging part for you?
 - The most challenging part for me is the fetching data from file and.
+- And also the localstorage which I'm trying to do but could not manage to solve it.
+- The Date I really don't understand about it
 
 ## More explanation
 - What you have done is good, I really need more practice

@@ -1,118 +1,115 @@
 
-// Grabe some element I might need
+//  Grabe some element I might need
 
-const dataurl = "./people.json";
-const tbody = document.querySelector('tbody');
-const container = document.querySelector('.tablebody');
-const addButon = document.querySelector('.add-people')
+  const dataurl = "./people.json";
+  const tbody = document.querySelector('tbody');
+  const container = document.querySelector('.tablebody');
+  const addButon = document.querySelector('.add-people')
 
-// Create an empty array to store the people.json
+//  Create an empty array to store the people.json
 
-let peopleStore = [];
+  let peopleStore = [];
 
 
-// Fetch the file in the people.json 
-async function fetchPeople() {
-  const response = await fetch(dataurl);
-  console.log(response);
-  const data = await response.json();
-  peopleStore = [...data];
-  console.log(peopleStore);
-  displayDatalist(peopleStore);
+//  Fetch the file in the people.json 
+  async function fetchPeople() {
+    const response = await fetch(dataurl);
+    console.log(response);
+    const data = await response.json();
+    peopleStore = [...data];
+    console.log(peopleStore);
+    displayDatalist(peopleStore);
     return data;
 
 }
 
-fetchPeople();
+  fetchPeople();
 
-// Create html
+//  Create html
 
-async function displayDatalist(peopleStore) {
-  
+  async function displayDatalist(peopleStore) {
+
     const sortePeople = peopleStore.sort((a, b) => {
       return b.birthday - a.birthday;
     })
 
     const html = await sortePeople.map(person => {
-       return `
-    <tr data-id= "${person.id}" class="row row-container">
-    <td><img src="${person.picture}" alt="${person.firstName + ' ' + person.lastName}"/></td>
-    <td>${person.lastName}</td>
-    <td>${person.firstName}</td>
-    <td>${person.birthday}</td>
-    <td class = "icons">
-      <button class="edit" id="${person.id}">
-        <img class = "icons__image" src="assets/icon_edit.png" alt="edit">
-      </button>
-      <button class="delete" id="${person.id}">
-        <img class = "icons__image" src="assets/delete.png" alt="delete">
-      </button>
-    </td>
-  </tr>
+        return `
+          <tr data-id= "${person.id}" class="row row-container">
+          <td><img src="${person.picture}" alt="${person.firstName + ' ' + person.lastName}"/></td>
+          <td>${person.lastName}</td>
+          <td>${person.firstName}</td>
+          <td>${person.birthday}</td>
+          <td class = "icons">
+            <button class="edit" id="${person.id}">
+              <img class = "icons__image" src="assets/icon_edit.png" alt="edit">
+            </button>
+            <button class="delete" id="${person.id}">
+              <img class = "icons__image" src="assets/delete.png" alt="delete">
+            </button>
+          </td>
+        </tr>
   `
     }).join('');
 
     tbody.innerHTML = html;
-    
-
-    // console.log(html);
 
 }
 
-displayDatalist();
+  displayDatalist();
 
-// Popup for editing people
+//  Popup for editing people
 
-const editPersonpopup = async function(id) {
+    const editPersonpopup = async function(id) {
 
-  const result = peopleStore.find(person => person.id === id);
-  const popup = document.createElement('form');
-  popup.classList.add('popupedit');
-  popup.insertAdjacentHTML('afterbegin', `
-  <fieldset style="border: none;">
-    <label for="picture">Url image</label><br>
-    <input type="url" value="${result.picture}" id="picture">
-  </fieldset>
-  <fieldset style="border: none;">
-    <label for="lastname">LastName</label><br>
-    <input type="text" value="${result.lastName}" id="lastname">
-  </fieldset>
-  <fieldset style="border: none;">
-    <label for="firstname">FisrtName</label><br>
-    <input type="text" value="${result.firstName}" id="firstname">
-  </fieldset style="border: none;">
-  <fieldset style="border: none;">
-    <label for="birthday">Birthday</label><br>
-    <input type="text" value="${result.birthday}" id="birthday">
-  </fieldset>
-  <div class="button-sub">
-    <button class="button__save" type="submit">Save</button>
-    <button class="button__cancel" type="button">Cancel</button>
-  </div>
-  `);
+      const result = peopleStore.find(person => person.id === id);
+      const popup = document.createElement('form');
+      popup.classList.add('popupedit');
+      popup.insertAdjacentHTML('afterbegin', `
+        <fieldset style="border: none;">
+          <label for="picture">Url image</label><br>
+          <input type="url" value="${result.picture}" id="picture">
+        </fieldset>
+        <fieldset style="border: none;">
+          <label for="lastname">LastName</label><br>
+          <input type="text" value="${result.lastName}" id="lastname">
+        </fieldset>
+        <fieldset style="border: none;">
+          <label for="firstname">FisrtName</label><br>
+          <input type="text" value="${result.firstName}" id="firstname">
+        </fieldset style="border: none;">
+        <fieldset style="border: none;">
+          <label for="birthday">Birthday</label><br>
+          <input type="text" value="${result.birthday}" id="birthday">
+        </fieldset>
+        <div class="button-sub">
+          <button class="button__save" type="submit">Save</button>
+          <button class="button__cancel" type="button">Cancel</button>
+        </div>
+        `);
 
-  document.body.appendChild(popup);
-  popup.classList.add('open');
+      document.body.appendChild(popup);
+      popup.classList.add('open');
 
-  // Add event listener for the edit and save or not save the change
+//  Add event listener for the edit and save or not save the change
 
- popup.addEventListener('submit', e => {
+  popup.addEventListener('submit', e => {
 
-   const saveChange = e.currentTarget;
-   e.preventDefault();
+    const saveChange = e.currentTarget;
+    e.preventDefault();
 
-   result.picture = picture.value;
-   result.lastName = lastname.value;
-   result.firstName = firstname.value;
-   result.birthday = birthday.value;
-   result.id = id;
-   displayDatalist(peopleStore);
-  console.log(birthday);
-   saveChange;
+      result.picture = picture.value;
+      result.lastName = lastname.value;
+      result.firstName = firstname.value;
+      result.birthday = birthday.value;
+      result.id = id;
+      displayDatalist(peopleStore);
+      console.log(birthday);
+      saveChange;
 
  });
 
- // Close the popup when the user does not want the change they have made in the person's information
+//  Close the popup when the user does not want the change they have made in the person's information
 
   popup.addEventListener('click', e => {
     const cancelTheChange = e.target.closest('.button__cancel');
@@ -125,38 +122,36 @@ const editPersonpopup = async function(id) {
 
 }
 
-// Function for deleting the birthday
+//  Function for deleting the birthday
 
-async function deletePersonPopup(id) {
+    async function deletePersonPopup(id) {
 
-  const deleteOne = peopleStore.find(person => person.id === id);
-  console.log(deleteOne);
-  const popup = document.createElement('article');
-  popup.classList.add('.confirm');
-  popup.insertAdjacentHTML('afterbegin', `
-    <p class="deleteparagraph">
-      Are you sure you want to delete this person
-    </p>
-    <div class="container__buttom">
-      <button class="confirm_buttom yes__sure"> Yes </button>
-      <button class="confirm_buttom no__want"> No </button>
-    </div>`);
+      const deleteOne = peopleStore.find(person => person.id === id);
+      console.log(deleteOne);
+      const popup = document.createElement('article');
+      popup.classList.add('.confirm');
+      popup.insertAdjacentHTML('afterbegin', `
+        <p class="deleteparagraph">
+          Are you sure you want to delete this person
+        </p>
+        <div class="container__buttom">
+          <button class="confirm_buttom yes__sure"> Yes </button>
+          <button class="confirm_buttom no__want"> No </button>
+        </div>`);
 
-    document.body.appendChild(popup);
-    popup.classList.add('.confirm');
+        document.body.appendChild(popup);
+        popup.classList.add('.confirm');
 
-    console.log(popup);
-
-    // Fuction to confirm the deletion of the birthday
+//  Fuction to confirm the deletion of the birthday
 
     const confirm = async function(e) {
 
-    // Grabing all the button
+//  Grabing all the button
 
     const removeEl = e.target.closest('.yes__sure');
     const no = e.target.closest('.no__want');
  
-    // Condition for all the button
+//  Condition for all the button
 
     if(removeEl) {
       e.preventDefault();
@@ -179,39 +174,37 @@ async function deletePersonPopup(id) {
 
 }
 
-// Adding the list
+//  Adding the list
 
-addButon.addEventListener('click', function addNewPeople() {
+    addButon.addEventListener('click', function addNewPeople() {
   
-  const popup = document.createElement('form');
-  popup.classList.add('popupadd');
-  popup.insertAdjacentHTML('afterbegin', `
-  <fieldset style="border: none;">
-    <label for="picture">Url image</label><br>
-    <input type="url" value="" id="picture" required>
-  </fieldset>
-  <fieldset style="border: none;">
-    <label for="lastname">LastName</label><br>
-    <input type="text" value="" id="lastname" required>
-  </fieldset>
-  <fieldset style="border: none;">
-    <label for="firstname">FisrtName</label><br>
-    <input type="text" value="" id="firstname" required>
-  </fieldset style="border: none;">
-  <fieldset style="border: none;">
-    <label for="birthday">Birthday</label><br>
-    <input type="text" value="" id="birthday" required>
-  </fieldset>
-  <div class="button-sub">
-    <button class="add__button" type="submit">Add</button>
-    <button class="close" type="button"> Close </button>
-  </div>
+      const popup = document.createElement('form');
+      popup.classList.add('popupadd');
+      popup.insertAdjacentHTML('afterbegin', `
+        <fieldset style="border: none;">
+          <label for="picture">Url image</label><br>
+          <input type="url" value="" id="picture" required>
+        </fieldset>
+        <fieldset style="border: none;">
+          <label for="lastname">LastName</label><br>
+          <input type="text" value="" id="lastname" required>
+        </fieldset>
+        <fieldset style="border: none;">
+          <label for="firstname">FisrtName</label><br>
+          <input type="text" value="" id="firstname" required>
+        </fieldset style="border: none;">
+        <fieldset style="border: none;">
+          <label for="birthday">Birthday</label><br>
+          <input type="text" value="" id="birthday" required>
+        </fieldset>
+        <div class="button-sub">
+          <button class="add__button" type="submit">Add</button>
+          <button class="close" type="button"> Close </button>
+        </div>
   `);
   
-  document.body.appendChild(popup);
-  popup.classList.add('add');
-
-
+      document.body.appendChild(popup);
+      popup.classList.add('add');
 
   popup.addEventListener('submit', e => {
     e.preventDefault();
@@ -248,20 +241,33 @@ addButon.addEventListener('click', function addNewPeople() {
 });
 
 
-// Local storage function
+//  Local storage function
+
+const recordeLocalStorage = () => {
+
+  const restoreThePeopleItems = localStorage.getItem('peopleStore');
+  const isItems = JSON.parse(restoreThePeopleItems);
+  if(isItems) {
+    peopleStore = isItems;
+  }
+  else {
+    peopleStore = [];
+  }
+  container.dispatchEvent(new CustomEvent('itemUpdated'));
+
+  
+
+}
+
+
 
   function restoreLocalStorage() {
     localStorage.setItem('peopleStore', JSON.stringify('peopleStore'));
     container.dispatchEvent(new CustomEvent('itemUpdated'));
 }
-  function recordeLocalStorage() {
-   e.preventDefault();
-    let restoreThePeopleItems = JSON.parse(localStorage.getItem('peopleStore'));
-   container.dispatchEvent(new CustomEvent('itemUpdated'));
 
-   
- }
 
+ 
 
 // Event listner function
 
@@ -284,6 +290,6 @@ async function handleClick(e){
 }
 
   window.addEventListener('click', handleClick);
-container.addEventListener('itemUpdated', restoreLocalStorage);
+  container.addEventListener('itemUpdated', restoreLocalStorage);
  
 
