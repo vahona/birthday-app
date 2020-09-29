@@ -32,7 +32,6 @@
     const sortePeople = peopleStore.sort((a, b) => {
       return b.birthday - a.birthday;
     })
-
     const html = await sortePeople.map(person => {
         return `
           <tr data-id= "${person.id}" class="row row-container">
@@ -58,6 +57,8 @@
 
   displayDatalist();
 
+//  Calculate the date of the birthday
+
 //  Popup for editing people
 
     const editPersonpopup = async function(id) {
@@ -80,7 +81,7 @@
         </fieldset style="border: none;">
         <fieldset style="border: none;">
           <label for="birthday">Birthday</label><br>
-          <input type="text" value="${result.birthday}" id="birthday">
+          <input type="date" value="${result.birthday}" id="birthday">
         </fieldset>
         <div class="button-sub">
           <button class="button__save" type="submit">Save</button>
@@ -195,7 +196,7 @@
         </fieldset style="border: none;">
         <fieldset style="border: none;">
           <label for="birthday">Birthday</label><br>
-          <input type="text" value="" id="birthday" required>
+          <input type="date" value="" id="birthday" required>
         </fieldset>
         <div class="button-sub">
           <button class="add__button" type="submit">Add</button>
@@ -245,29 +246,35 @@
 
 const recordeLocalStorage = () => {
 
-  const restoreThePeopleItems = localStorage.getItem('peopleStore');
+  const restoreThePeopleItems = peopleStore;
+  restoreThePeopleItems = localStorage.getItem('peopleStore', JSON.stringify(peopleStore));
+  console.log(restoreThePeopleItems);
   const isItems = JSON.parse(restoreThePeopleItems);
   if(isItems) {
     peopleStore = isItems;
   }
+
   else {
     peopleStore = [];
   }
   container.dispatchEvent(new CustomEvent('itemUpdated'));
 
-  
-
 }
 
 
+restoreLocalStorage();
 
   function restoreLocalStorage() {
-    localStorage.setItem('peopleStore', JSON.stringify('peopleStore'));
+
+   const restorePeople = JSON.parse(localStorage.getItem('peopleStore'));
+   console.log(restorePeople);
     container.dispatchEvent(new CustomEvent('itemUpdated'));
+
 }
 
 
- 
+
+
 
 // Event listner function
 
