@@ -110,7 +110,14 @@ const editPersonpopup = async function(id) {
 
  });
 
+  popup.addEventListener('click', e => {
+    const cancelTheChange = e.target.closest('.button__cancel');
+    if (cancelTheChange) {
+      const remove = popup.style.display = 'none';
+      remove;
+    }
 
+  });
 
 }
 
