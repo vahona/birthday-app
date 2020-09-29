@@ -13,6 +13,8 @@
 
   - addNewPeople function is created to add a new list ikf the user want to add new one
   - handleClick function generate the event listener to the edite and delete list
+  - There is an error of sort undefine, I try to sort it but it did not work
+  
 
 
 
