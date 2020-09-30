@@ -273,9 +273,6 @@ restoreLocalStorage();
 }
 
 
-
-
-
 // Event listner function
 
 async function handleClick(e){

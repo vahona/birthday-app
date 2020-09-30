@@ -16,15 +16,11 @@
   - There is an error of sort undefine, I try to sort it but it did not work
 
 
-
-
 ## The area to improve if I had more time
   - If I had more time I probably continue my project and refactore it because I did not finish it yet.
 
-
 ## New thing I could get
 - This project lets me know more about fetching which I did not really understand before.
-
 
 ## The most challenging part for me
 - The most challenging part for me is the fetching data from file and.
@@ -32,9 +28,10 @@
 - The Date I really don't understand about it
 
 ## More explanation
-- What you have done is good, I really need more practice
-
+- What you have done is good, I really need more practice,
 
 ## Any comments
+
+- I don't have any idea of date in this project, I dont understand
 
 
