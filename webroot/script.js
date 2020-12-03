@@ -14,8 +14,9 @@
 //  Fetch the file in the people.json 
   async function fetchPeople() {
     const response = await fetch(dataurl);
-    console.log(response);
+    console.log("kk",response);
     const data = await response.json();
+    console.log("b",data);
     peopleStore = [...data];
     console.log(peopleStore);
     displayDatalist(peopleStore);
@@ -29,10 +30,10 @@
 
   async function displayDatalist(peopleStore) {
 
-    const sortePeople = peopleStore.sort((a, b) => {
-      return b.birthday - a.birthday;
-    })
-    const html = await sortePeople.map(person => {
+    // const sortePeople = peopleStore.sort((a, b) => {
+    //   return b.birthday - a.birthday;
+    // })
+    const html = peopleStore.map(person => {
         return `
           <tr data-id= "${person.id}" class="row row-container">
           <td><img src="${person.picture}" alt="${person.firstName + ' ' + person.lastName}"/></td>
