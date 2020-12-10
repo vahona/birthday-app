@@ -20,6 +20,7 @@
     peopleStore = [...data];
     console.log(peopleStore);
     displayDatalist(peopleStore);
+    
     return data;
 
 }
@@ -36,7 +37,12 @@
     // const sortePeople = peopleStore.sort((a, b) => {
     //   return b.birthday - a.birthday;
     // })
-    const html = peopleStore.map(person => {
+    const html = peopleStore.map((person) => {
+
+
+      
+      const DateNow = new Date()
+
         return `
           <tr data-id= "${person.id}" class="row row-container">
             <td>
@@ -44,7 +50,6 @@
           person.firstName + " " + person.lastName
         }"/>
         </td>
-
           <td>${person.lastName}</td>
           <td>${person.firstName}</td>
           <td>${person.birthday}</td>
@@ -190,7 +195,9 @@
   
       const popup = document.createElement('form');
       popup.classList.add('popupadd');
-      popup.insertAdjacentHTML('afterbegin', `
+      popup.insertAdjacentHTML(
+        "afterbegin",
+        `
         <fieldset style="border: none;">
           <label for="picture">Url image</label><br>
           <input type="url" value="" id="picture" required>
@@ -205,13 +212,14 @@
         </fieldset style="border: none;">
         <fieldset style="border: none;">
           <label for="birthday">Birthday</label><br>
-          <input type="date" value="" id="birthday" required>
+          <input type="date" value="2000/05/12" id="birthday" required>
         </fieldset>
         <div class="button-sub">
           <button class="add__button" type="submit">Add</button>
           <button class="close" type="button"> Close </button>
         </div>
-  `);
+  `
+      );
   
       document.body.appendChild(popup);
       popup.classList.add('add');
