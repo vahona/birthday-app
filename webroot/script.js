@@ -106,10 +106,10 @@
     const saveChange = e.currentTarget;
     e.preventDefault();
 
-      result.picture = picture.value;
-      result.lastName = lastname.value;
-      result.firstName = firstname.value;
-      result.birthday = birthday.value;
+      result.picture = popup.picture.value;
+      result.lastName = popup.lastname.value;
+      result.firstName = popup.firstname.value;
+      result.birthday = popup.birthday.value;
       result.id = id;
       displayDatalist(peopleStore);
       console.log(birthday);
