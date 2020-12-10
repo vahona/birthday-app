@@ -28,6 +28,9 @@
 
 //  Create html
 
+
+        
+
   async function displayDatalist(peopleStore) {
 
     // const sortePeople = peopleStore.sort((a, b) => {
@@ -36,20 +39,23 @@
     const html = peopleStore.map(person => {
         return `
           <tr data-id= "${person.id}" class="row row-container">
-          <td><img src="${person.picture}" alt="${person.firstName + ' ' + person.lastName}"/></td>
+            <td>
+          <img src="${person.picture}" alt="${
+          person.firstName + " " + person.lastName
+        }"/>
+        </td>
+
           <td>${person.lastName}</td>
           <td>${person.firstName}</td>
           <td>${person.birthday}</td>
           <td class = "icons">
             <button class="edit" id="${person.id}">
-              <img class = "icons__image" src="assets/icon_edit.png" alt="edit">
             </button>
             <button class="delete" id="${person.id}">
-              <img class = "icons__image" src="assets/delete.png" alt="delete">
             </button>
           </td>
         </tr>
-  `
+  `;
     }).join('');
 
     tbody.innerHTML = html;
@@ -161,6 +167,8 @@
       peopleStore = deletePeople;
       console.log(deletePeople);
       displayDatalist(deletePeople);
+      const changeRemove = (popup.style.display = "none");
+      changeRemove;
 
     }
 

@@ -9,7 +9,14 @@ html {
 
 
 .edit {
+    background-color: transparent;
+    border: transparent;
     margin-inline-end: 1rem;
+    background-image: url('../assets/icon_edit.png');
+    background-size: 100%;
+    background-repeat: no-repeat;
+    padding: 1rem;
+
 }
 
 header {
@@ -100,24 +107,32 @@ tr:hover {
 
 form {
     width:  30%;
-    opacity: 0.8;
-    background-color: rgb(233, 200, 233, 0.5);
-    border: turquoise 3px solid;
+    background-color: darkred;
     height: 50%;
     position: fixed;
     top: 30%;
-    left: 20%;
-    right: 0;
+    left: 30%;
+    right: 50%;
     bottom: 50%;
     padding: 2rem;
+    color: white
 }
 
 input {
     padding: 0.5rem;
     opacity: 1;
+    width: 100%;
 }
 
 .delete {
+
+    background-color: transparent;
+    border: transparent;
+    margin-inline-end: 1rem;
+    background-image: url('../assets/delete.png');
+    background-size: 100%;
+    background-repeat: no-repeat;
+    padding: 1rem;
 
 }
 
@@ -134,11 +149,12 @@ input {
 }
 
 .popupadd {
-    background-color: rgb(27, 27, 27);
+    background-color: black;
     color: white;
     margin-inline-start: auto;
     margin-inline-end: auto;
-    left: -30%;
+    left: 30%;
+    right: 50%;
 
 }
 
@@ -157,6 +173,10 @@ input {
 
 input {
     max-width: 100%;
+}
+
+input[type = "date"] {
+    width: 100%;
 }
 
 
