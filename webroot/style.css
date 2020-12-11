@@ -12,7 +12,7 @@ html {
     background-color: transparent;
     border: transparent;
     margin-inline-end: 1rem;
-    background-image: url('../assets/icon_edit.png');
+    background-image: url('./assets/icon_edit.png');
     background-size: 100%;
     background-repeat: no-repeat;
     padding: 1rem;
@@ -75,10 +75,10 @@ img {
 article {
     background-color: whitesmoke;
     border: steelblue solid 5px;
-    width: 30%;
+    width: 200px;
     position: fixed;
     top: 50%;
-    left: 35%;
+    left: 30%;
     height: 20%;
     right: 0;
     bottom: 50%;
@@ -108,12 +108,12 @@ tr:hover {
 }
 
 form {
-    width:  30%;
+    width:  200px;
     background-color: darkred;
     height: 50%;
     position: fixed;
     top: 30%;
-    left: 30%;
+    left: 35%;
     right: 50%;
     bottom: 50%;
     padding: 2rem;
@@ -131,7 +131,7 @@ input {
     background-color: transparent;
     border: transparent;
     margin-inline-end: 1rem;
-    background-image: url('../assets/delete.png');
+    background-image: url('./assets/delete.png');
     background-size: 100%;
     background-repeat: no-repeat;
     padding: 1rem;
@@ -168,6 +168,9 @@ input {
     padding-right: 20px;
     
 }
+
+
+
 
 .hidden {
     display: none;

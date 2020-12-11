@@ -27,22 +27,34 @@
 
   fetchPeople();
 
-//  Create html
-
-
-        
 
   async function displayDatalist(peopleStore) {
 
-    // const sortePeople = peopleStore.sort((a, b) => {
-    //   return b.birthday - a.birthday;
-    // })
-    const html = peopleStore.map((person) => {
+    const sortePeople = peopleStore.sort((a, b) => {
+      return new Date (b.birthday).getMonth() - new Date (a.birthday).getMonth()
+    })
+    const html = sortePeople
+      .map((person) => {
+        const DateNow = new Date(person.birthday);
+        console.log(DateNow);
+        const Now = new Date();
+        const month = DateNow.getMonth();
+        const Nowday = DateNow.getDate();
+        const year = DateNow.getFullYear();
 
+        const fullTime = `${Nowday}/ ${month + 1} / ${year}`;
+        const futureTime = DateNow.getFullYear() - year;
+        console.log(futureTime);
 
-      
-      const DateNow = new Date()
+        const yearForNow = Now.getFullYear();
+        const birthdayTime = new Date(yearForNow, month, Nowday);
+        console.log(birthdayTime);
+        const aday = 1000 * 60 * 60 * 24;
+        const RealDate = birthdayTime.getTime() - Now.getTime();
+        console.log("l", RealDate);
+        const MoreDay = (Math.ceil(RealDate / aday) * -1)s;
 
+        console.log(MoreDay);
         return `
           <tr data-id= "${person.id}" class="row row-container">
             <td>
@@ -52,7 +64,12 @@
         </td>
           <td>${person.lastName}</td>
           <td>${person.firstName}</td>
-          <td>${person.birthday}</td>
+          <td>${
+            MoreDay < 0
+              ? MoreDay * -1 + " " + "days ago" : MoreDay <= 1
+              ? MoreDay + "" + "day" : MoreDay + "day"
+      
+          } </td>
           <td class = "icons">
             <button class="edit" id="${person.id}">
             </button>
@@ -61,7 +78,8 @@
           </td>
         </tr>
   `;
-    }).join('');
+      })
+      .join("");
 
     tbody.innerHTML = html;
 
@@ -104,6 +122,7 @@
       document.body.appendChild(popup);
       popup.classList.add('open');
 
+
 //  Add event listener for the edit and save or not save the change
 
   popup.addEventListener('submit', e => {
@@ -119,6 +138,9 @@
       displayDatalist(peopleStore);
       console.log(birthday);
       saveChange;
+      const remove = (popup.style.display = "none");
+      remove;
+
 
  });
 
@@ -233,6 +255,7 @@
       lastName : addNewOne.lastname.value,
       firstName : addNewOne.firstname.value,
       birthday : addNewOne.birthday.value,
+      
     };
 
     console.log(addNewOne);
@@ -240,7 +263,9 @@
     displayDatalist(peopleStore);
     addNewOne.reset();
     addNewPeople();
+    
     //  editPersonpopup(result);
+    
   
   });
 
@@ -312,5 +337,6 @@ async function handleClick(e){
 
   window.addEventListener('click', handleClick);
   container.addEventListener('itemUpdated', restoreLocalStorage);
+  
  
 
