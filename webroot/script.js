@@ -15,11 +15,8 @@
 //  Fetch the file in the people.json 
   async function fetchPeople() {
     const response = await fetch(dataurl);
-    console.log("kk",response);
     const data = await response.json();
-    console.log("b",data);
     peopleStore = [...data];
-    console.log(peopleStore);
     displayDatalist(peopleStore);
     
     return data;
@@ -27,9 +24,6 @@
 }
 
   fetchPeople();
-
-
-  
 
 
   async function displayDatalist(peopleStore) {
@@ -72,8 +66,12 @@
               ? MoreDay * -1 + " " + "days ago"
               : MoreDay <= 1
               ? MoreDay + "" + "day"
-              : MoreDay + "day"
+              : MoreDay + "days"
           }
+
+          ${MoreDay === 0 ? "" + "🎂 Happy birthday 🍰 " : ""}
+
+         
           </td>
           <td class = "icons">
             <button class="edit" id="${person.id}">
