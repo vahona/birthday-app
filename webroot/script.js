@@ -157,6 +157,7 @@
       saveChange;
       const remove = (popup.style.display = "none");
       remove;
+       tbody.dispatchEvent(new CustomEvent("itemUpdated"));
 
 
  });
@@ -225,6 +226,7 @@
   }
 
   window.addEventListener('click', confirm);
+   tbody.dispatchEvent(new CustomEvent("itemUpdated"));
 
 }
 
@@ -280,7 +282,7 @@
     displayDatalist(peopleStore);
     addNewOne.reset();
     addNewPeople();
-    
+     tbody.dispatchEvent(new CustomEvent("itemUpdated"));
     //  editPersonpopup(result);
     
   
@@ -304,30 +306,24 @@
 //  Local storage function
 
 const recordeLocalStorage = () => {
-
-  const restoreThePeopleItems = peopleStore;
-  restoreThePeopleItems = localStorage.getItem('peopleStore', JSON.stringify(peopleStore));
-  console.log(restoreThePeopleItems);
-  const isItems = JSON.parse(restoreThePeopleItems);
+  const isItems = JSON.parse(localStorage.getItem('peopleStore'));
   if(isItems) {
     peopleStore = isItems;
+    displayDatalist();
   }
+   tbody.dispatchEvent(new CustomEvent('itemUpdated'))
 
-  else {
-    peopleStore = [];
-  }
-  container.dispatchEvent(new CustomEvent('itemUpdated'));
+ 
+ 
 
 }
 
 
-restoreLocalStorage();
+// restoreLocalStorage();
 
   function restoreLocalStorage() {
 
-   const restorePeople = JSON.parse(localStorage.getItem('peopleStore'));
-   console.log(restorePeople);
-    container.dispatchEvent(new CustomEvent('itemUpdated'));
+  localStorage.setItem("peopleStore", JSON.stringify(peopleStore));
 
 }
 
@@ -353,7 +349,7 @@ async function handleClick(e){
 }
 
   window.addEventListener('click', handleClick);
-  container.addEventListener('itemUpdated', restoreLocalStorage);
+  tbody.addEventListener('itemUpdated', restoreLocalStorage);
   
  
 
