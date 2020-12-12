@@ -4,7 +4,8 @@
   const dataurl = "./people.json";
   const tbody = document.querySelector('tbody');
   const container = document.querySelector('.tablebody');
-  const addButon = document.querySelector('.add-people')
+  const addButon = document.querySelector('.add-people');
+  const input = document.getElementById("filter_user"); 
 
 //  Create an empty array to store the people.json
 
@@ -28,33 +29,34 @@
   fetchPeople();
 
 
+  
+
+
   async function displayDatalist(peopleStore) {
 
-    const sortePeople = peopleStore.sort((a, b) => {
-      return new Date (b.birthday).getMonth() - new Date (a.birthday).getMonth()
-    })
-    const html = sortePeople
+    const html = peopleStore
       .map((person) => {
-        const DateNow = new Date(person.birthday);
-        console.log(DateNow);
-        const Now = new Date();
-        const month = DateNow.getMonth();
-        const Nowday = DateNow.getDate();
-        const year = DateNow.getFullYear();
+        
+    const DateNow = new Date(person.birthday);
+    const Now = new Date();
+    const month = DateNow.getMonth();
+    const Nowday = DateNow.getDate();
+    const year = DateNow.getFullYear();
 
-        const fullTime = `${Nowday}/ ${month + 1} / ${year}`;
-        const futureTime = DateNow.getFullYear() - year;
-        console.log(futureTime);
 
-        const yearForNow = Now.getFullYear();
-        const birthdayTime = new Date(yearForNow, month, Nowday);
-        console.log(birthdayTime);
-        const aday = 1000 * 60 * 60 * 24;
-        const RealDate = birthdayTime.getTime() - Now.getTime();
-        console.log("l", RealDate);
-        const MoreDay = (Math.ceil(RealDate / aday) * -1)s;
+    const yearForNow = Now.getFullYear();
+    const birthdayTime = new Date(yearForNow, month, Nowday);
+    const aday = 1000 * 60 * 60 * 24;
+    const RealDate = birthdayTime.getTime() - Now.getTime();
+    const MoreDay = Math.ceil(RealDate / aday);
 
-        console.log(MoreDay);
+     const Alldate = `${DateNow} / ${month + 1} / ${year}`;
+     const futureDate = DateNow.getFullYear() - year;
+
+     const months = {
+      
+     }
+
         return `
           <tr data-id= "${person.id}" class="row row-container">
             <td>
@@ -62,14 +64,17 @@
           person.firstName + " " + person.lastName
         }"/>
         </td>
-          <td>${person.lastName}</td>
+          <td>${person.lastName}
+          </td>
           <td>${person.firstName}</td>
           <td>${
             MoreDay < 0
-              ? MoreDay * -1 + " " + "days ago" : MoreDay <= 1
-              ? MoreDay + "" + "day" : MoreDay + "day"
-      
-          } </td>
+              ? MoreDay * -1 + " " + "days ago"
+              : MoreDay <= 1
+              ? MoreDay + "" + "day"
+              : MoreDay + "day"
+          }
+          </td>
           <td class = "icons">
             <button class="edit" id="${person.id}">
             </button>
@@ -124,6 +129,7 @@
 
 
 //  Add event listener for the edit and save or not save the change
+
 
   popup.addEventListener('submit', e => {
 

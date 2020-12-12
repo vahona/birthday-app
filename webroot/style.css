@@ -170,7 +170,9 @@ input {
 }
 
 
-
+.fitering {
+    width: 20%;
+}
 
 .hidden {
     display: none;
