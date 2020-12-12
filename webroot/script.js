@@ -30,6 +30,18 @@
 
     const html = peopleStore
       .map((person) => {
+
+
+    function nthDate(days) {
+      if (days > 3 && days < 21) 
+      return "th";
+      switch (days % 10) {
+        case 1: return "st";
+        case 2: return "nd";
+        case 3: return "rd";
+        default: return "th"
+      }
+    }
         
     const DateNow = new Date(person.birthday);
     const Now = new Date();
@@ -44,12 +56,12 @@
     const RealDate = birthdayTime.getTime() - Now.getTime();
     const MoreDay = Math.ceil(RealDate / aday);
 
-     const Alldate = `${DateNow} / ${month + 1} / ${year}`;
-     const futureDate = DateNow.getFullYear() - year;
+     const Alldate = `${DateNow}${nthDate(DateNow)} / ${month + 1} / ${year}`;
+    //  const futureDate = DateNow.getFullYear() - year;
 
-     const months = {
+    //  const months = {
       
-     }
+    //  }
 
         return `
           <tr data-id= "${person.id}" class="row row-container">
@@ -58,9 +70,10 @@
           person.firstName + " " + person.lastName
         }"/>
         </td>
-          <td>${person.lastName}
+          <td>
+                ${person.lastName} - ${person.firstName}
           </td>
-          <td>${person.firstName}</td>
+          <td> <time>${Alldate}</time></td>
           <td>${
             MoreDay < 0
               ? MoreDay * -1 + " " + "days ago"
