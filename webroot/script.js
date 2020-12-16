@@ -106,19 +106,19 @@ const editPersonpopup = async function (id) {
     ` <div class="container">
         <fieldset style="border: none;">
           <label for="picture">Url image</label><br>
-          <input type="url" value="${result.picture}" id="picture">
+          <input class="edit-input" type="url" value="${result.picture}" id="picture">
         </fieldset>
         <fieldset style="border: none;">
           <label for="lastname">LastName</label><br>
-          <input type="text" value="${result.lastName}" id="lastname">
+          <input class="edit-input" type="text" value="${result.lastName}" id="lastname">
         </fieldset>
         <fieldset style="border: none;">
           <label for="firstname">FisrtName</label><br>
-          <input type="text" value="${result.firstName}" id="firstname">
+          <input class="edit-input" type="text" value="${result.firstName}" id="firstname">
         </fieldset style="border: none;">
         <fieldset style="border: none;">
           <label for="birthday">Birthday</label><br>
-          <input type="date" value="${result.birthday}" id="birthday">
+          <input class="edit-input" type="date" value="${result.birthday}" id="birthday">
         </fieldset>
         <div class="button-sub">
           <button class="button__save" type="submit">Save</button>
@@ -221,19 +221,19 @@ addButon.addEventListener("click", function addNewPeople() {
     ` <div class="container">
         <fieldset style="border: none;">
           <label for="picture">Url image</label><br>
-          <input type="url" value="" id="picture" required>
+          <input class="add_input" type="url" value="" id="picture" required>
         </fieldset>
         <fieldset style="border: none;">
           <label for="lastname">LastName</label><br>
-          <input type="text" value="" id="lastname" required>
+          <input class="add_input" type="text" value="" id="lastname" required>
         </fieldset>
         <fieldset style="border: none;">
           <label for="firstname">FisrtName</label><br>
-          <input type="text" value="" id="firstname" required>
+          <input class="add_input" type="text" value="" id="firstname" required>
         </fieldset style="border: none;">
         <fieldset style="border: none;">
           <label for="birthday">Birthday</label><br>
-          <input type="date" value="2000/05/12" id="birthday" required>
+          <input class="add_input" type="date" value="2000/05/12" id="birthday" required>
         </fieldset>
         <div class="button-sub">
           <button class="add__button" type="submit">Add</button>

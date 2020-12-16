@@ -32,6 +32,14 @@ body {
 
 }
 
+h1 {
+   font-family: Rubik;
+   color: #094067;
+   font-weight: bold;
+   font-size: 64px;
+   line-height: 76px;
+}
+
 table {
     max-width: 100%;
     margin-inline-start: auto;
@@ -135,7 +143,7 @@ form {
     
 }
 
-input {
+.edit-input, .add_input {
     padding: 0.5rem;
     opacity: 1;
     width: 70%;
