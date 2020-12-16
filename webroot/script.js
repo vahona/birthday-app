@@ -61,7 +61,7 @@ async function displayDatalist(peopleStore) {
         person.firstName + " " + person.lastName
       }"/>
         </td>
-          <td>
+          <td class="name">
                 ${person.lastName} - ${person.firstName}
           </td>
           <td> <time>${Alldate}</time></td>
@@ -103,7 +103,7 @@ const editPersonpopup = async function (id) {
   popup.classList.add("popupedit");
   popup.insertAdjacentHTML(
     "afterbegin",
-    `
+    ` <div class="container">
         <fieldset style="border: none;">
           <label for="picture">Url image</label><br>
           <input type="url" value="${result.picture}" id="picture">
@@ -123,6 +123,7 @@ const editPersonpopup = async function (id) {
         <div class="button-sub">
           <button class="button__save" type="submit">Save</button>
           <button class="button__cancel" type="button">Cancel</button>
+        </div>
         </div>
         `
   );
@@ -217,7 +218,7 @@ addButon.addEventListener("click", function addNewPeople() {
   popup.classList.add("popupadd");
   popup.insertAdjacentHTML(
     "afterbegin",
-    `
+    ` <div class="container">
         <fieldset style="border: none;">
           <label for="picture">Url image</label><br>
           <input type="url" value="" id="picture" required>
@@ -237,6 +238,7 @@ addButon.addEventListener("click", function addNewPeople() {
         <div class="button-sub">
           <button class="add__button" type="submit">Add</button>
           <button class="close" type="button"> Close </button>
+        </div>
         </div>
   `
   );

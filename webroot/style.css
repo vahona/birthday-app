@@ -2,7 +2,7 @@
 html {
     margin-inline-start: auto;
     margin-inline-end: auto;
-    background-color: rgb(5, 100, 117);
+    background-color: #D8EEFE;
     text-align: center;
     
 }
@@ -53,8 +53,8 @@ tr {
 }
 
 tr.row {
-    background-color: rgb(248, 103, 50);
-    color: white;
+    background-color: #ffff;
+    margin-top: 1rem;
 }
 
 .icons {
@@ -103,16 +103,28 @@ tr:hover {
     border-radius: 5px;
 }
 
-.button__cancel, .button__save {
-   background-color: rgb(226, 43, 220);
+.button__save {
+   background-color: #EF4565;
    border-radius: 5px;
    padding: 0.5rem;
+   padding-left: 2rem;
+   padding-right: 2rem;
    color: white;
 }
 
+.button__cancel {
+   background-color: white;
+   border-radius: 5px;
+   padding: 0.5rem;
+   padding-left: 2rem;
+   padding-right: 2rem;
+   
+
+}
+
 form {
-    width:  200px;
-    background-color: darkred;
+    width:  400px;
+    background: #f1f5f8;
     height: 50%;
     position: fixed;
     top: 30%;
@@ -120,13 +132,16 @@ form {
     right: 50%;
     bottom: 50%;
     padding: 2rem;
-    color: white
+    
 }
 
 input {
     padding: 0.5rem;
     opacity: 1;
-    width: 100%;
+    width: 70%;
+    background-color: #D8EEFE;
+    border: none;
+    
 }
 
 .delete {
@@ -154,7 +169,7 @@ input {
 }
 
 .popupadd {
-    background-color: black;
+    background-color: #f1f5f8 ;
     color: white;
     margin-inline-start: auto;
     margin-inline-end: auto;
@@ -165,10 +180,11 @@ input {
 
 .add__button {
     padding: 0.5rem;
-    background-color: yellow;
-    border-radius: 20px;
-    padding-left: 1rem;
-    padding-right: 20px;
+    background-color: #EF4565;
+    color: white;
+    border-radius: 10px;
+    padding-left: 2rem;
+    padding-right: 2rem;
     
 }
 
@@ -186,7 +202,7 @@ input {
 }
 
 input[type = "date"] {
-    width: 100%;
+    width: 70%;
 }
 
 
@@ -198,10 +214,21 @@ input[type = "date"] {
 
 .close {
     text-decoration: none;
-    background-color: yellow;
-    color: black;
+    background-color: white;
     padding: 0.5rem;
-    border-radius: 16px;
+    border-radius: 10px;
+    padding-left: 2rem;
+    padding-right: 2rem;
+}
+
+.container {
+    background-color: white;
+    padding: 2rem;
+}
+
+.name {
+    font-weight: 700;
+    font-size: 32px
 }
 
 
