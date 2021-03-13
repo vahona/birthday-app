@@ -19,9 +19,7 @@ html {
 
 }
 
-header {
-    color: white;
-}
+
 
 body {
     font-family: roboto;
@@ -36,7 +34,7 @@ h1 {
    font-family: Rubik;
    color: #094067;
    font-weight: bold;
-   font-size: 64px;
+   font-size: 40px;
    line-height: 76px;
 }
 
@@ -130,7 +128,7 @@ tr:hover {
 
 }
 
-form {
+.popupedit, .popupadd {
     width:  400px;
     background: #f1f5f8;
     height: 50%;
@@ -164,16 +162,24 @@ form {
 
 }
 
-
+.header__container {
+    justify-content: space-between;
+    margin-inline-start: 5%;
+    margin-inline-end: 5%;
+}
 
 .add-people {
     padding-left: 2rem;
     padding-right: 2rem;
-    padding-top: 1rem;
-    padding-bottom: 1rem;
-    border-radius: 30px;
-    background-color: yellow;
+    border-radius: 5px;
+    color: white;
+    background-color:#EF4565;
     text-transform: uppercase;
+    border: none;
+    margin-bottom: 1rem;
+    margin-top: 1.75rem;
+    padding-top: 0.75rem;
+    padding-bottom: 0.75rem;
 }
 
 .popupadd {
@@ -196,6 +202,10 @@ form {
     
 }
 
+.main__page {
+    margin-inline-end: 5%;
+    margin-inline-start: 5%;
+}
 
 .fitering {
     width: 20%;
@@ -236,8 +246,40 @@ input[type = "date"] {
 
 .name {
     font-weight: 700;
-    font-size: 32px
+    font-size: 24px
 }
+
+.namefilter,
+.monthfilters {
+  border: none;
+  color: #094067;
+  padding-bottom: 0.5rem;
+  padding-top: 0.5rem;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+
+@media(min-width: 600px) {
+    .header__container {
+        display: flex;
+    }
+
+    .add-people {
+        padding-left: 2rem;
+        padding-right: 2rem;
+        border-radius: 5px;
+        color: white;
+        background-color:#EF4565;
+        text-transform: uppercase;
+        border: none;
+        margin-bottom: 1rem;
+        margin-top: 1.75rem;
+    }
+
+    
+}
+
+
 
 
 
