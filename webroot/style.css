@@ -52,7 +52,7 @@ thead {
 tr {
     display: grid;
     grid-auto-flow: column;
-    grid-template-columns: repeat(5, minmax(10%, 1fr));
+    grid-template-columns: repeat(3, minmax(10%, 1fr));
     place-items: center;
     gap: 10%;
     padding: 2rem 2rem;

@@ -52,6 +52,9 @@ async function displayDatalist(peopleStore) {
       const MoreDay = Math.ceil(RealDate / aday);
 
       const Alldate = `${DateNow}${nthDate(DateNow)} / ${month + 1} / ${year}`;
+      const age = yearForNow - year + 1
+      
+      console.log(DateNow);
 
 
       return `
@@ -61,11 +64,13 @@ async function displayDatalist(peopleStore) {
         person.firstName + " " + person.lastName
       }"/>
         </td>
-          <td class="name">
+          <td>
+             <div class="name">
                 ${person.lastName} - ${person.firstName}
+              </div>
+              <time> Turns ${age} on ${DateNow}</time>
           </td>
-          <td> <time>${Alldate}</time></td>
-          <td>${
+          <td> In ${
             MoreDay < 0
               ? MoreDay * -1 + " " + "days ago"
               : MoreDay <= 1
@@ -105,7 +110,7 @@ const editPersonpopup = async function (id) {
     "afterbegin",
     ` <div class="container">
         <fieldset style="border: none;">
-          <label for="picture">Url image</label><br>
+         <label for="picture">Url image</label><br>
           <input class="edit-input" type="url" value="${result.picture}" id="picture">
         </fieldset>
         <fieldset style="border: none;">
