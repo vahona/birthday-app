@@ -56,6 +56,15 @@ async function displayDatalist(peopleStore) {
       
       console.log(DateNow);
 
+      function getMonthName(month){
+        const d = new Date();
+        d.setMonth(month-1);
+        const monthName = d.toLocaleString("default", {month: "long"});
+        return monthName;
+      }
+      
+     
+
 
       return `
           <tr data-id= "${person.id}" class="row row-container">
@@ -68,7 +77,7 @@ async function displayDatalist(peopleStore) {
              <div class="name">
                 ${person.lastName} - ${person.firstName}
               </div>
-              <time> Turns ${age} on ${DateNow}</time>
+              <time> Turns <span class="age"> ${age} </span> on ${getMonthName(month)}   ${Nowday} ${nthDate(DateNow)} </time>
           </td>
           <td> In ${
             MoreDay < 0
@@ -80,14 +89,15 @@ async function displayDatalist(peopleStore) {
 
           ${MoreDay === 0 ? "" + "🎂 Happy birthday 🍰 " : ""}
 
+          <p class = "icons">
+          <button class="edit" id="${person.id}">
+          </button>
+          <button class="delete" id="${person.id}">
+          </button>
+        </p>
          
           </td>
-          <td class = "icons">
-            <button class="edit" id="${person.id}">
-            </button>
-            <button class="delete" id="${person.id}">
-            </button>
-          </td>
+         
         </tr>
   `;
     })

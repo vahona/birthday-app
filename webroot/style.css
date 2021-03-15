@@ -40,8 +40,7 @@ h1 {
 
 table {
     max-width: 100%;
-    margin-inline-start: auto;
-    margin-inline-end: auto;
+    
 }
 
 thead {
@@ -52,15 +51,20 @@ thead {
 tr {
     display: grid;
     grid-auto-flow: column;
-    grid-template-columns: repeat(3, minmax(10%, 1fr));
+    grid-template-columns: 25% 40% 25%;
     place-items: center;
     gap: 10%;
     padding: 2rem 2rem;
+  
+    
 }
 
 tr.row {
     background-color: #ffff;
     margin-top: 1rem;
+    padding-right: 10%;
+    padding-left: 10%;
+  
 }
 
 .icons {
@@ -164,8 +168,8 @@ tr:hover {
 
 .header__container {
     justify-content: space-between;
-    margin-inline-start: 5%;
-    margin-inline-end: 5%;
+    margin-inline-start: 20%;
+    margin-inline-end: 20%;
 }
 
 .add-people {
@@ -180,6 +184,12 @@ tr:hover {
     margin-top: 1.75rem;
     padding-top: 0.75rem;
     padding-bottom: 0.75rem;
+}
+
+.age {
+    color: #EF4565;
+    font-size: 24px;
+    font-weight: 700;
 }
 
 .popupadd {
