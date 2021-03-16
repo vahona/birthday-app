@@ -12,7 +12,7 @@ html {
     background-color: transparent;
     border: transparent;
     margin-inline-end: 1rem;
-    background-image: url('./assets/icon_edit.png');
+    background-image: url('./assets/edit-icon.png');
     background-size: 100%;
     background-repeat: no-repeat;
     padding: 1rem;
@@ -142,7 +142,6 @@ tr:hover {
 
 .popupedit, .popupadd {
     width:  400px;
-    background: #f1f5f8;
     height: 50%;
     position: fixed;
     top: 30%;
@@ -167,7 +166,7 @@ tr:hover {
     background-color: transparent;
     border: transparent;
     margin-inline-end: 1rem;
-    background-image: url('./assets/delete.png');
+    background-image: url('./assets/red-delete-icon.png');
     background-size: 100%;
     background-repeat: no-repeat;
     padding: 1rem;

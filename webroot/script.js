@@ -54,7 +54,8 @@ async function displayDatalist(peopleStore) {
       const MoreDay = Math.ceil(RealDate / aday);
 
       const Alldate = `${DateNow}${nthDate(DateNow)} / ${month + 1} / ${year}`;
-      const age = yearForNow - year + 1
+      const age = yearForNow - year + 1;
+      const birthdayMonth = getMonthName(month);
       
       // console.log(DateNow);
 
@@ -79,7 +80,7 @@ async function displayDatalist(peopleStore) {
              <div class="name">
                 ${person.lastName} - ${person.firstName}
               </div>
-              <time class="birthday"> Turns <span class="age"> ${age} </span> on ${getMonthName(month)}   ${Nowday} ${nthDate(DateNow)} </time>
+              <time class="birthday"> Turns <span class="age"> ${age} </span> on ${birthdayMonth}   ${Nowday} ${nthDate(DateNow)} </time>
           </td>
           <td class="days"> In ${
             MoreDay < 0
@@ -110,6 +111,8 @@ async function displayDatalist(peopleStore) {
 
 displayDatalist();
 
+
+
  
 // Filtering the list by first name and the lastname
 
@@ -128,14 +131,20 @@ inputs.addEventListener("input", e => {
 // Filtering by month
 
 const month = document.getElementById("month-select")
-const element = document.querySelectorAll("thead")
 
 month.addEventListener("change", function() {
-  let selectvalue = month.value;
+  const selectvalue = month.value;
   console.log(selectvalue);
-  const filterByMonth = peopleStore.filter(persons => persons.month.toLowerCase().includes(selectvalue))
-  displayDatalist(selectvalue)
+  const filterByMonth = peopleStore.filter(person => {
+      const DateNow = new Date(person.birthday);
+      const month = DateNow.getMonth();
+      const condition = month.toString() === selectvalue.toString();
+      console.log(condition);
+      return condition
 
+  })
+  displayDatalist(filterByMonth)
+  
 })
 
 //  Popup for editing people
