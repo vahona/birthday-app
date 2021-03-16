@@ -5,6 +5,7 @@ const tbody = document.querySelector("tbody");
 const container = document.querySelector(".tablebody");
 const addButon = document.querySelector(".add-people");
 const input = document.getElementById("filter_user");
+const inputs = document.querySelector(".namefilter")
 
 //  Create an empty array to store the people.json
 
@@ -21,6 +22,7 @@ async function fetchPeople() {
 }
 
 fetchPeople();
+
 
 async function displayDatalist(peopleStore) {
   const html = peopleStore
@@ -54,7 +56,7 @@ async function displayDatalist(peopleStore) {
       const Alldate = `${DateNow}${nthDate(DateNow)} / ${month + 1} / ${year}`;
       const age = yearForNow - year + 1
       
-      console.log(DateNow);
+      // console.log(DateNow);
 
       function getMonthName(month){
         const d = new Date();
@@ -77,9 +79,9 @@ async function displayDatalist(peopleStore) {
              <div class="name">
                 ${person.lastName} - ${person.firstName}
               </div>
-              <time> Turns <span class="age"> ${age} </span> on ${getMonthName(month)}   ${Nowday} ${nthDate(DateNow)} </time>
+              <time class="birthday"> Turns <span class="age"> ${age} </span> on ${getMonthName(month)}   ${Nowday} ${nthDate(DateNow)} </time>
           </td>
-          <td> In ${
+          <td class="days"> In ${
             MoreDay < 0
               ? MoreDay * -1 + " " + "days ago"
               : MoreDay <= 1
@@ -108,7 +110,33 @@ async function displayDatalist(peopleStore) {
 
 displayDatalist();
 
-//  Calculate the date of the birthday
+ 
+// Filtering the list by first name and the lastname
+
+
+inputs.addEventListener("input", e => {
+  e.preventDefault()
+  const input = e.target; 
+   const  inputValue = input.value;
+  const filteredPeople = peopleStore.filter(person => person.firstName.toLowerCase().includes(inputValue.toLowerCase()) ||  person.lastName.toLowerCase().includes(inputValue.toLowerCase()));
+  displayDatalist(filteredPeople);
+
+
+})
+
+
+// Filtering by month
+
+const month = document.getElementById("month-select")
+const element = document.querySelectorAll("thead")
+
+month.addEventListener("change", function() {
+  let selectvalue = month.value;
+  console.log(selectvalue);
+  const filterByMonth = peopleStore.filter(persons => persons.month.toLowerCase().includes(selectvalue))
+  displayDatalist(selectvalue)
+
+})
 
 //  Popup for editing people
 
@@ -165,6 +193,10 @@ const editPersonpopup = async function (id) {
     tbody.dispatchEvent(new CustomEvent("itemUpdated"));
   });
 
+
+
+
+
   //  Close the popup when the user does not want the change they have made in the person's information
 
   popup.addEventListener("click", (e) => {
@@ -175,6 +207,10 @@ const editPersonpopup = async function (id) {
     }
   });
 };
+
+
+
+
 
 //  Function for deleting the birthday
 
@@ -197,6 +233,10 @@ async function deletePersonPopup(id) {
 
   document.body.appendChild(popup);
   popup.classList.add(".confirm");
+
+
+
+
 
   //  Fuction to confirm the deletion of the birthday
 
@@ -225,6 +265,11 @@ async function deletePersonPopup(id) {
   window.addEventListener("click", confirm);
   tbody.dispatchEvent(new CustomEvent("itemUpdated"));
 }
+
+
+
+
+
 
 //  Adding the list
 
@@ -258,6 +303,10 @@ addButon.addEventListener("click", function addNewPeople() {
   `
   );
 
+
+
+
+
   document.body.appendChild(popup);
   popup.classList.add("add");
 
@@ -281,6 +330,11 @@ addButon.addEventListener("click", function addNewPeople() {
     //  editPersonpopup(result);
   });
 
+
+
+
+
+
   // Close the popup when the user does need to add a new person
 
   popup.addEventListener("click", (e) => {
@@ -291,6 +345,10 @@ addButon.addEventListener("click", function addNewPeople() {
     }
   });
 });
+
+
+
+
 
 //  Local storage function
 
@@ -303,11 +361,18 @@ const recordeLocalStorage = () => {
   tbody.dispatchEvent(new CustomEvent("itemUpdated"));
 };
 
+
+
+
 // restoreLocalStorage();
 
 function restoreLocalStorage() {
   localStorage.setItem("peopleStore", JSON.stringify(peopleStore));
 }
+
+
+
+
 
 // Event listner function
 

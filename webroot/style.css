@@ -19,6 +19,14 @@ html {
 
 }
 
+.birthday, .days {
+    color: #5F6C7B;
+    font-size: 24px;
+    font-weight: 600;
+}
+
+
+
 
 
 body {
