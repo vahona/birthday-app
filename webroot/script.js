@@ -25,7 +25,13 @@ fetchPeople();
 
 
 async function displayDatalist(peopleStore) {
-  const html = peopleStore
+ const sortedPeople = peopleStore
+  //  sortedPeople.sort(function(a, b) {
+  //      return a - b
+  //  }) 
+
+
+  const html = sortedPeople
     .map((person) => {
       function nthDate(days) {
         if (days > 3 && days < 21) return "th";
@@ -61,13 +67,11 @@ async function displayDatalist(peopleStore) {
 
       function getMonthName(month){
         const d = new Date();
-        d.setMonth(month-1);
+        d.setMonth(month - 1);
         const monthName = d.toLocaleString("default", {month: "long"});
         return monthName;
       }
       
-     
-
 
       return `
           <tr data-id= "${person.id}" class="row row-container">
@@ -123,7 +127,6 @@ inputs.addEventListener("input", e => {
    const  inputValue = input.value;
   const filteredPeople = peopleStore.filter(person => person.firstName.toLowerCase().includes(inputValue.toLowerCase()) ||  person.lastName.toLowerCase().includes(inputValue.toLowerCase()));
   displayDatalist(filteredPeople);
-
 
 })
 

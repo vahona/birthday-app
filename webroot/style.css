@@ -1,7 +1,5 @@
 
 html {
-    margin-inline-start: auto;
-    margin-inline-end: auto;
     background-color: #D8EEFE;
     text-align: center;
     
@@ -25,16 +23,14 @@ html {
     font-weight: 600;
 }
 
-
-
-
-
 body {
     font-family: roboto;
+    padding: 0;
+    margin: 0;
+    max-width: 1440px;
+    max-height: 2724px;
     margin-inline-start: auto;
     margin-inline-end: auto;
-    max-width: 100%;
-    width: 1444px;
 
 }
 
@@ -47,22 +43,25 @@ h1 {
 }
 
 table {
-    max-width: 100%;
+    width: 100%;
     
 }
 
 thead {
     background-color: white;
+    width: 100%;
 }
 
 
 tr {
     display: grid;
     grid-auto-flow: column;
-    grid-template-columns: 25% 40% 25%;
+    grid-template-columns: 20% 40% 20%;
     place-items: center;
-    gap: 10%;
+    gap: 5%;
     padding: 2rem 2rem;
+    
+
   
     
 }
@@ -70,8 +69,8 @@ tr {
 tr.row {
     background-color: #ffff;
     margin-top: 1rem;
-    padding-right: 10%;
-    padding-left: 10%;
+    width: 80%;
+    
   
 }
 
@@ -175,8 +174,8 @@ tr:hover {
 
 .header__container {
     justify-content: space-between;
-    margin-inline-start: 20%;
-    margin-inline-end: 20%;
+    margin-inline-start: 5%;
+    margin-inline-end: 17%;
 }
 
 .add-people {
