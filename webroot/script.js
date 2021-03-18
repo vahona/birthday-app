@@ -25,13 +25,11 @@ fetchPeople();
 
 
 async function displayDatalist(peopleStore) {
- const sortedPeople = peopleStore
-  //  sortedPeople.sort(function(a, b) {
-  //      return a - b
-  //  }) 
+    if(!peopleStore) {
+      return 
+    }
 
-
-  const html = sortedPeople
+  const html = peopleStore
     .map((person) => {
       function nthDate(days) {
         if (days > 3 && days < 21) return "th";
@@ -46,6 +44,7 @@ async function displayDatalist(peopleStore) {
             return "th";
         }
       }
+
 
       const DateNow = new Date(person.birthday);
       const Now = new Date();
@@ -62,70 +61,90 @@ async function displayDatalist(peopleStore) {
       const Alldate = `${DateNow}${nthDate(DateNow)} / ${month + 1} / ${year}`;
       const age = yearForNow - year + 1;
       const birthdayMonth = getMonthName(month);
-      
       // console.log(DateNow);
+      let day = "";
 
-      function getMonthName(month){
+      if (DateNow.getDate() === 1 || DateNow.getDate() === 21 || DateNow.getDate() === 31) {
+        day = `${DateNow.getDate()}st`;
+      }
+      if (DateNow.getDate() === 2 || DateNow.getDate() === 22) {
+        day = `${DateNow.getDate()}nd`;
+      } if (DateNow.getDate() === 3 || DateNow.getDate() === 23) {
+        day = `${DateNow.getDate()}rd`;
+      } if (DateNow.getDate() !== 1 && DateNow.getDate() !== 21 && DateNow.getDate() !== 31 && DateNow.getDate() !== 2 && DateNow.getDate() !== 22 && DateNow.getDate() !== 3 && DateNow.getDate() !== 23) {
+        day = `${DateNow.getDate()}th`;
+      }
+      function getMonthName(month) {
         const d = new Date();
         d.setMonth(month - 1);
-        const monthName = d.toLocaleString("default", {month: "long"});
+        const monthName = d.toLocaleString("default", { month: "long" });
         return monthName;
       }
-      
-
-      return `
-          <tr data-id= "${person.id}" class="row row-container">
-            <td>
-          <img src="${person.picture}" alt="${
-        person.firstName + " " + person.lastName
-      }"/>
-        </td>
-          <td>
-             <div class="name">
-                ${person.lastName} - ${person.firstName}
-              </div>
-              <time class="birthday"> Turns <span class="age"> ${age} </span> on ${birthdayMonth}   ${Nowday} ${nthDate(DateNow)} </time>
-          </td>
-          <td class="days"> In ${
-            MoreDay < 0
-              ? MoreDay * -1 + " " + "days ago"
-              : MoreDay <= 1
-              ? MoreDay + "" + "day"
-              : MoreDay + "days"
-          }
-
-          ${MoreDay === 0 ? "" + "🎂 Happy birthday 🍰 " : ""}
-
-          <p class = "icons">
-          <button class="edit" id="${person.id}">
-          </button>
-          <button class="delete" id="${person.id}">
-          </button>
-        </p>
-         
-          </td>
-         
-        </tr>
-  `;
+      const persons = {
+        firstName: person.firstName,
+        lastName: person.lastName,
+        picture: person.picture,
+        id: person.id,
+        age: age,
+        birthdayMonth: birthdayMonth,
+        Nowday: Nowday,
+        DateNow: day,
+        MoreDay: MoreDay,
+      }
+      return persons;
     })
-    .join("");
 
-  tbody.innerHTML = html;
+  const sortedPeople = html.sort((a, b) => (a.MoreDay - b.MoreDay));
+  const displayList = sortedPeople.map((personList) => {
+    return `
+             <tr data-id= "${personList.id}" class="row row-container">
+               <td>
+             <img src="${personList.picture}" alt="${personList.firstName + " " + personList.lastName
+      }"/>
+           </td>
+             <td>
+                <div class="name">
+                   ${personList.lastName} - ${personList.firstName}
+                 </div>
+                 <time class="birthday"> Turns <span class="age"> ${personList.age} </span> on ${personList.birthdayMonth} ${personList.DateNow} </time>
+             </td>
+             <td class="days"> In 
+             ${personList.MoreDay < 0
+              ? personList.MoreDay * -1 + " " + "days ago"
+              : personList.MoreDay <= 1
+                ? personList.MoreDay + "" + "day"
+                : personList.MoreDay + "days"
+            }
+             <p class = "icons">
+             <button class="edit" id="${personList.id}">
+             </button>
+             <button class="delete" id="${personList.id}">
+             </button>
+           </p>
+                 ${personList.MoreDay === 0 ? "" + "🎂 Happy birthday 🍰 " : ""}
+             </td>
+
+           </tr>
+     `
+
+
+  }).join("")
+  tbody.innerHTML = displayList;
 }
 
 displayDatalist();
 
 
 
- 
+
 // Filtering the list by first name and the lastname
 
 
 inputs.addEventListener("input", e => {
   e.preventDefault()
-  const input = e.target; 
-   const  inputValue = input.value;
-  const filteredPeople = peopleStore.filter(person => person.firstName.toLowerCase().includes(inputValue.toLowerCase()) ||  person.lastName.toLowerCase().includes(inputValue.toLowerCase()));
+  const input = e.target;
+  const inputValue = input.value;
+  const filteredPeople = peopleStore.filter(person => person.firstName.toLowerCase().includes(inputValue.toLowerCase()) || person.lastName.toLowerCase().includes(inputValue.toLowerCase()));
   displayDatalist(filteredPeople);
 
 })
@@ -135,24 +154,25 @@ inputs.addEventListener("input", e => {
 
 const month = document.getElementById("month-select")
 
-month.addEventListener("change", function() {
+month.addEventListener("change", function () {
   const selectvalue = month.value;
   console.log(selectvalue);
   const filterByMonth = peopleStore.filter(person => {
-      const DateNow = new Date(person.birthday);
-      const month = DateNow.getMonth();
-      const condition = month.toString() === selectvalue.toString();
-      console.log(condition);
-      return condition
+    const DateNow = new Date(person.birthday);
+    const month = DateNow.getMonth();
+    const condition = month.toString() === selectvalue.toString();
+    console.log(condition);
+    return condition
 
   })
   displayDatalist(filterByMonth)
-  
+
 })
 
 //  Popup for editing people
 
 const editPersonpopup = async function (id) {
+  
   const result = peopleStore.find((person) => person.id === id);
   const popup = document.createElement("form");
   popup.classList.add("popupedit");
@@ -285,7 +305,16 @@ async function deletePersonPopup(id) {
 
 //  Adding the list
 
+// const htmldate = sortedPeople
+//     .map((persondate) => {
+//       return `<div>${persondate.birthday}</div>`
+
+
+//     })
+
 addButon.addEventListener("click", function addNewPeople() {
+
+
   const popup = document.createElement("form");
   popup.classList.add("popupadd");
   popup.insertAdjacentHTML(
@@ -305,7 +334,7 @@ addButon.addEventListener("click", function addNewPeople() {
         </fieldset style="border: none;">
         <fieldset style="border: none;">
           <label for="birthday">Birthday</label><br>
-          <input class="add_input" type="date" value="2000/05/12" id="birthday" required>
+          <input class="add_input" type="date" value="" id="birthday" required>
         </fieldset>
         <div class="button-sub">
           <button class="add__button" type="submit">Add</button>
@@ -314,7 +343,6 @@ addButon.addEventListener("click", function addNewPeople() {
         </div>
   `
   );
-
 
 
 
