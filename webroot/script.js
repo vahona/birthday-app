@@ -25,9 +25,9 @@ fetchPeople();
 
 
 async function displayDatalist(peopleStore) {
-    if(!peopleStore) {
-      return 
-    }
+  if (!peopleStore) {
+    return
+  }
 
   const html = peopleStore
     .map((person) => {
@@ -46,17 +46,44 @@ async function displayDatalist(peopleStore) {
       }
 
 
+
       const DateNow = new Date(person.birthday);
+      console.log(DateNow.getDate(), "iii");
       const Now = new Date();
       const month = DateNow.getMonth();
       const Nowday = DateNow.getDate();
       const year = DateNow.getFullYear();
 
+      console.log(Now.getDate(), Now.getDay());
+
       const yearForNow = Now.getFullYear();
       const birthdayTime = new Date(yearForNow, month, Nowday);
+      console.log("birthdayTime", year);
+
       const aday = 1000 * 60 * 60 * 24;
       const RealDate = birthdayTime.getTime() - Now.getTime();
-      const MoreDay = Math.ceil(RealDate / aday);
+
+      console.log("oo", Now.getTime());
+
+      const MoreDay = Math.ceil(RealDate / aday) - 31;
+      let newDay = "";
+
+      if (MoreDay > -1) {
+        newDay = MoreDay;
+      } if (MoreDay < 0) {
+        newDay = 365 + MoreDay;
+      }
+
+      console.log(newDay, "More", MoreDay);
+      // const date = `${month + 1}/${Nowday}/${year}`;
+      // const dateTime = new Date(`${date}`);
+
+      //   const dateMiliseconds = dateTime.getTime();
+      //   const dateDiff = dateMiliseconds - Now;
+      //   let daysToGo = Math.round(dateDiff / (1000 * 60 * 60 * 24));
+      //   if (daysToGo < 0) {
+      //     daysToGo = daysToGo + 365;
+      //   }
 
       const Alldate = `${DateNow}${nthDate(DateNow)} / ${month + 1} / ${year}`;
       const age = yearForNow - year + 1;
@@ -89,12 +116,12 @@ async function displayDatalist(peopleStore) {
         birthdayMonth: birthdayMonth,
         Nowday: Nowday,
         DateNow: day,
-        MoreDay: MoreDay,
+        MoreDay: newDay,
       }
       return persons;
     })
 
-  const sortedPeople = html.sort((a, b) => (a.MoreDay - b.MoreDay));
+  const sortedPeople = html.sort((a, b) => ((a.MoreDay) - b.MoreDay));
   const displayList = sortedPeople.map((personList) => {
     return `
              <tr data-id= "${personList.id}" class="row row-container">
@@ -110,11 +137,11 @@ async function displayDatalist(peopleStore) {
              </td>
              <td class="days"> In 
              ${personList.MoreDay < 0
-              ? personList.MoreDay * -1 + " " + "days ago"
-              : personList.MoreDay <= 1
-                ? personList.MoreDay + "" + "day"
-                : personList.MoreDay + "days"
-            }
+        ? personList.MoreDay * -1 + " " + "days ago"
+        : personList.MoreDay <= 1
+          ? personList.MoreDay + "" + "day"
+          : personList.MoreDay + "days"
+      }
              <p class = "icons">
              <button class="edit" id="${personList.id}">
              </button>
@@ -169,31 +196,41 @@ month.addEventListener("change", function () {
 
 })
 
+
+
 //  Popup for editing people
 
 const editPersonpopup = async function (id) {
+
+ 
+
+  const selectedPerson = peopleStore.find((person) => person.id === id);
+
+  const formatedDate = new Date(selectedPerson.birthday).toISOString().slice(0, 10)
   
-  const result = peopleStore.find((person) => person.id === id);
+
+  const maxDate = new Date().toISOString().slice(0, 10)
   const popup = document.createElement("form");
   popup.classList.add("popupedit");
   popup.insertAdjacentHTML(
     "afterbegin",
     ` <div class="container">
+       <h2> Edit Sherwood Keeling </h2>
         <fieldset style="border: none;">
          <label for="picture">Url image</label><br>
-          <input class="edit-input" type="url" value="${result.picture}" id="picture">
+          <input class="edit-input" type="url" value="${selectedPerson.picture}" id="picture">
         </fieldset>
         <fieldset style="border: none;">
           <label for="lastname">LastName</label><br>
-          <input class="edit-input" type="text" value="${result.lastName}" id="lastname">
+          <input class="edit-input" type="text" value="${selectedPerson.lastName}" id="lastname">
         </fieldset>
         <fieldset style="border: none;">
           <label for="firstname">FisrtName</label><br>
-          <input class="edit-input" type="text" value="${result.firstName}" id="firstname">
+          <input class="edit-input" type="text" value="${selectedPerson.firstName}" id="firstname">
         </fieldset style="border: none;">
         <fieldset style="border: none;">
           <label for="birthday">Birthday</label><br>
-          <input class="edit-input" type="date" value="${result.birthday}" id="birthday">
+          <input class="edit-input" type="date" max="${maxDate}" value="${formatedDate}" id="birthday">
         </fieldset>
         <div class="button-sub">
           <button class="button__save" type="submit">Save</button>
@@ -212,11 +249,11 @@ const editPersonpopup = async function (id) {
     const saveChange = e.currentTarget;
     e.preventDefault();
 
-    result.picture = popup.picture.value;
-    result.lastName = popup.lastname.value;
-    result.firstName = popup.firstname.value;
-    result.birthday = popup.birthday.value;
-    result.id = id;
+    selectedPerson.picture = popup.picture.value;
+    selectedPerson.lastName = popup.lastname.value;
+    selectedPerson.firstName = popup.firstname.value;
+    selectedPerson.birthday = popup.birthday.value;
+    selectedPerson.id = id;
     displayDatalist(peopleStore);
     console.log(birthday);
     saveChange;
@@ -224,7 +261,6 @@ const editPersonpopup = async function (id) {
     remove;
     tbody.dispatchEvent(new CustomEvent("itemUpdated"));
   });
-
 
 
 
@@ -300,19 +336,12 @@ async function deletePersonPopup(id) {
 
 
 
-
-
-
 //  Adding the list
 
-// const htmldate = sortedPeople
-//     .map((persondate) => {
-//       return `<div>${persondate.birthday}</div>`
-
-
-//     })
+// const InputDate = document.querySelector('input[]')
 
 addButon.addEventListener("click", function addNewPeople() {
+
 
 
   const popup = document.createElement("form");
@@ -320,6 +349,7 @@ addButon.addEventListener("click", function addNewPeople() {
   popup.insertAdjacentHTML(
     "afterbegin",
     ` <div class="container">
+       <h2> Add new person </h2>
         <fieldset style="border: none;">
           <label for="picture">Url image</label><br>
           <input class="add_input" type="url" value="" id="picture" required>

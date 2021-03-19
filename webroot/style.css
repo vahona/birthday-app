@@ -86,7 +86,7 @@ tr.row {
 }
 
 img {
-    border-radius: 50%;
+    border-radius: 10px;
     width: 100%;
     
 }
@@ -143,11 +143,12 @@ tr:hover {
     width:  400px;
     height: 50%;
     position: fixed;
-    top: 30%;
+    top: 10%;
     left: 35%;
     right: 50%;
     bottom: 50%;
     padding: 2rem;
+    color: black;
     
 }
 
@@ -199,12 +200,12 @@ tr:hover {
 }
 
 .popupadd {
-    background-color: #f1f5f8 ;
-    color: white;
+    color: black;
     margin-inline-start: auto;
     margin-inline-end: auto;
     left: 30%;
     right: 50%;
+    top: 10%;
 
 }
 
