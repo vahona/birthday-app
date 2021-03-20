@@ -48,22 +48,18 @@ async function displayDatalist(peopleStore) {
 
 
       const DateNow = new Date(person.birthday);
-      console.log(DateNow.getDate(), "iii");
+      
       const Now = new Date();
       const month = DateNow.getMonth();
       const Nowday = DateNow.getDate();
       const year = DateNow.getFullYear();
 
-      console.log(Now.getDate(), Now.getDay());
-
       const yearForNow = Now.getFullYear();
       const birthdayTime = new Date(yearForNow, month, Nowday);
-      console.log("birthdayTime", year);
+     
 
       const aday = 1000 * 60 * 60 * 24;
       const RealDate = birthdayTime.getTime() - Now.getTime();
-
-      console.log("oo", Now.getTime());
 
       const MoreDay = Math.ceil(RealDate / aday) - 31;
       let newDay = "";
@@ -74,16 +70,8 @@ async function displayDatalist(peopleStore) {
         newDay = 365 + MoreDay;
       }
 
-      console.log(newDay, "More", MoreDay);
-      // const date = `${month + 1}/${Nowday}/${year}`;
-      // const dateTime = new Date(`${date}`);
-
-      //   const dateMiliseconds = dateTime.getTime();
-      //   const dateDiff = dateMiliseconds - Now;
-      //   let daysToGo = Math.round(dateDiff / (1000 * 60 * 60 * 24));
-      //   if (daysToGo < 0) {
-      //     daysToGo = daysToGo + 365;
-      //   }
+    
+      
 
       const Alldate = `${DateNow}${nthDate(DateNow)} / ${month + 1} / ${year}`;
       const age = yearForNow - year + 1;
@@ -215,21 +203,21 @@ const editPersonpopup = async function (id) {
   popup.insertAdjacentHTML(
     "afterbegin",
     ` <div class="container">
-       <h2> Edit Sherwood Keeling </h2>
+       <h2 class="TitleEdite"> Edit Sherwood Keeling </h2>
         <fieldset style="border: none;">
-         <label for="picture">Url image</label><br>
+         <label class="edit__label" for="picture">Url image</label><br>
           <input class="edit-input" type="url" value="${selectedPerson.picture}" id="picture">
         </fieldset>
         <fieldset style="border: none;">
-          <label for="lastname">LastName</label><br>
+          <label class="edit__label" for="lastname">LastName</label><br>
           <input class="edit-input" type="text" value="${selectedPerson.lastName}" id="lastname">
         </fieldset>
         <fieldset style="border: none;">
-          <label for="firstname">FisrtName</label><br>
+          <label class="edit__label" for="firstname">FisrtName</label><br>
           <input class="edit-input" type="text" value="${selectedPerson.firstName}" id="firstname">
         </fieldset style="border: none;">
         <fieldset style="border: none;">
-          <label for="birthday">Birthday</label><br>
+          <label  for="birthday">Birthday</label><br>
           <input class="edit-input" type="date" max="${maxDate}" value="${formatedDate}" id="birthday">
         </fieldset>
         <div class="button-sub">
@@ -342,7 +330,10 @@ async function deletePersonPopup(id) {
 
 addButon.addEventListener("click", function addNewPeople() {
 
+  // const formatedDate = new Date().toISOString().slice(0, 10)
+  
 
+  const maxDate = new Date().toISOString().slice(0, 10)
 
   const popup = document.createElement("form");
   popup.classList.add("popupadd");
@@ -364,7 +355,7 @@ addButon.addEventListener("click", function addNewPeople() {
         </fieldset style="border: none;">
         <fieldset style="border: none;">
           <label for="birthday">Birthday</label><br>
-          <input class="add_input" type="date" value="" id="birthday" required>
+          <input class="add_input" type="date" max="${maxDate}" value="" id="birthday" required>
         </fieldset>
         <div class="button-sub">
           <button class="add__button" type="submit">Add</button>

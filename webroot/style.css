@@ -18,13 +18,16 @@ html {
 }
 
 .birthday, .days {
-    color: #5F6C7B;
+    color: #5F6C7B;;
+    font-family: Rubik;
+    font-style: normal;
+    font-weight: 500;
     font-size: 24px;
-    font-weight: 600;
+    line-height: 28px;
+
 }
 
 body {
-    font-family: roboto;
     padding: 0;
     margin: 0;
     max-width: 1440px;
@@ -34,12 +37,26 @@ body {
 
 }
 
-h1 {
-   font-family: Rubik;
-   color: #094067;
-   font-weight: bold;
-   font-size: 40px;
-   line-height: 76px;
+.Title {
+    font-family: Rubik;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 64px;
+    line-height: 76px;
+    font-family: Rubik;
+    color: #094067;
+    text-align: start;
+    margin-inline-start: 5%;
+    margin-block-start: 0;
+   
+}
+
+.label__input {
+    font-family: Rubik;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 21.33px;
+    color: #094067;
 }
 
 table {
@@ -118,6 +135,7 @@ tr:hover {
     padding-left: 1rem;
     padding-right: 1rem;
     border-radius: 5px;
+    cursor: pointer;
 }
 
 .button__save {
@@ -127,6 +145,7 @@ tr:hover {
    padding-left: 2rem;
    padding-right: 2rem;
    color: white;
+   cursor: pointer;
 }
 
 .button__cancel {
@@ -135,22 +154,12 @@ tr:hover {
    padding: 0.5rem;
    padding-left: 2rem;
    padding-right: 2rem;
+   cursor: pointer;
    
 
 }
 
-.popupedit, .popupadd {
-    width:  400px;
-    height: 50%;
-    position: fixed;
-    top: 10%;
-    left: 35%;
-    right: 50%;
-    bottom: 50%;
-    padding: 2rem;
-    color: black;
-    
-}
+
 
 .edit-input, .add_input {
     padding: 0.5rem;
@@ -191,6 +200,7 @@ tr:hover {
     margin-top: 1.75rem;
     padding-top: 0.75rem;
     padding-bottom: 0.75rem;
+    cursor: pointer;
 }
 
 .age {
@@ -216,6 +226,7 @@ tr:hover {
     border-radius: 10px;
     padding-left: 2rem;
     padding-right: 2rem;
+    cursor: pointer;
     
 }
 
@@ -258,12 +269,14 @@ input[type = "date"] {
 
 .container {
     background-color: white;
-    padding: 2rem;
+    padding: 0.5rem;
 }
 
 .name {
-    font-weight: 700;
-    font-size: 24px
+   font-family: Rubik;
+   font-weight: 500; 
+   font-size: 32px;
+   line-height: 42.66px;
 }
 
 .namefilter,
@@ -274,6 +287,32 @@ input[type = "date"] {
   padding-top: 0.5rem;
   margin-top: 1rem;
   margin-bottom: 1rem;
+}
+
+.TitleEdite {
+    font-family: Rubik;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 48px;
+    line-height: 57px;
+    color: #094067;
+}
+
+.popupedit {
+   
+    width:  90%;
+    height: 100%;
+    position: fixed;
+    top: 10%;
+    left: 0%;
+    right: 8%;
+    bottom: 30%;
+    padding: 1rem;
+    padding-top: 2;
+   
+   
+        
+    
 }
 
 @media(min-width: 600px) {
@@ -294,6 +333,49 @@ input[type = "date"] {
     }
 
     
+
+    
+}
+
+fieldset {
+    width: 90%;
+    font-family: Rubik;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 21px;
+    
+    color: #094067;
+}
+
+@media(min-width: 800px) {
+    fieldset {
+       width: 50%;
+       font-family: Rubik;
+       font-style: normal;
+       font-weight: 500;
+       font-size: 18px;
+       line-height: 21px;
+       
+       color: #094067;
+   }
+
+   .TitleEdite {
+       text-align: start;
+       margin-inline-start: 8%;
+   }
+
+   .button-sub {
+      text-align: start;
+      margin-inline-start: 8%;
+   }
+
+   .edit__label {
+      text-align: start;
+      margin-inline-start: -55%;
+   }
+
+ 
 }
 
 
