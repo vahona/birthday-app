@@ -9,6 +9,8 @@ const inputs = document.querySelector(".namefilter")
 
 //  Create an empty array to store the people.json
 
+
+
 let peopleStore = [];
 
 //  Fetch the file in the people.json
@@ -22,6 +24,8 @@ async function fetchPeople() {
 }
 
 fetchPeople();
+
+
 
 
 async function displayDatalist(peopleStore) {
@@ -48,7 +52,7 @@ async function displayDatalist(peopleStore) {
 
 
       const DateNow = new Date(person.birthday);
-      
+
       const Now = new Date();
       const month = DateNow.getMonth();
       const Nowday = DateNow.getDate();
@@ -56,12 +60,11 @@ async function displayDatalist(peopleStore) {
 
       const yearForNow = Now.getFullYear();
       const birthdayTime = new Date(yearForNow, month, Nowday);
-     
 
       const aday = 1000 * 60 * 60 * 24;
       const RealDate = birthdayTime.getTime() - Now.getTime();
 
-      const MoreDay = Math.ceil(RealDate / aday) - 31;
+      const MoreDay = Math.ceil(RealDate / aday);
       let newDay = "";
 
       if (MoreDay > -1) {
@@ -70,31 +73,44 @@ async function displayDatalist(peopleStore) {
         newDay = 365 + MoreDay;
       }
 
-    
-      
+
 
       const Alldate = `${DateNow}${nthDate(DateNow)} / ${month + 1} / ${year}`;
       const age = yearForNow - year + 1;
       const birthdayMonth = getMonthName(month);
-      // console.log(DateNow);
+
+      // Variable to store the day
+
       let day = "";
+
+      // Condition for the incication of the date
 
       if (DateNow.getDate() === 1 || DateNow.getDate() === 21 || DateNow.getDate() === 31) {
         day = `${DateNow.getDate()}st`;
       }
+
       if (DateNow.getDate() === 2 || DateNow.getDate() === 22) {
         day = `${DateNow.getDate()}nd`;
-      } if (DateNow.getDate() === 3 || DateNow.getDate() === 23) {
+      }
+
+      if (DateNow.getDate() === 3 || DateNow.getDate() === 23) {
         day = `${DateNow.getDate()}rd`;
-      } if (DateNow.getDate() !== 1 && DateNow.getDate() !== 21 && DateNow.getDate() !== 31 && DateNow.getDate() !== 2 && DateNow.getDate() !== 22 && DateNow.getDate() !== 3 && DateNow.getDate() !== 23) {
+      }
+
+      if (DateNow.getDate() !== 1 && DateNow.getDate() !== 21 && DateNow.getDate() !== 31 && DateNow.getDate() !== 2 && DateNow.getDate() !== 22 && DateNow.getDate() !== 3 && DateNow.getDate() !== 23) {
         day = `${DateNow.getDate()}th`;
       }
+
+
       function getMonthName(month) {
         const d = new Date();
-        d.setMonth(month - 1);
+        d.setMonth(month);
         const monthName = d.toLocaleString("default", { month: "long" });
         return monthName;
       }
+
+
+
       const persons = {
         firstName: person.firstName,
         lastName: person.lastName,
@@ -123,20 +139,19 @@ async function displayDatalist(peopleStore) {
                  </div>
                  <time class="birthday"> Turns <span class="age"> ${personList.age} </span> on ${personList.birthdayMonth} ${personList.DateNow} </time>
              </td>
-             <td class="days"> In 
-             ${personList.MoreDay < 0
-        ? personList.MoreDay * -1 + " " + "days ago"
-        : personList.MoreDay <= 1
-          ? personList.MoreDay + "" + "day"
-          : personList.MoreDay + "days"
-      }
+             <td class="days"> In
+             ${personList.MoreDay <= 1
+        ? personList.MoreDay + "" + "day"
+        : personList.MoreDay + "days"
+      } 
+      ${personList.MoreDay === 0 ? "" + "🎂 Happy birthday 🍰 " : ""}
              <p class = "icons">
              <button class="edit" id="${personList.id}">
              </button>
              <button class="delete" id="${personList.id}">
              </button>
            </p>
-                 ${personList.MoreDay === 0 ? "" + "🎂 Happy birthday 🍰 " : ""}
+                
              </td>
 
            </tr>
@@ -186,16 +201,17 @@ month.addEventListener("change", function () {
 
 
 
+
+
 //  Popup for editing people
 
 const editPersonpopup = async function (id) {
 
- 
 
   const selectedPerson = peopleStore.find((person) => person.id === id);
 
   const formatedDate = new Date(selectedPerson.birthday).toISOString().slice(0, 10)
-  
+
 
   const maxDate = new Date().toISOString().slice(0, 10)
   const popup = document.createElement("form");
@@ -326,12 +342,11 @@ async function deletePersonPopup(id) {
 
 //  Adding the list
 
-// const InputDate = document.querySelector('input[]')
+
 
 addButon.addEventListener("click", function addNewPeople() {
 
-  // const formatedDate = new Date().toISOString().slice(0, 10)
-  
+
 
   const maxDate = new Date().toISOString().slice(0, 10)
 
