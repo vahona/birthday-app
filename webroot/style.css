@@ -76,11 +76,15 @@ tr {
     grid-template-columns: 20% 40% 20%;
     place-items: center;
     gap: 5%;
-    padding: 2rem 2rem;
+    padding: 1rem 2rem;
     
 
   
     
+}
+
+.close {
+    cursor: pointer;
 }
 
 tr.row {
@@ -298,7 +302,7 @@ input[type = "date"] {
     color: #094067;
 }
 
-.popupedit {
+.popupedit, .popupadd {
    
     width:  90%;
     height: 100%;
@@ -308,12 +312,30 @@ input[type = "date"] {
     right: 8%;
     bottom: 30%;
     padding: 1rem;
-    padding-top: 2;
-   
-   
-        
+    padding-top: 2;       
     
 }
+
+.add__title {
+    text-align: start;
+    margin-inline-start: 8%;
+}
+
+.add__label {
+    margin-inline-start: -12rem;
+}
+
+.namefilter {
+    padding-right: 1rem;
+    
+}
+
+.monthfilters {
+   padding-right: 4rem;
+}
+
+
+
 
 @media(min-width: 600px) {
     .header__container {
@@ -347,6 +369,9 @@ fieldset {
     
     color: #094067;
 }
+
+
+
 
 @media(min-width: 800px) {
     fieldset {

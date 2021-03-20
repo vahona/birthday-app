@@ -205,20 +205,20 @@ const editPersonpopup = async function (id) {
     ` <div class="container">
        <h2 class="TitleEdite"> Edit Sherwood Keeling </h2>
         <fieldset style="border: none;">
-         <label class="edit__label" for="picture">Url image</label><br>
-          <input class="edit-input" type="url" value="${selectedPerson.picture}" id="picture">
+         <label class="edit__label" for="picture1">Url image</label><br>
+          <input class="edit-input" type="url" value="${selectedPerson.picture}" id="picture1">
         </fieldset>
         <fieldset style="border: none;">
-          <label class="edit__label" for="lastname">LastName</label><br>
-          <input class="edit-input" type="text" value="${selectedPerson.lastName}" id="lastname">
+          <label class="edit__label" for="lastname1">LastName</label><br>
+          <input class="edit-input" type="text" value="${selectedPerson.lastName}" id="lastname1">
         </fieldset>
         <fieldset style="border: none;">
-          <label class="edit__label" for="firstname">FisrtName</label><br>
-          <input class="edit-input" type="text" value="${selectedPerson.firstName}" id="firstname">
+          <label class="edit__label" for="firstname1">FisrtName</label><br>
+          <input class="edit-input" type="text" value="${selectedPerson.firstName}" id="firstname1">
         </fieldset style="border: none;">
         <fieldset style="border: none;">
-          <label  for="birthday">Birthday</label><br>
-          <input class="edit-input" type="date" max="${maxDate}" value="${formatedDate}" id="birthday">
+          <label  for="birthday1">Birthday</label><br>
+          <input class="edit-input" type="date" max="${maxDate}" value="${formatedDate}" id="birthday1">
         </fieldset>
         <div class="button-sub">
           <button class="button__save" type="submit">Save</button>
@@ -237,13 +237,13 @@ const editPersonpopup = async function (id) {
     const saveChange = e.currentTarget;
     e.preventDefault();
 
-    selectedPerson.picture = popup.picture.value;
-    selectedPerson.lastName = popup.lastname.value;
-    selectedPerson.firstName = popup.firstname.value;
-    selectedPerson.birthday = popup.birthday.value;
+    selectedPerson.picture = popup.picture1.value;
+    selectedPerson.lastName = popup.lastname1.value;
+    selectedPerson.firstName = popup.firstname1.value;
+    selectedPerson.birthday = popup.birthday1.value;
     selectedPerson.id = id;
     displayDatalist(peopleStore);
-    console.log(birthday);
+    console.log(birthday1);
     saveChange;
     const remove = (popup.style.display = "none");
     remove;
@@ -340,21 +340,21 @@ addButon.addEventListener("click", function addNewPeople() {
   popup.insertAdjacentHTML(
     "afterbegin",
     ` <div class="container">
-       <h2> Add new person </h2>
+       <h2 class="add__title"> Add new person </h2>
         <fieldset style="border: none;">
-          <label for="picture">Url image</label><br>
+          <label class="add__label" for="picture">Url image</label><br>
           <input class="add_input" type="url" value="" id="picture" required>
         </fieldset>
         <fieldset style="border: none;">
-          <label for="lastname">LastName</label><br>
+          <label class="add__label" for="lastname">LastName</label><br>
           <input class="add_input" type="text" value="" id="lastname" required>
         </fieldset>
         <fieldset style="border: none;">
-          <label for="firstname">FisrtName</label><br>
+          <label class="add__label" for="firstname">FisrtName</label><br>
           <input class="add_input" type="text" value="" id="firstname" required>
         </fieldset style="border: none;">
         <fieldset style="border: none;">
-          <label for="birthday">Birthday</label><br>
+          <label class="add__label" for="birthdaya">Birthday</label><br>
           <input class="add_input" type="date" max="${maxDate}" value="" id="birthday" required>
         </fieldset>
         <div class="button-sub">
