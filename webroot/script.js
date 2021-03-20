@@ -186,12 +186,10 @@ const month = document.getElementById("month-select")
 
 month.addEventListener("change", function () {
   const selectvalue = month.value;
-  console.log(selectvalue);
   const filterByMonth = peopleStore.filter(person => {
     const DateNow = new Date(person.birthday);
     const month = DateNow.getMonth();
     const condition = month.toString() === selectvalue.toString();
-    console.log(condition);
     return condition
 
   })
@@ -271,14 +269,27 @@ const editPersonpopup = async function (id) {
 
   //  Close the popup when the user does not want the change they have made in the person's information
 
-  popup.addEventListener("click", (e) => {
-    const cancelTheChange = e.target.closest(".button__cancel");
-    if (cancelTheChange) {
-      const remove = (popup.style.display = "none");
-      remove;
-    }
-  });
+
+document.addEventListener(
+	"click",
+	function (event) {
+		if (
+			event.target.matches(".button__cancel") ||
+			!event.target.closest(".popupedit")
+		) {
+			closeModal();
+		}
+	},
+	false
+);
+
+function closeModal() {
+	document.querySelector(".popupedit").style.display = "none";
+}
+
 };
+
+
 
 
 
@@ -342,9 +353,9 @@ async function deletePersonPopup(id) {
 
 //  Adding the list
 
+// addButon.addEventListener("click",
 
-
-addButon.addEventListener("click", function addNewPeople() {
+addButon.addEventListener("click",  function addNewPeople () {
 
 
 
@@ -413,13 +424,35 @@ addButon.addEventListener("click", function addNewPeople() {
 
   // Close the popup when the user does need to add a new person
 
-  popup.addEventListener("click", (e) => {
-    const cancelTheChange = e.target.closest(".close");
+  
+
+  document && popup.addEventListener("click", (e) => {
+
+    // document.addEventListener("click", e => {
+    //   if(!e.target.closest(".popupadd")) {
+    //     closeModal()
+    //     console.log(e);
+    //   }
+    // })
+
+    const cancelTheChange = e.target.matches(".close") || !e.target.closest(".popupadd");
     if (cancelTheChange) {
-      const remove = (popup.style.display = "none");
-      remove;
+      // const remove = (popup.style.display = "none");
+      // remove;
+
+      closeModal()
+
+
     }
-  });
+  },
+    false
+  );
+
+    function closeModal() {
+    document.querySelector(".popupadd").style.display = "none";
+  }
+ 
+
 });
 
 
