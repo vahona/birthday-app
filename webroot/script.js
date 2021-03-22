@@ -198,9 +198,6 @@ month.addEventListener("change", function () {
 })
 
 
-
-
-
 //  Popup for editing people
 
 const editPersonpopup = async function (id) {
@@ -214,9 +211,11 @@ const editPersonpopup = async function (id) {
   const maxDate = new Date().toISOString().slice(0, 10)
   const popup = document.createElement("form");
   popup.classList.add("popupedit");
+  document.body.style.overflow = "hidden"
   popup.insertAdjacentHTML(
     "afterbegin",
     ` <div class="container">
+       <button class="close1">X</button>
        <h2 class="TitleEdite"> Edit Sherwood Keeling </h2>
         <fieldset style="border: none;">
          <label class="edit__label" for="picture1">Url image</label><br>
@@ -242,6 +241,8 @@ const editPersonpopup = async function (id) {
         `
   );
 
+
+
   document.body.appendChild(popup);
   popup.classList.add("open");
 
@@ -257,11 +258,13 @@ const editPersonpopup = async function (id) {
     selectedPerson.birthday = popup.birthday1.value;
     selectedPerson.id = id;
     displayDatalist(peopleStore);
-    console.log(birthday1);
+    
     saveChange;
     const remove = (popup.style.display = "none");
     remove;
+    document.body.style.overflow = "auto"
     tbody.dispatchEvent(new CustomEvent("itemUpdated"));
+    
   });
 
 
@@ -275,7 +278,7 @@ document.addEventListener(
 	function (event) {
 		if (
 			event.target.matches(".button__cancel") ||
-			!event.target.closest(".popupedit")
+			!event.target.closest(".popupedit") 
 		) {
 			closeModal();
 		}
@@ -356,7 +359,7 @@ async function deletePersonPopup(id) {
 // addButon.addEventListener("click",
 
 addButon.addEventListener("click",  function addNewPeople () {
-
+   
 
 
   const maxDate = new Date().toISOString().slice(0, 10)
@@ -365,7 +368,10 @@ addButon.addEventListener("click",  function addNewPeople () {
   popup.classList.add("popupadd");
   popup.insertAdjacentHTML(
     "afterbegin",
-    ` <div class="container">
+
+    ` <div class = "popup">
+      <div class="container">
+        <button class="close2">X</button>
        <h2 class="add__title"> Add new person </h2>
         <fieldset style="border: none;">
           <label class="add__label" for="picture">Url image</label><br>
@@ -386,6 +392,7 @@ addButon.addEventListener("click",  function addNewPeople () {
         <div class="button-sub">
           <button class="add__button" type="submit">Add</button>
           <button class="close" type="button"> Close </button>
+        </div>
         </div>
         </div>
   `
@@ -415,6 +422,8 @@ addButon.addEventListener("click",  function addNewPeople () {
     addNewPeople();
     tbody.dispatchEvent(new CustomEvent("itemUpdated"));
     //  editPersonpopup(result);
+
+    
   });
 
 
@@ -424,34 +433,35 @@ addButon.addEventListener("click",  function addNewPeople () {
 
   // Close the popup when the user does need to add a new person
 
-  
 
-  document && popup.addEventListener("click", (e) => {
-
+   popup.addEventListener("click", (e) => {
+     
+    
+    e.preventDefault()
     // document.addEventListener("click", e => {
     //   if(!e.target.closest(".popupadd")) {
     //     closeModal()
-    //     console.log(e);
+        console.log(e);
+        console.log("close",closeModal());
     //   }
     // })
 
-    const cancelTheChange = e.target.matches(".close") || !e.target.closest(".popupadd");
+    const cancelTheChange = e.target.matches(".close") || !e.target.closest(".popupadd") || e.target.closest(".close1") ;
     if (cancelTheChange) {
       // const remove = (popup.style.display = "none");
       // remove;
 
       closeModal()
-
+      
 
     }
   },
     false
   );
 
-    function closeModal() {
+  function closeModal() {
     document.querySelector(".popupadd").style.display = "none";
   }
- 
 
 });
 
