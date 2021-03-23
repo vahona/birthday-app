@@ -197,30 +197,13 @@ const nameValue = nameInput.value
 
 inputs.addEventListener("input", e => {
   e.preventDefault()
-  // const input = e.target;
-  // const inputValue = input.value;
-  // const filteredPeople = peopleStore.filter(person => person.firstName.toLowerCase().includes(inputValue.toLowerCase()) || person.lastName.toLowerCase().includes(inputValue.toLowerCase()));
-  // displayDatalist(filteredPeople);
-
   filterByNameMonth()
 
 })
 
-
 // Filtering by month
 
-
-
 month.addEventListener("change", function () {
-  // const selectvalue = month.value;
-  // const filterByMonth = peopleStore.filter(person => {
-  //   const DateNow = new Date(person.birthday);
-  //   const month = DateNow.getMonth();
-  //   const condition = month.toString() === selectvalue.toString();
-  //   return condition
-
-  // })
-  // displayDatalist(filterByMonth)
   filterByNameMonth()
 
 })
