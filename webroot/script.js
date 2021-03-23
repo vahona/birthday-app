@@ -278,7 +278,7 @@ document.addEventListener(
 	function (event) {
 		if (
 			event.target.matches(".button__cancel") ||
-			!event.target.closest(".popupedit") 
+			event.target.closest(".popupedit") 
 		) {
 			closeModal();
 		}
@@ -305,16 +305,20 @@ async function deletePersonPopup(id) {
   console.log(deleteOne);
   const popup = document.createElement("article");
   popup.classList.add(".confirm");
+  document.body.style.overflow = "hidden"
   popup.insertAdjacentHTML(
     "afterbegin",
     `
+       <div class="confirme">
         <p class="deleteparagraph">
           Are you sure you want to delete this person
         </p>
         <div class="container__buttom">
           <button class="confirm_buttom yes__sure"> Yes </button>
           <button class="confirm_buttom no__want"> No </button>
-        </div>`
+        </div>
+        </div>
+        `
   );
 
   document.body.appendChild(popup);
@@ -330,7 +334,9 @@ async function deletePersonPopup(id) {
     //  Grabing all the button
 
     const removeEl = e.target.closest(".yes__sure");
+    document.body.style.overflow = "auto"
     const no = e.target.closest(".no__want");
+    const outside = e.target.matches("article")
 
     //  Condition for all the button
 
@@ -342,9 +348,10 @@ async function deletePersonPopup(id) {
       displayDatalist(deletePeople);
       const changeRemove = (popup.style.display = "none");
       changeRemove;
-    } else if (no) {
+    } else if (no || outside) {
       const remove = (popup.style.display = "none");
       remove;
+      
     }
   };
 
@@ -366,7 +373,7 @@ addButon.addEventListener("click",  function addNewPeople () {
 
   const popup = document.createElement("form");
   popup.classList.add("popupadd");
-  // document.body.style.overflow = "hidden"
+  document.body.style.overflow = "hidden"
   popup.insertAdjacentHTML(
     "afterbegin",
 
@@ -462,6 +469,7 @@ addButon.addEventListener("click",  function addNewPeople () {
 
   function closeModal() {
     document.querySelector(".popupadd").style.display = "none";
+    document.body.style.overflow = "auto"
   }
 
 });

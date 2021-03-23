@@ -107,33 +107,21 @@ img {
 }
 
 
-article {
-    background-color: whitesmoke;
-    border: steelblue solid 5px;
-    width: 200px;
-    position: fixed;
-    top: 50%;
-    left: 30%;
-    height: 20%;
-    right: 0;
-    bottom: 50%;
-    padding: 3rem;
-    
 
-}
 
 tr:hover {
     background-color: rgba(90, 187, 209, 0.5);
 }
 
 .confirm_buttom {
-    background-color: brown;
+    background-color: #EF4565;
     color: white;
     padding: 0.5rem;
     padding-left: 1rem;
     padding-right: 1rem;
     border-radius: 5px;
     cursor: pointer;
+    border: none;
 }
 
 .button__save {
@@ -208,7 +196,7 @@ tr:hover {
     font-weight: 700;
 }
 
-.popupadd {
+.popupadd, popupedit {
     color: black;
     margin-inline-start: auto;
     margin-inline-end: auto;
@@ -376,6 +364,38 @@ ul {
     padding-inline-start: 0;
 }
 
+article {
+    background-color: rgba(255, 255, 255, 0.8);
+    width: 100%;
+    position: fixed;
+    bottom: 0%;
+    padding: 3rem;
+    height: 100%;
+    
+
+}
+
+.confirme {
+    background-color: white;
+    width: 50%;
+    padding: 3rem;
+    text-align: center;
+    left: 20%;
+    position: fixed;
+    top: 50%;
+    font-family: RubiK;
+    border-radius: 5px;
+    
+}
+
+/* .popup {
+    background-color:  rgba(255, 255, 255, 0.8);
+    width: 100%;
+} */
+
+.popupedit {
+    background-color: rgba(255, 255, 255, 0.8);
+}
 
 @media(min-width: 800px) {
     fieldset {
