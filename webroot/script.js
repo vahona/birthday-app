@@ -443,21 +443,12 @@ addButon.addEventListener("click",  function addNewPeople () {
 
 
    popup.addEventListener("click", (e) => {
-     
-    
     e.preventDefault()
-    // document.addEventListener("click", e => {
-    //   if(!e.target.closest(".popupadd")) {
-    //     closeModal()
         console.log(e);
         console.log("close",closeModal());
-    //   }
-    // })
 
-    const cancelTheChange = e.target.matches(".close") || !e.target.closest(".popupadd") || e.target.closest(".close1") ;
+    const cancelTheChange = e.target.matches(".close") || !e.target.closest(".popupadd") || e.target.closest(".close2") ;
     if (cancelTheChange) {
-      // const remove = (popup.style.display = "none");
-      // remove;
 
       closeModal()
       

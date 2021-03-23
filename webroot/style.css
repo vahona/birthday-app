@@ -388,10 +388,12 @@ article {
     
 }
 
-/* .popup {
-    background-color:  rgba(255, 255, 255, 0.8);
-    width: 100%;
-} */
+.close2 {
+    background-color: transparent;
+    border: none;
+    right: 1rem;
+    position: absolute
+}
 
 .popupedit {
     background-color: rgba(255, 255, 255, 0.8);
