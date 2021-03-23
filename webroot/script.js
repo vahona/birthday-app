@@ -1,7 +1,7 @@
 //  Grabe some element I might need
 
 const dataurl = "./people.json";
-const tbody = document.querySelector("ul");
+const list = document.querySelector("ul");
 const container = document.querySelector(".tablebody");
 const addButon = document.querySelector(".add-people");
 const input = document.getElementById("filter_user");
@@ -159,41 +159,69 @@ async function displayDatalist(peopleStore) {
 
 
   }).join("")
-  tbody.innerHTML = displayList;
+  list.innerHTML = displayList;
 }
 
 displayDatalist();
 
 
+const nameInput = document.getElementById("input-name")
+const month = document.getElementById("month-select")
+
+function filterByNameMonth() {
+  const nameValue = nameInput.value
+
+  const filteredPeople = peopleStore.filter(person => person.firstName.toLowerCase().includes(nameValue.toLowerCase()) || person.lastName.toLowerCase().includes(nameValue.toLowerCase()));
+
+  const selectvalue = month.value;
+  const filterByMonthAndName = filteredPeople.filter(person => {
+    const birthdayDate = new Date(person.birthday);
+    const month = birthdayDate.getMonth().toString();
+    const condition = month === selectvalue.toString();
+    
+    return condition
+
+  })
+
+  
+ displayDatalist(filterByMonthAndName)
+
+
+}
 
 
 // Filtering the list by first name and the lastname
 
+const nameValue = nameInput.value
+
 
 inputs.addEventListener("input", e => {
   e.preventDefault()
-  const input = e.target;
-  const inputValue = input.value;
-  const filteredPeople = peopleStore.filter(person => person.firstName.toLowerCase().includes(inputValue.toLowerCase()) || person.lastName.toLowerCase().includes(inputValue.toLowerCase()));
-  displayDatalist(filteredPeople);
+  // const input = e.target;
+  // const inputValue = input.value;
+  // const filteredPeople = peopleStore.filter(person => person.firstName.toLowerCase().includes(inputValue.toLowerCase()) || person.lastName.toLowerCase().includes(inputValue.toLowerCase()));
+  // displayDatalist(filteredPeople);
+
+  filterByNameMonth()
 
 })
 
 
 // Filtering by month
 
-const month = document.getElementById("month-select")
+
 
 month.addEventListener("change", function () {
-  const selectvalue = month.value;
-  const filterByMonth = peopleStore.filter(person => {
-    const DateNow = new Date(person.birthday);
-    const month = DateNow.getMonth();
-    const condition = month.toString() === selectvalue.toString();
-    return condition
+  // const selectvalue = month.value;
+  // const filterByMonth = peopleStore.filter(person => {
+  //   const DateNow = new Date(person.birthday);
+  //   const month = DateNow.getMonth();
+  //   const condition = month.toString() === selectvalue.toString();
+  //   return condition
 
-  })
-  displayDatalist(filterByMonth)
+  // })
+  // displayDatalist(filterByMonth)
+  filterByNameMonth()
 
 })
 
@@ -263,7 +291,7 @@ const editPersonpopup = async function (id) {
     const remove = (popup.style.display = "none");
     remove;
     document.body.style.overflow = "auto"
-    tbody.dispatchEvent(new CustomEvent("itemUpdated"));
+    list.dispatchEvent(new CustomEvent("itemUpdated"));
     
   });
 
@@ -356,7 +384,7 @@ async function deletePersonPopup(id) {
   };
 
   window.addEventListener("click", confirm);
-  tbody.dispatchEvent(new CustomEvent("itemUpdated"));
+  list.dispatchEvent(new CustomEvent("itemUpdated"));
 }
 
 
@@ -428,13 +456,11 @@ addButon.addEventListener("click",  function addNewPeople () {
     displayDatalist(peopleStore);
     addNewOne.reset();
     addNewPeople();
-    tbody.dispatchEvent(new CustomEvent("itemUpdated"));
+    list.dispatchEvent(new CustomEvent("itemUpdated"));
     //  editPersonpopup(result);
 
     
   });
-
-
 
 
 
@@ -444,10 +470,8 @@ addButon.addEventListener("click",  function addNewPeople () {
 
    popup.addEventListener("click", (e) => {
     e.preventDefault()
-        console.log(e);
-        console.log("close",closeModal());
 
-    const cancelTheChange = e.target.matches(".close") || !e.target.closest(".popupadd") || e.target.closest(".close2") ;
+    const cancelTheChange = e.target.matches(".close") || !e.target.closest(".popupadd") || e.target.closest(".close2") || !e.target.closest(".add_input");
     if (cancelTheChange) {
 
       closeModal()
@@ -477,7 +501,7 @@ const recordeLocalStorage = () => {
     peopleStore = isItems;
     displayDatalist();
   }
-  tbody.dispatchEvent(new CustomEvent("itemUpdated"));
+  list.dispatchEvent(new CustomEvent("itemUpdated"));
 };
 
 
@@ -511,4 +535,4 @@ async function handleClick(e) {
 }
 
 window.addEventListener("click", handleClick);
-tbody.addEventListener("itemUpdated", restoreLocalStorage);
+list.addEventListener("itemUpdated", restoreLocalStorage);
