@@ -1,7 +1,7 @@
 //  Grabe some element I might need
 
 const dataurl = "./people.json";
-const tbody = document.querySelector("tbody");
+const tbody = document.querySelector("ul");
 const container = document.querySelector(".tablebody");
 const addButon = document.querySelector(".add-people");
 const input = document.getElementById("filter_user");
@@ -128,18 +128,18 @@ async function displayDatalist(peopleStore) {
   const sortedPeople = html.sort((a, b) => ((a.MoreDay) - b.MoreDay));
   const displayList = sortedPeople.map((personList) => {
     return `
-             <tr data-id= "${personList.id}" class="row row-container">
-               <td>
+             <li data-id= "${personList.id}" class="row row-container">
+               <div>
              <img src="${personList.picture}" alt="${personList.firstName + " " + personList.lastName
       }"/>
-           </td>
-             <td>
+           </div>
+             <div>
                 <div class="name">
                    ${personList.lastName} - ${personList.firstName}
                  </div>
                  <time class="birthday"> Turns <span class="age"> ${personList.age} </span> on ${personList.birthdayMonth} ${personList.DateNow} </time>
-             </td>
-             <td class="days"> In
+             </div>
+             <div class="days"> In
              ${personList.MoreDay <= 1
         ? personList.MoreDay + "" + "day"
         : personList.MoreDay + "days"
@@ -152,9 +152,9 @@ async function displayDatalist(peopleStore) {
              </button>
            </p>
                 
-             </td>
+             </div>
 
-           </tr>
+           </li>
      `
 
 
@@ -366,6 +366,7 @@ addButon.addEventListener("click",  function addNewPeople () {
 
   const popup = document.createElement("form");
   popup.classList.add("popupadd");
+  // document.body.style.overflow = "hidden"
   popup.insertAdjacentHTML(
     "afterbegin",
 

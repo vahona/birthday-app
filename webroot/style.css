@@ -61,38 +61,29 @@ body {
     margin-inline-start: -4rem
 }
 
-table {
+nav {
     width: 100%;
     
 }
 
-thead {
+.head {
     background-color: white;
     width: 100%;
-}
-
-
-tr {
-    display: grid;
-    grid-auto-flow: column;
-    grid-template-columns: 20% 40% 20%;
-    place-items: center;
-    gap: 5%;
-    padding: 1rem 2rem;
-    
-
-  
-    
 }
 
 .close {
     cursor: pointer;
 }
 
-tr.row {
+li {
     background-color: #ffff;
     margin-top: 1rem;
     width: 80%;
+    place-items: center;
+    /* display: flex; */
+    gap: 5%;
+    padding: 1rem 2rem;
+    list-style: none;
     
   
 }
@@ -111,7 +102,7 @@ tr.row {
 
 img {
     border-radius: 10px;
-    width: 100%;
+    /* width: 100%; */
     
 }
 
@@ -381,7 +372,9 @@ fieldset {
     color: #094067;
 }
 
-
+ul {
+    padding-inline-start: 0;
+}
 
 
 @media(min-width: 800px) {
@@ -412,7 +405,18 @@ fieldset {
    }
 
  
+
+ 
 }
+
+@media(min-width: 600px) {
+    li {
+        display: flex;
+        justify-content: space-between;
+    }
+}
+
+
 
 
 
