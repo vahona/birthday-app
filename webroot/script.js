@@ -131,7 +131,7 @@ async function displayDatalist(peopleStore) {
              <img src="${personList.picture}" alt="${personList.firstName + " " + personList.lastName
       }"/>
            </div>
-             <div>
+             <div class="name-birthday">
                 <div class="name">
                    ${personList.lastName} - ${personList.firstName}
                  </div>
@@ -372,7 +372,6 @@ async function deletePersonPopup(id) {
 
 //  Adding the list
 
-// addButon.addEventListener("click",
 
 addButon.addEventListener("click",  function addNewPeople () {
    
@@ -386,7 +385,8 @@ addButon.addEventListener("click",  function addNewPeople () {
   popup.insertAdjacentHTML(
     "afterbegin",
 
-    ` <div class = "popup">
+    // ` <div class = "popup">
+    `
       <div class="container">
         <button class="close2">X</button>
        <h2 class="add__title"> Add new person </h2>
@@ -448,15 +448,13 @@ addButon.addEventListener("click",  function addNewPeople () {
 
   // Close the popup when the user does need to add a new person
 
-
    popup.addEventListener("click", (e) => {
     e.preventDefault()
 
-    const cancelTheChange = e.target.matches(".close") || !e.target.closest(".popupadd") || e.target.closest(".close2") || !e.target.closest(".add_input");
+    const cancelTheChange = e.target.matches(".close") || !e.target.closest(".popupadd") || e.target.matches(".close2") || !e.target.closest(".add_input");
     if (cancelTheChange) {
 
       closeModal()
-      
 
     }
   },

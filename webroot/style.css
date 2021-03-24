@@ -122,7 +122,7 @@ li {
 
 .icons {
     display: flex;
-    margin: 2rem;
+    /* margin: 2rem; */
     
     
 }
@@ -515,6 +515,10 @@ article {
 
 .popupedit {
     background-color: rgba(255, 255, 255, 0.8);
+}
+
+.name-birthday {
+    justify-content: start;
 }
 
 @media(min-width: 800px) {
