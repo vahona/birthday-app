@@ -9,8 +9,6 @@ const inputs = document.querySelector(".namefilter")
 
 //  Create an empty array to store the people.json
 
-
-
 let peopleStore = [];
 
 //  Fetch the file in the people.json
