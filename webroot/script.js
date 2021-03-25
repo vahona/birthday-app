@@ -452,7 +452,7 @@ addButon.addEventListener("click", function addNewPeople() {
     // e.preventDefault();
     const addNewOne = e.currentTarget;
     const newList = {
-      id: Date.now(),
+      id: Date.now().toString(),
       picture: popup.picture.value,
       lastName: popup.lastname.value,
       firstName: popup.firstname.value,

@@ -1,13 +1,125 @@
 
+/* DEFAULT */
+
 html {
     background-color: #D8EEFE;
     text-align: center;
     
 }
 
+body {
+    padding: 0;
+    margin: 0;
+    max-width: 1440px;
+    max-height: 2724px;
+    margin-inline-start: auto;
+    margin-inline-end: auto;
+
+}
+
 header {
     margin-inline-start: 18%;
 }
+
+
+/* TITLE FOR THE PAGE */
+
+
+.Title {
+    font-family: Rubik;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 64px;
+    line-height: 75.84px;
+    font-family: Rubik;
+    color: #094067;
+    text-align: start;
+    margin-inline-start: 5%;
+    margin-block-start: 63px;
+
+
+   
+}
+
+/*  SUB-HEADER CONTAIN FILTERING AND ADD   */
+
+
+.label__input__name {
+    font-family: Rubik;
+    font-weight: 500;
+    font-size: 18px;
+    width: 123px;
+    height: 21px;
+
+    font-family: Rubik;
+    font-style: normal;
+    line-height: 21px;
+    color: #094067;
+}
+
+
+.namefilter {
+    border: none;
+    color: #094067;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    width: 264px;
+    height: 50px;
+    background: #FFFFFE;
+    border-radius: 5px;
+    margin-right:  5.20%;
+   
+}
+
+.label__input__month {
+    width: 133.35px;
+    height: 21px;
+    left: 634px;
+    top: 181px;
+
+    font-family: Rubik;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 21px;
+
+    color: #094067;
+}
+
+
+.monthfilters {
+    width: 282px;
+    height: 50px;
+    left: 635px;
+    top: 215px;
+
+    background: #FFFFFE;
+    border-radius: 5px;
+    border: none;
+    margin-right: 5.20%;
+    padding-bottom: 0.5rem;
+    padding-top: 0.5rem;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+
+}
+
+
+/* IMAGE OF THE LIST */
+
+
+img {
+    border-radius: 10px;
+    margin-right: 1px;
+    width: 92px;
+    height: 94px;
+    margin-left: 13px;
+  
+    
+}
+
+
+/* NAME AND THE DATE */
 
 .edit {
     background-color: transparent;
@@ -46,63 +158,16 @@ header {
     /* margin-inline-start: 1rem; */
 }
 
-body {
-    padding: 0;
-    margin: 0;
-    max-width: 1440px;
-    max-height: 2724px;
-    margin-inline-start: auto;
-    margin-inline-end: auto;
-
-}
-
-.Title {
-    font-family: Rubik;
-    font-style: normal;
-    font-weight: 700;
-    font-size: 64px;
-    line-height: 75.84px;
-    font-family: Rubik;
-    color: #094067;
-    text-align: start;
-    margin-inline-start: 5%;
-    margin-block-start: 63px;
-
-
-   
-}
 
 
 
-.label__input__month {
-    width: 133.35px;
-    height: 21px;
-    left: 634px;
-    top: 181px;
-
-    font-family: Rubik;
-    font-style: normal;
-    font-weight: 500;
-    font-size: 18px;
-    line-height: 21px;
-
-    color: #094067;
-}
 
 
-.label__input__name {
-    font-family: Rubik;
-    font-weight: 500;
-    font-size: 18px;
-    width: 123px;
-    height: 21px;
 
-    font-family: Rubik;
-    font-style: normal;
-    line-height: 21px;
 
-    color: #094067;
-}
+
+
+
 
 
 nav {
@@ -147,16 +212,7 @@ li {
     height: 20px;
 }
 
-img {
-    border-radius: 10px;
-    /* flex-shrink: 0; */
-    margin-right: 1px;
-    width: 92px;
-    height: 94px;
-    margin-left: 13px;
-  
-    
-}
+
 
 
 
@@ -206,6 +262,12 @@ tr:hover {
     background-color: #D8EEFE;
     border: none;
     
+}
+
+.add_input, .add_input[type="date"]  {
+   width: 264px;
+   height: 25px;
+   margin-inline-start: 264px;
 }
 
 .delete {
@@ -294,6 +356,9 @@ tr:hover {
     padding-left: 2rem;
     padding-right: 2rem;
     cursor: pointer;
+    width: 158px;
+    height: 50px;
+    border: none;
     
 }
 
@@ -332,13 +397,22 @@ input[type = "date"] {
     border-radius: 10px;
     padding-left: 2rem;
     padding-right: 2rem;
+    width: 158px;
+    height: 50px;
+   
 }
 
 .container {
     position: relative;
     background-color: white;
     padding: 0.5rem;
-    width: 89%;
+    width: 1079px;
+    margin-block-end: 2rem;
+    margin-block-start: -4rem;
+    height: 500px;
+    margin-inline-start: 7%;
+    margin-inline-end: 10%;
+    
 }
 
 .close1 {
@@ -359,35 +433,9 @@ input[type = "date"] {
   
 }
 
-.namefilter {
-    border: none;
-    color: #094067;
-    margin-top: 1rem;
-    margin-bottom: 1rem;
-    width: 264px;
-    height: 50px;
-    background: #FFFFFE;
-    border-radius: 5px;
-    margin-right:  5.20%;
-    /* 5.20%; */
-}
 
-.monthfilters {
-    width: 282px;
-    height: 50px;
-    left: 635px;
-    top: 215px;
 
-    background: #FFFFFE;
-    border-radius: 5px;
-    border: none;
-    margin-right: 5.20%;
-    padding-bottom: 0.5rem;
-    padding-top: 0.5rem;
-    margin-top: 1rem;
-    margin-bottom: 1rem;
 
-}
 
 select {
     width: 132.34px;
@@ -458,11 +506,20 @@ select {
 
 .add__title {
     text-align: start;
-    margin-inline-start: 8%;
+    margin-inline-start: 264px;
+    width: 518px;
+    height: 57px;
+
+    font-family: Rubik;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 48px;
+    line-height: 57px;
+    color: #094067;
 }
 
 .add__label {
-    margin-inline-start: -12rem;
+    margin-inline-start: 4rem
 }
 
 
@@ -566,7 +623,7 @@ article {
 
    .button-sub {
       text-align: start;
-      margin-inline-start: 8%;
+      margin-inline-start: 270px;
    }
 
    .edit__label {
