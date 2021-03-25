@@ -26,7 +26,8 @@ fetchPeople();
 
 
 
-async function displayDatalist(peopleStore) {
+ function displayDatalist(peopleStore) {
+
   if (!peopleStore) {
     return
   }
@@ -126,7 +127,7 @@ async function displayDatalist(peopleStore) {
   const sortedPeople = html.sort((a, b) => ((a.MoreDay) - b.MoreDay));
   const displayList = sortedPeople.map((personList) => {
     return `
-             <li data-id= "${personList.id}" class="row row-container">
+             <li data-id= "${personList.id}" class=" row-container list-of-people">
                <div>
              <img src="${personList.picture}" alt="${personList.firstName + " " + personList.lastName
       }"/>
@@ -157,6 +158,7 @@ async function displayDatalist(peopleStore) {
 
 
   }).join("")
+
   list.innerHTML = displayList;
 }
 
@@ -172,17 +174,35 @@ function filterByNameMonth() {
   const filteredPeople = peopleStore.filter(person => person.firstName.toLowerCase().includes(nameValue.toLowerCase()) || person.lastName.toLowerCase().includes(nameValue.toLowerCase()));
 
   const selectvalue = month.value;
+
+  if(selectvalue.toString() === "empty") {
+    displayDatalist(filteredPeople) 
+    return
+  }
+
   const filterByMonthAndName = filteredPeople.filter(person => {
     const birthdayDate = new Date(person.birthday);
     const month = birthdayDate.getMonth().toString();
-    const condition = month === selectvalue.toString();
-    
+    const condition = month === selectvalue.toString() || selectvalue.toString() === "empty";
+    //  debugger
     return condition
-
   })
 
+
+
+  // const selectvalue = month.value;
+  // const filterByMonthAndName = filteredPeople.filter(person => {
+  //   const birthdayDate = new Date(person.birthday);
+  //   const month = birthdayDate.getMonth().toString();
+  //   const condition = month === selectvalue.toString() || selectvalue.toString() === "empty";
+  //   //  debugger
+  //   return condition
+// })
+
   
- displayDatalist(filterByMonthAndName)
+
+
+  displayDatalist(filterByMonthAndName)
 
 
 }
@@ -257,6 +277,7 @@ const editPersonpopup = async function (id) {
 
   //  Add event listener for the edit and save or not save the change
 
+ 
   popup.addEventListener("submit", (e) => {
     const saveChange = e.currentTarget;
     e.preventDefault();
@@ -267,13 +288,13 @@ const editPersonpopup = async function (id) {
     selectedPerson.birthday = popup.birthday1.value;
     selectedPerson.id = id;
     displayDatalist(peopleStore);
-    
+
     saveChange;
     const remove = (popup.style.display = "none");
     remove;
     document.body.style.overflow = "auto"
     list.dispatchEvent(new CustomEvent("itemUpdated"));
-    
+
   });
 
 
@@ -282,22 +303,22 @@ const editPersonpopup = async function (id) {
   //  Close the popup when the user does not want the change they have made in the person's information
 
 
-document.addEventListener(
-	"click",
-	function (event) {
-		if (
-			event.target.matches(".button__cancel") ||
-			event.target.closest(".popupedit") 
-		) {
-			closeModal();
-		}
-	},
-	false
-);
+  document.addEventListener(
+    "click",
+    function (event) {
+      if (
+        event.target.matches(".button__cancel") ||
+        event.target.closest(".popupedit")
+      ) {
+        closeModal();
+      }
+    },
+    false
+  );
 
-function closeModal() {
-	document.querySelector(".popupedit").style.display = "none";
-}
+  function closeModal() {
+    document.querySelector(".popupedit").style.display = "none";
+  }
 
 };
 
@@ -360,28 +381,33 @@ async function deletePersonPopup(id) {
     } else if (no || outside) {
       const remove = (popup.style.display = "none");
       remove;
-      
+
     }
   };
 
   window.addEventListener("click", confirm);
   list.dispatchEvent(new CustomEvent("itemUpdated"));
 }
+// const body = document.body;
+// function hideScroll() {
+//   body.style.overflowY = "hidden"
+// }
 
-
+// function showScroll() {
+//   body.style.overflowY = "visible"
+// }
 
 //  Adding the list
 
 
-addButon.addEventListener("click",  function addNewPeople () {
-   
+addButon.addEventListener("click", function addNewPeople() {
+
 
 
   const maxDate = new Date().toISOString().slice(0, 10)
 
   const popup = document.createElement("form");
   popup.classList.add("popupadd");
-  document.body.style.overflow = "hidden"
   popup.insertAdjacentHTML(
     "afterbegin",
 
@@ -407,7 +433,7 @@ addButon.addEventListener("click",  function addNewPeople () {
           <input class="add_input" type="date" max="${maxDate}" value="" id="birthday" required>
         </fieldset>
         <div class="button-sub">
-          <button class="add__button" type="submit">Add</button>
+          <button class="add__button" type="button">Add</button>
           <button class="close" type="button"> Close </button>
         </div>
         </div>
@@ -415,55 +441,63 @@ addButon.addEventListener("click",  function addNewPeople () {
   `
   );
 
-
-
-
+  // hideScroll()
   document.body.appendChild(popup);
   popup.classList.add("add");
 
-  popup.addEventListener("submit", (e) => {
-    e.preventDefault();
+  const addButon = document.querySelector(".add__button");
+  addButon.addEventListener("click", (e) => {
+    // e.preventDefault();
     const addNewOne = e.currentTarget;
     const newList = {
-      id: addNewOne.id,
-      picture: addNewOne.picture.value,
-      lastName: addNewOne.lastname.value,
-      firstName: addNewOne.firstname.value,
-      birthday: addNewOne.birthday.value,
+      id: Date.now(),
+      picture: popup.picture.value,
+      lastName: popup.lastname.value,
+      firstName: popup.firstname.value,
+      birthday: popup.birthday.value,
     };
-
-    console.log(addNewOne);
-    peopleStore.push(newList);
-    displayDatalist(peopleStore);
-    addNewOne.reset();
-    addNewPeople();
-    list.dispatchEvent(new CustomEvent("itemUpdated"));
-    //  editPersonpopup(result);
-
+    // showScroll()
     
-  });
+    peopleStore.push(newList);
+    debugger
+    displayDatalist(peopleStore);
+    popup.reset();
+    // addNewPeople();
+    list.dispatchEvent(new CustomEvent("itemUpdated"));
+    
 
+  });
 
 
 
   // Close the popup when the user does need to add a new person
 
-   popup.addEventListener("click", (e) => {
-    e.preventDefault()
 
-    const cancelTheChange = e.target.matches(".close") || !e.target.closest(".popupadd") || e.target.matches(".close2") || !e.target.closest(".add_input");
-    if (cancelTheChange) {
+  popup.addEventListener("click", (e) => {
+    // e.preventDefault()
+
+
+    const isCloseButton = e.target.matches(".close");
+    const isCloseX = e.target.matches(".close2");
+    // const isInputBar = e.target.matches(".add_input");
+    const isAddButton = e.target.matches(".add__button")
+    // || !e.target.closest(".popupadd")
+    const shouldClose = isCloseButton || isCloseX || isAddButton;
+
+    // debugger
+
+    if (shouldClose) {
 
       closeModal()
+      // showScroll()
 
     }
   },
-    false
+
   );
 
   function closeModal() {
     document.querySelector(".popupadd").style.display = "none";
-    document.body.style.overflow = "auto"
   }
 
 });
@@ -489,6 +523,7 @@ const recordeLocalStorage = () => {
 // restoreLocalStorage();
 
 function restoreLocalStorage() {
+  debugger
   localStorage.setItem("peopleStore", JSON.stringify(peopleStore));
 }
 

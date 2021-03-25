@@ -6,7 +6,7 @@ html {
 }
 
 header {
-    margin-inline-start: 14%;
+    margin-inline-start: 18%;
 }
 
 .edit {
@@ -14,7 +14,8 @@ header {
     border: transparent;
     margin-inline-end: 1rem;
     background-image: url('./assets/edit-icon.png');
-    background-size: 100%;
+    width: 25.15px;
+    height: 25.15px;
     background-repeat: no-repeat;
     padding: 1rem;
     margin-inline-start: 2rem;
@@ -28,6 +29,7 @@ header {
     font-weight: 500;
     font-size: 24px;
     line-height: 28px;
+
 
 }
 
@@ -51,7 +53,7 @@ body {
     color: #094067;
     text-align: start;
     margin-inline-start: 5%;
-    margin-block-start: 9.562rem;
+    margin-block-start: 63px;
 
 
    
@@ -107,14 +109,14 @@ nav {
 li {
     background-color: #ffff;
     margin-top: 1rem;
-    width: 80%;
+    /* width: 80%; */
     place-items: center;
-    /* display: flex; */
     gap: 5%;
     padding: 1rem 2rem;
     list-style: none;
     width: 59%;
-    margin-inline-start: 15%;
+    height: 139px;
+    margin-inline-start: 19%;
   
     
   
@@ -134,8 +136,12 @@ li {
 
 img {
     border-radius: 10px;
-    flex-shrink: 0;
-    /* width: 100%; */
+    /* flex-shrink: 0; */
+    margin-right: -39px;
+    width: 92px;
+    height: 94px;
+    margin-left: 13px;
+  
     
 }
 
@@ -195,7 +201,8 @@ tr:hover {
     border: transparent;
     margin-inline-end: 1rem;
     background-image: url('./assets/red-delete-icon.png');
-    background-size: 100%;
+    width: 27.5px;
+    height: 20px;
     background-repeat: no-repeat;
     padding: 1rem;
     margin-left: 1rem;
@@ -203,9 +210,9 @@ tr:hover {
 }
 
 .header__container {
-    justify-content: space-between;
     margin-inline-start: 5%;
     max-width: 67.46% ;
+    text-align: start;
     
 }
 
@@ -256,12 +263,13 @@ tr:hover {
     font-weight: 700;
 }
 
-.popupadd, popupedit {
+.popupadd {
     color: black;
-    margin-inline-start: auto;
+    /* margin-inline-start: auto; */
     margin-inline-end: auto;
     background-color:  rgba(255, 255, 255, 0.8);
     width: 100%;
+    
 
 }
 
@@ -330,8 +338,10 @@ input[type = "date"] {
 .name {
    font-family: Rubik;
    font-weight: 500; 
-   font-size: 32px;
-   line-height: 42.66px;
+   font-size: 36px;
+   line-height: 43px;
+   color: #000000; 
+  
 }
 
 .namefilter {
@@ -457,8 +467,9 @@ select {
     }
 
 
-    .header__container {
+    li {
         display: flex;
+        justify-content: space-between;
     }
 
     
@@ -553,11 +564,15 @@ article {
  
 }
 
-@media(min-width: 600px) {
-    li {
+@media(min-width: 1300px) {
+    .header__container {
         display: flex;
         justify-content: space-between;
     }
+}
+
+.list-of-people {
+    text-align: start;
 }
 
 

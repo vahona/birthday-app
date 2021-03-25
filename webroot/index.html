@@ -14,39 +14,43 @@
 			Birthday list
 		</h1>
 		<div class="header__container">
-		<form action="text">
+			<form action="text">
+				<label for="text">
+					<div class="label__input__name">
+						Filter by name
+					</div>
+					<input type="text" class="namefilter" id="input-name" placeholder="Type a name">
+				</label>
+			</form>
 			<label for="text">
-				<div class="label__input__name">
-				  Filter by name
-			    </div>
-			<input type="text" class="namefilter" id="input-name" placeholder="Type a name">
-		</label>
-		</form>
-		<label for="text">
-			<div class="label__input__month">
-			   filter by month
-		    </div>
-		<select name="pets" id="month-select" class="monthfilters">
-			<option value="">Select a month</option>
-			<option value= "0" > January </option>
-			<option value="1"> Febroary </option>
-			<option value="2"> March </option>
-			<option value="3"> April </option>
-			<option value="4"> May </option>
-			<option value="5"> June </option>
-			<option value="6"> July </option>
-			<option value="7"> August </option>
-			<option value="8"> September </option>
-			<option value="9"> october </option>
-			<option value="10"> November </option>
-			<option value="11"> December </option>
-		</select>
-	   </label>
-		<button class="add-people"> <p class="button__text">Add somebody </p></button>
+				<div class="label__input__month">
+					filter by month
+				</div>
+				<select name="pets" id="month-select" class="monthfilters">
+					<option value="empty">Select a month</option>
+					<option value="0"> January </option>
+					<option value="1"> Febroary </option>
+					<option value="2"> March </option>
+					<option value="3"> April </option>
+					<option value="4"> May </option>
+					<option value="5"> June </option>
+					<option value="6"> July </option>
+					<option value="7"> August </option>
+					<option value="8"> September </option>
+					<option value="9"> october </option>
+					<option value="10"> November </option>
+					<option value="11"> December </option>
+				</select>
+			</label>
+			<div>
+				<button class="add-people">
+					<p class="button__text">Add somebody </p>
+				</button>
+			</div>
 		</div>
 	</header>
 	<main class="main__page">
-		
+
 		<nav>
 			<div class="head">
 				<!-- <tr>
