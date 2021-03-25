@@ -33,6 +33,19 @@ header {
 
 }
 
+.birthday {
+    width: 278px;
+    height: 28px;
+}
+
+.days {
+    margin-left: 3rem;
+}
+
+.left-day {
+    /* margin-inline-start: 1rem; */
+}
+
 body {
     padding: 0;
     margin: 0;
@@ -137,7 +150,7 @@ li {
 img {
     border-radius: 10px;
     /* flex-shrink: 0; */
-    margin-right: -39px;
+    margin-right: 1px;
     width: 92px;
     height: 94px;
     margin-left: 13px;
@@ -341,6 +354,8 @@ input[type = "date"] {
    font-size: 36px;
    line-height: 43px;
    color: #000000; 
+   width: 369px;
+   height: 43px;
   
 }
 
@@ -469,7 +484,7 @@ select {
 
     li {
         display: flex;
-        justify-content: space-between;
+        
     }
 
     

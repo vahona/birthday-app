@@ -26,7 +26,7 @@ fetchPeople();
 
 
 
- function displayDatalist(peopleStore) {
+function displayDatalist(peopleStore) {
 
   if (!peopleStore) {
     return
@@ -138,12 +138,14 @@ fetchPeople();
                  </div>
                  <time class="birthday"> Turns <span class="age"> ${personList.age} </span> on ${personList.birthdayMonth} ${personList.DateNow} </time>
              </div>
-             <div class="days"> In
+             <div class="days">
+             <div class="left-day"> In
              ${personList.MoreDay <= 1
         ? personList.MoreDay + "" + "day"
         : personList.MoreDay + "days"
       } 
       ${personList.MoreDay === 0 ? "" + "🎂 Happy birthday 🍰 " : ""}
+            </div>
              <p class = "icons">
              <button class="edit" id="${personList.id}">
              </button>
@@ -175,8 +177,8 @@ function filterByNameMonth() {
 
   const selectvalue = month.value;
 
-  if(selectvalue.toString() === "empty") {
-    displayDatalist(filteredPeople) 
+  if (selectvalue.toString() === "empty") {
+    displayDatalist(filteredPeople)
     return
   }
 
@@ -197,9 +199,9 @@ function filterByNameMonth() {
   //   const condition = month === selectvalue.toString() || selectvalue.toString() === "empty";
   //   //  debugger
   //   return condition
-// })
+  // })
 
-  
+
 
 
   displayDatalist(filterByMonthAndName)
@@ -277,7 +279,7 @@ const editPersonpopup = async function (id) {
 
   //  Add event listener for the edit and save or not save the change
 
- 
+
   popup.addEventListener("submit", (e) => {
     const saveChange = e.currentTarget;
     e.preventDefault();
@@ -457,14 +459,14 @@ addButon.addEventListener("click", function addNewPeople() {
       birthday: popup.birthday.value,
     };
     // showScroll()
-    
+
     peopleStore.push(newList);
     debugger
     displayDatalist(peopleStore);
     popup.reset();
     // addNewPeople();
     list.dispatchEvent(new CustomEvent("itemUpdated"));
-    
+
 
   });
 
