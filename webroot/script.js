@@ -186,7 +186,7 @@ function filterByNameMonth() {
     const birthdayDate = new Date(person.birthday);
     const month = birthdayDate.getMonth().toString();
     const condition = month === selectvalue.toString() || selectvalue.toString() === "empty";
-    //  debugger
+    
     return condition
   })
 
@@ -461,7 +461,6 @@ addButon.addEventListener("click", function addNewPeople() {
     // showScroll()
 
     peopleStore.push(newList);
-    debugger
     displayDatalist(peopleStore);
     popup.reset();
     // addNewPeople();
@@ -486,7 +485,7 @@ addButon.addEventListener("click", function addNewPeople() {
     // || !e.target.closest(".popupadd")
     const shouldClose = isCloseButton || isCloseX || isAddButton;
 
-    // debugger
+   
 
     if (shouldClose) {
 
@@ -525,7 +524,7 @@ const recordeLocalStorage = () => {
 // restoreLocalStorage();
 
 function restoreLocalStorage() {
-  debugger
+
   localStorage.setItem("peopleStore", JSON.stringify(peopleStore));
 }
 

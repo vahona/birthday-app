@@ -50,7 +50,7 @@ header {
     font-size: 18px;
     width: 123px;
     height: 21px;
-
+    margin-bottom: -4px;
     font-family: Rubik;
     font-style: normal;
     line-height: 21px;
@@ -67,16 +67,28 @@ header {
     height: 50px;
     background: #FFFFFE;
     border-radius: 5px;
-    margin-right:  5.20%;
+    margin-right:  35px
    
+}
+
+.namefilter::placeholder {
+    width: 109px;
+    height: 21px;
+    padding-left: 20px;
+    font-family: Rubik;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 21px;
+    
+    color: #5F6C7B;
 }
 
 .label__input__month {
     width: 133.35px;
     height: 21px;
-    left: 634px;
-    top: 181px;
-
+   margin-bottom: -4px;
+    
     font-family: Rubik;
     font-style: normal;
     font-weight: 500;
@@ -101,7 +113,51 @@ header {
     padding-top: 0.5rem;
     margin-top: 1rem;
     margin-bottom: 1rem;
+    padding-left: 20.20px;
+    margin-right:  34px
+   
 
+}
+
+option {
+    padding-right: 23px;
+}
+
+
+.name {
+    font-family: Rubik;
+    font-weight: 500; 
+    font-size: 36px;
+    line-height: 43px;
+    color: #000000; 
+    width: 369px;
+    height: 43px;
+   
+ }
+
+
+ /* LIST CONTAINER */
+
+li {
+    background-color: #ffff;
+    margin-top: 31px;
+    place-items: center;
+    gap: 5%;
+    /* padding: 1rem 2rem; */
+    list-style: none;
+    width: 779px;
+    height: 139px;
+    margin-inline-start: 19%;  
+  
+}
+
+nav {
+    width: 100%;  
+}
+
+
+li:hover {
+    background-color: rgba(90, 187, 209, 0.5);
 }
 
 
@@ -113,13 +169,22 @@ img {
     margin-right: 1px;
     width: 92px;
     height: 94px;
-    margin-left: 13px;
-  
-    
+    margin-left: 13px; 
+
 }
 
 
 /* NAME AND THE DATE */
+
+.name-birthday {
+    justify-content: start;
+}
+
+
+
+
+
+/* BUTTON DELETE EDIT */
 
 .edit {
     background-color: transparent;
@@ -133,6 +198,24 @@ img {
     margin-inline-start: 2rem;
 
 }
+
+
+.close {
+    cursor: pointer;
+}
+
+
+.icons {
+    display: flex;
+}
+
+
+.icons__image {
+    width: 20px;
+    height: 20px;
+}
+
+/* BIRTHDAY DAY  */
 
 .birthday, .days {
     color: #5F6C7B;;
@@ -161,65 +244,12 @@ img {
 
 
 
-
-
-
-
-
-
-
-
-
-nav {
-    width: 100%;
-    
-}
-
 .head {
     background-color: white;
     width: 100%;
 }
 
-.close {
-    cursor: pointer;
-}
-
-li {
-    background-color: #ffff;
-    margin-top: 1rem;
-    /* width: 80%; */
-    place-items: center;
-    gap: 5%;
-    padding: 1rem 2rem;
-    list-style: none;
-    width: 59%;
-    height: 139px;
-    margin-inline-start: 19%;
-  
-    
-  
-}
-
-.icons {
-    display: flex;
-    /* margin: 2rem; */
-    
-    
-}
-
-.icons__image {
-    width: 20px;
-    height: 20px;
-}
-
-
-
-
-
-
-tr:hover {
-    background-color: rgba(90, 187, 209, 0.5);
-}
+/* POPUP BUTTON */
 
 .confirm_buttom {
     background-color: #EF4565;
@@ -253,6 +283,20 @@ tr:hover {
 
 }
 
+.delete {
+
+    background-color: transparent;
+    border: transparent;
+    margin-inline-end: 1rem;
+    background-image: url('./assets/red-delete-icon.png');
+    width: 27.5px;
+    height: 20px;
+    background-repeat: no-repeat;
+    padding: 1rem;
+    margin-left: 1rem;
+
+}
+
 
 
 .edit-input, .add_input {
@@ -270,19 +314,7 @@ tr:hover {
    margin-inline-start: 264px;
 }
 
-.delete {
 
-    background-color: transparent;
-    border: transparent;
-    margin-inline-end: 1rem;
-    background-image: url('./assets/red-delete-icon.png');
-    width: 27.5px;
-    height: 20px;
-    background-repeat: no-repeat;
-    padding: 1rem;
-    margin-left: 1rem;
-
-}
 
 .header__container {
     margin-inline-start: 5%;
@@ -422,16 +454,7 @@ input[type = "date"] {
     border: none;
 }
 
-.name {
-   font-family: Rubik;
-   font-weight: 500; 
-   font-size: 36px;
-   line-height: 43px;
-   color: #000000; 
-   width: 369px;
-   height: 43px;
-  
-}
+
 
 
 
@@ -468,19 +491,7 @@ select {
     color: #094067;
 }
 
-.namefilter::placeholder {
-    width: 109px;
-    height: 21px;
-    left: 356px;
-    top: 230px;
-    font-family: Rubik;
-    font-style: normal;
-    font-weight: 500;
-    font-size: 18px;
-    line-height: 21px;
 
-    color: #5F6C7B;
-}
 
 .TitleEdite {
     font-family: Rubik;
@@ -600,9 +611,6 @@ article {
     background-color: rgba(255, 255, 255, 0.8);
 }
 
-.name-birthday {
-    justify-content: start;
-}
 
 @media(min-width: 800px) {
     fieldset {
