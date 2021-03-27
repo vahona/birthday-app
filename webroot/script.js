@@ -248,6 +248,7 @@ const editPersonpopup = async function (id) {
     ` <div class="container">
        <button class="close1">X</button>
        <h2 class="TitleEdite"> Edit Sherwood Keeling </h2>
+       <div class="second__container">
         <fieldset style="border: none;">
          <label class="edit__label" for="picture1">Url image</label><br>
           <input class="edit-input" type="url" value="${selectedPerson.picture}" id="picture1">
@@ -267,6 +268,7 @@ const editPersonpopup = async function (id) {
         <div class="button-sub">
           <button class="button__save" type="submit">Save changes</button>
           <button class="button__cancel" type="button">Cancel</button>
+        </div>
         </div>
         </div>
         `

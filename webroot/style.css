@@ -336,7 +336,7 @@ img {
     border: none;
     margin-inline-start: 225px;
     width: 264px;
-    height: 50px;
+    height: 35px;
     border-radius: 5px;
     
 }
@@ -523,9 +523,6 @@ input {
     margin-inline-start: -160px;
  }
 
- input[type = "date"] {
-    margin-inline-start: 240px ;
-}
 
 select {
     width: 132.34px;
@@ -755,7 +752,7 @@ img {
     
 }
 
-.edit-input, .add_input {
+.add_input {
     margin-inline-start: -50px;
   
     
@@ -800,6 +797,27 @@ img {
   
  
  }
+
+ .TitleEdite {
+       /* padding-top: 20px; */
+       margin-top: 3%;
+       margin-inline-start: 16px;
+       width: 90%;
+       margin-bottom: 8px;
+ }
+
+ .edit-input {
+     margin-inline-start: -100px;
+     /* width: 80%; */
+ }
+
+ .edit_input[type="date"] {
+    margin-inline-start: 100px;
+}
+
+/* .second__container {
+    margin-inline-start: -300px;
+} */
 
 
 }
