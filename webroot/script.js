@@ -500,6 +500,7 @@ addButon.addEventListener("click", function addNewPeople() {
 
   function closeModal() {
     document.querySelector(".popupadd").style.display = "none";
+    document.body.style.overflow = "visible"
   }
 
 });

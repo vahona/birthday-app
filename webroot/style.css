@@ -476,6 +476,22 @@ input {
    
 }
 
+.close2 {
+    width: 29px;
+    height: 29px;
+    text-transform: capitalize;
+    font-size: 29px;
+    border: 2px solid #094067;
+
+    background-color: transparent;
+    border: none;
+    top: 53.5px;
+    right: 63.5px;
+    position: absolute
+
+
+}
+
 .container {
     position: relative;
     background-color: white;
@@ -627,12 +643,7 @@ article {
     
 }
 
-.close2 {
-    background-color: transparent;
-    border: none;
-    right: 1rem;
-    position: absolute
-}
+
 
 .popupedit {
     background-color: rgba(255, 255, 255, 0.8);
@@ -649,18 +660,6 @@ article {
 /*   MEDIA QUERRIES EACH BREAK POINT     */
 
 @media(min-width: 600px) {
-    
-
-    .add-people {
-        padding-right: 2rem;
-        border-radius: 5px;
-        color: white;
-        background-color:#EF4565;
-        border: none;
-        margin-bottom: 1rem;
-        margin-top: 2rem;
-      
-    }
 
 
     li {
@@ -748,6 +747,60 @@ img {
     margin-inline-start: -32px;
     padding-bottom: 24px;
 }
+
+.container {
+    width: 85%;
+    margin-top: -40px;
+    
+    
+}
+
+.edit-input, .add_input {
+    margin-inline-start: -50px;
+  
+    
+}
+
+.add__title {
+    padding-top: 20px;
+    margin-top: -5%;
+    margin-inline-start: 16px;
+    width: 90%;
+    margin-bottom: 100px;
+    
+    
+}
+
+.popupadd {
+    margin-inline-start: -24px;
+    
+}
+
+.button-sub {
+    margin-inline-start: 16px;
+ }
+
+ .close {
+     margin-top: 16px;
+ }
+
+ .add_input[type="date"] {
+    margin-inline-start: -55px;
+}
+
+.add__label {
+    margin-inline-start: -235px
+}
+
+
+.close2 {
+    top: 16px;
+    right: 16px;
+    position: absolute;
+  
+ 
+ }
+
 
 }
 
