@@ -261,11 +261,11 @@ const editPersonpopup = async function (id) {
           <input class="edit-input" type="text" value="${selectedPerson.firstName}" id="firstname1">
         </fieldset style="border: none;">
         <fieldset style="border: none;">
-          <label  for="birthday1">Birthday</label><br>
-          <input class="edit-input" type="date" max="${maxDate}" value="${formatedDate}" id="birthday1">
+          <label class="label__date"  for="birthday1">Birthday</label><br>
+          <input class="edit-input input__date" type="date" max="${maxDate}" value="${formatedDate}" id="birthday1">
         </fieldset>
         <div class="button-sub">
-          <button class="button__save" type="submit">Save</button>
+          <button class="button__save" type="submit">Save changes</button>
           <button class="button__cancel" type="button">Cancel</button>
         </div>
         </div>
@@ -410,6 +410,7 @@ addButon.addEventListener("click", function addNewPeople() {
 
   const popup = document.createElement("form");
   popup.classList.add("popupadd");
+  document.body.style.overflow = "hidden"
   popup.insertAdjacentHTML(
     "afterbegin",
 

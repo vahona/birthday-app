@@ -169,7 +169,7 @@ img {
     margin-right: 1px;
     width: 92px;
     height: 94px;
-    margin-left: 13px; 
+    margin-left: 43px; 
 
 }
 
@@ -200,6 +200,8 @@ img {
 }
 
 
+
+
 .close {
     cursor: pointer;
 }
@@ -214,6 +216,10 @@ img {
     width: 20px;
     height: 20px;
 }
+
+/* BUTTON OF DELETE */
+
+
 
 /* BIRTHDAY DAY  */
 
@@ -252,15 +258,27 @@ img {
 /* POPUP BUTTON */
 
 .confirm_buttom {
+    border-radius: 5px;
+    padding: 0.5rem;
+    padding-left: 2rem;
+    padding-right: 2rem;
+    cursor: pointer;
+    width: 158px;
+    height: 50px;
+}
+
+
+.yes__sure {
     background-color: #EF4565;
     color: white;
-    padding: 0.5rem;
-    padding-left: 1rem;
-    padding-right: 1rem;
-    border-radius: 5px;
-    cursor: pointer;
     border: none;
-}
+ }
+ 
+ .no__want {
+     background-color: white;
+     color:  #EF4565; 
+   
+ }
 
 .button__save {
    background-color: #EF4565;
@@ -270,6 +288,10 @@ img {
    padding-right: 2rem;
    color: white;
    cursor: pointer;
+   width: 158px;
+   height: 50px;
+   border: none;
+   margin-right: 20px;
 }
 
 .button__cancel {
@@ -279,8 +301,15 @@ img {
    padding-left: 2rem;
    padding-right: 2rem;
    cursor: pointer;
+   width: 158px;
+   height: 50px;
+   
    
 
+}
+
+.input__date {
+    margin-right: 200px;
 }
 
 .delete {
@@ -302,16 +331,19 @@ img {
 .edit-input, .add_input {
     padding: 0.5rem;
     opacity: 1;
-    width: 70%;
     background-color: #D8EEFE;
     border: none;
+    margin-inline-start: 225px;
+    width: 264px;
+    height: 50px;
+    border-radius: 5px;
     
 }
 
 .add_input, .add_input[type="date"]  {
    width: 264px;
    height: 25px;
-   margin-inline-start: 264px;
+
 }
 
 
@@ -411,9 +443,7 @@ input {
     max-width: 100%;
 }
 
-input[type = "date"] {
-    width: 70%;
-}
+
 
 
 .button__cancel {
@@ -440,8 +470,8 @@ input[type = "date"] {
     padding: 0.5rem;
     width: 1079px;
     margin-block-end: 2rem;
-    margin-block-start: -4rem;
-    height: 500px;
+    margin-block-start: -8rem;
+    height: 751px;
     margin-inline-start: 7%;
     margin-inline-end: 10%;
     
@@ -456,9 +486,18 @@ input[type = "date"] {
 
 
 
+.edit__label {
+    text-align: start;
+    margin-inline-start: 40px;
+ }
 
+ .label__date {
+    margin-inline-start: -160px;
+ }
 
-
+ input[type = "date"] {
+    margin-inline-start: 240px ;
+}
 
 select {
     width: 132.34px;
@@ -500,6 +539,7 @@ select {
     font-size: 48px;
     line-height: 57px;
     color: #094067;
+    margin-inline-start: 255px;
 }
 
 .popupedit, .popupadd {
@@ -535,34 +575,10 @@ select {
 
 
 
-@media(min-width: 600px) {
-    
 
-    .add-people {
-        padding-right: 2rem;
-        border-radius: 5px;
-        color: white;
-        background-color:#EF4565;
-        border: none;
-        margin-bottom: 1rem;
-        margin-top: 2rem;
-      
-    }
-
-
-    li {
-        display: flex;
-        
-    }
-
-    
-
-    
-}
 
 
 fieldset {
-    width: 90%;
     font-family: Rubik;
     font-style: normal;
     font-weight: 500;
@@ -611,6 +627,39 @@ article {
     background-color: rgba(255, 255, 255, 0.8);
 }
 
+.button-sub {
+    text-align: start;
+    margin-inline-start: 254px;
+ }
+
+
+/*   MEDIA QUERRIES EACH BREAK POINT     */
+
+@media(min-width: 600px) {
+    
+
+    .add-people {
+        padding-right: 2rem;
+        border-radius: 5px;
+        color: white;
+        background-color:#EF4565;
+        border: none;
+        margin-bottom: 1rem;
+        margin-top: 2rem;
+      
+    }
+
+
+    li {
+        display: flex;
+        
+    }
+
+    
+
+    
+}
+
 
 @media(min-width: 800px) {
     fieldset {
@@ -626,25 +675,14 @@ article {
 
    .TitleEdite {
        text-align: start;
-       margin-inline-start: 8%;
+      
    }
-
-   .button-sub {
-      text-align: start;
-      margin-inline-start: 270px;
-   }
-
-   .edit__label {
-      text-align: start;
-      margin-inline-start: -55%;
-   }
-
  
 
  
 }
 
-@media(min-width: 1300px) {
+@media(min-width: 1020px) {
     .header__container {
         display: flex;
         justify-content: space-between;
