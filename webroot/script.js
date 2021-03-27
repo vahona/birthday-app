@@ -136,7 +136,7 @@ function displayDatalist(peopleStore) {
                 <div class="name">
                    ${personList.lastName} - ${personList.firstName}
                  </div>
-                 <time class="birthday"> Turns <span class="age"> ${personList.age} </span> on ${personList.birthdayMonth} ${personList.DateNow} </time>
+                 <time class="birthday"> Turns <span class="age"> ${personList.age} </span> on ${personList.birthdayMonth} <span> ${personList.DateNow} </span> </time>
              </div>
              <div class="days">
              <div class="left-day"> In

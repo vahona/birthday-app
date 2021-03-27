@@ -355,7 +355,9 @@ img {
     margin-inline-start: 220px;
 }
 
-
+.add__submit {
+    margin-block-start: 40px;
+}
 
 .header__container {
     margin-inline-start: 5%;
@@ -688,6 +690,8 @@ article {
        text-align: start;
       
    }
+
+  
  
 
  
@@ -704,7 +708,48 @@ article {
     text-align: start;
 }
 
+@media(max-width: 800px) {
 
+header {
+    margin-inline-start: 2%;
+}
+
+li {
+    margin-inline-start: 2%;
+    height: 80%;
+    width: 100%; 
+}
+
+img {
+    margin-top: 24px
+}
+
+.name {
+    margin-inline-start: 32px;
+    margin-top: 24px;
+    width: 90%;
+    height: 80%;
+}
+
+.span {
+    margin-inline-start: 24px;
+}
+
+.birthday {
+    margin-inline-start: 32px;
+    margin-top: 32px;
+}
+
+.days {
+    margin-inline-start: 34px;
+}
+
+.icons {
+    margin-inline-start: -32px;
+    padding-bottom: 24px;
+}
+
+}
 
 
 
