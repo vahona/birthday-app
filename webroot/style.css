@@ -312,6 +312,7 @@ img {
     margin-right: 200px;
 }
 
+
 .delete {
 
     background-color: transparent;
@@ -344,6 +345,14 @@ img {
    width: 264px;
    height: 25px;
 
+}
+
+.date__label__add {
+    margin-right: 20px;
+}
+
+.add_input[type="date"] {
+    margin-inline-start: 220px;
 }
 
 
@@ -423,6 +432,7 @@ img {
     width: 158px;
     height: 50px;
     border: none;
+    margin-right: 20px;
     
 }
 
@@ -570,9 +580,8 @@ select {
 }
 
 .add__label {
-    margin-inline-start: 4rem
+    margin-inline-start: 40px
 }
-
 
 
 
@@ -631,6 +640,8 @@ article {
     text-align: start;
     margin-inline-start: 254px;
  }
+
+ 
 
 
 /*   MEDIA QUERRIES EACH BREAK POINT     */

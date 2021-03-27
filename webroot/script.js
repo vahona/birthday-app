@@ -432,10 +432,10 @@ addButon.addEventListener("click", function addNewPeople() {
           <input class="add_input" type="text" value="" id="firstname" required>
         </fieldset style="border: none;">
         <fieldset style="border: none;">
-          <label class="add__label" for="birthdaya">Birthday</label><br>
-          <input class="add_input" type="date" max="${maxDate}" value="" id="birthday" required>
+          <label class="add__label date__label__add" for="birthdaya">Birthday</label><br>
+          <input class="add_input add__date" type="date" max="${maxDate}" value="" id="birthday" required>
         </fieldset>
-        <div class="button-sub">
+        <div class="button-sub add__submit">
           <button class="add__button" type="button">Add</button>
           <button class="close" type="button"> Close </button>
         </div>
