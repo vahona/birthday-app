@@ -31,7 +31,6 @@ header {
     font-weight: 700;
     font-size: 64px;
     line-height: 75.84px;
-    font-family: Rubik;
     color: #094067;
     text-align: start;
     margin-inline-start: 5%;
@@ -217,6 +216,17 @@ img {
     height: 20px;
 }
 
+.deleteparagraph {
+    font-family: Rubik;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 24px;
+}
+
+.yes__sure {
+    margin-right: 24px;
+}
+
 /* BUTTON OF DELETE */
 
 
@@ -308,9 +318,9 @@ img {
 
 }
 
-.input__date {
+/* .input__date {
     margin-right: 200px;
-}
+} */
 
 
 .delete {
@@ -388,8 +398,8 @@ img {
     line-height: 21px;
     font-family: Rubik;
     position: relative;
-  
-
+   
+    
 }
 
 .button__text {
@@ -520,7 +530,7 @@ input {
  }
 
  .label__date {
-    margin-inline-start: -160px;
+    margin-inline-start: 4%;
  }
 
 
@@ -634,7 +644,7 @@ article {
     text-align: center;
     left: 20%;
     position: fixed;
-    top: 50%;
+    top: 20%;
     font-family: RubiK;
     border-radius: 5px;
     
@@ -688,7 +698,11 @@ article {
    }
 
   
- 
+   .add-people {
+    top: 32px;
+    position: relative;
+
+}
 
  
 }
@@ -748,6 +762,7 @@ img {
 .container {
     width: 85%;
     margin-top: -40px;
+    margin-inline-start: 5px;
     
     
 }
@@ -815,13 +830,49 @@ img {
     margin-inline-start: 100px;
 }
 
+.edit__label {
+    margin-inline-start: -70%;
+}
+
+.button__save {
+  margin-top: 16px;
+  margin-bottom: 24px;
+}
+
+.button__cancel {
+    margin-top: 16px;
+    margin-bottom: 24px;
+}
+
+
 /* .second__container {
     margin-inline-start: -300px;
 } */
 
+.label__date {
+    margin-inline-start: -75%;
+}
+
+.no__want {
+    margin-top: 24px;
+    margin-inline-start: -16px;
+}
+
+.confirme {
+  
+    width: 50%;
+ 
+    left: 10%;
+    
+}
 
 }
 
+@media(max-width: 600px) {
+    .edit-input {
+        width: 65%;
+    }
+}
 
 
 
