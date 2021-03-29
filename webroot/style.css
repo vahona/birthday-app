@@ -56,6 +56,11 @@ header {
     color: #094067;
 }
 
+select::-ms-expand {
+    margin-right: 16px;
+    display: none;
+}
+
 
 .namefilter {
     border: none;
@@ -148,6 +153,11 @@ li {
     height: 139px;
     margin-inline-start: 19%;  
   
+}
+
+.left-day {
+    margin-top: 10px;
+    margin-right: -17px;
 }
 
 nav {
@@ -254,8 +264,12 @@ img {
 }
 
 .left-day {
-    /* margin-inline-start: 1rem; */
+    margin-inline-start: 13px;
 }
+
+/* .icons {
+    margin-top: 48px;
+} */
 
 
 
@@ -336,6 +350,19 @@ img {
     margin-left: 1rem;
 
 }
+
+
+.edit-input[value^=""] {
+    width: 88px;
+    height: 21px;
+    font-family: Rubik;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 21px;
+    color: #094067;
+}
+
 
 
 
@@ -461,12 +488,9 @@ img {
     display: none;
 }
 
-input {
+/* input {
     max-width: 100%;
-}
-
-
-
+} */
 
 .button__cancel {
     text-decoration: none;
@@ -492,7 +516,6 @@ input {
     text-transform: capitalize;
     font-size: 29px;
     border: 2px solid #094067;
-
     background-color: transparent;
     border: none;
     top: 53.5px;
@@ -522,6 +545,20 @@ input {
     border: none;
 }
 
+.close1 {
+    width: 29px;
+    height: 29px;
+    text-transform: capitalize;
+    font-size: 29px;
+    border: 2px solid #094067;
+    background-color: transparent;
+    border: none;
+    top: 53.5px;
+    right: 63.5px;
+    position: absolute
+
+
+}
 
 
 .edit__label {
@@ -859,9 +896,7 @@ img {
 }
 
 .confirme {
-  
     width: 50%;
- 
     left: 10%;
     
 }

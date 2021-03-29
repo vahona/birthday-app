@@ -48,7 +48,7 @@ function displayDatalist(peopleStore) {
         }
       }
 
-
+      // Converting date 
 
       const DateNow = new Date(person.birthday);
 
@@ -77,6 +77,9 @@ function displayDatalist(peopleStore) {
       const Alldate = `${DateNow}${nthDate(DateNow)} / ${month + 1} / ${year}`;
       const age = yearForNow - year + 1;
       const birthdayMonth = getMonthName(month);
+
+
+
 
       // Variable to store the day
 
@@ -123,6 +126,9 @@ function displayDatalist(peopleStore) {
       }
       return persons;
     })
+
+
+
 
   const sortedPeople = html.sort((a, b) => ((a.MoreDay) - b.MoreDay));
   const displayList = sortedPeople.map((personList) => {
@@ -191,7 +197,6 @@ function filterByNameMonth() {
   })
 
 
-
   // const selectvalue = month.value;
   // const filterByMonthAndName = filteredPeople.filter(person => {
   //   const birthdayDate = new Date(person.birthday);
@@ -200,9 +205,6 @@ function filterByNameMonth() {
   //   //  debugger
   //   return condition
   // })
-
-
-
 
   displayDatalist(filterByMonthAndName)
 
@@ -213,8 +215,6 @@ function filterByNameMonth() {
 // Filtering the list by first name and the lastname
 
 const nameValue = nameInput.value
-
-
 inputs.addEventListener("input", e => {
   e.preventDefault()
   filterByNameMonth()
@@ -229,15 +229,13 @@ month.addEventListener("change", function () {
 })
 
 
+
 //  Popup for editing people
 
 const editPersonpopup = async function (id) {
 
-
   const selectedPerson = peopleStore.find((person) => person.id === id);
-
   const formatedDate = new Date(selectedPerson.birthday).toISOString().slice(0, 10)
-
 
   const maxDate = new Date().toISOString().slice(0, 10)
   const popup = document.createElement("form");
@@ -392,14 +390,7 @@ async function deletePersonPopup(id) {
   window.addEventListener("click", confirm);
   list.dispatchEvent(new CustomEvent("itemUpdated"));
 }
-// const body = document.body;
-// function hideScroll() {
-//   body.style.overflowY = "hidden"
-// }
 
-// function showScroll() {
-//   body.style.overflowY = "visible"
-// }
 
 //  Adding the list
 
@@ -461,7 +452,7 @@ addButon.addEventListener("click", function addNewPeople() {
       firstName: popup.firstname.value,
       birthday: popup.birthday.value,
     };
-    // showScroll()
+
 
     peopleStore.push(newList);
     displayDatalist(peopleStore);
@@ -472,14 +463,11 @@ addButon.addEventListener("click", function addNewPeople() {
 
   });
 
-
-
   // Close the popup when the user does need to add a new person
 
 
   popup.addEventListener("click", (e) => {
     // e.preventDefault()
-
 
     const isCloseButton = e.target.matches(".close");
     const isCloseX = e.target.matches(".close2");
@@ -488,12 +476,8 @@ addButon.addEventListener("click", function addNewPeople() {
     // || !e.target.closest(".popupadd")
     const shouldClose = isCloseButton || isCloseX || isAddButton;
 
-   
-
     if (shouldClose) {
-
       closeModal()
-      // showScroll()
 
     }
   },
@@ -531,8 +515,6 @@ function restoreLocalStorage() {
 
   localStorage.setItem("peopleStore", JSON.stringify(peopleStore));
 }
-
-
 
 
 
