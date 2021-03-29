@@ -84,7 +84,6 @@ select::-ms-expand {
     font-weight: 500;
     font-size: 18px;
     line-height: 21px;
-    
     color: #5F6C7B;
 }
 
@@ -122,6 +121,7 @@ select::-ms-expand {
    
 
 }
+
 
 option {
     padding-right: 23px;
@@ -271,7 +271,9 @@ img {
     margin-top: 48px;
 } */
 
-
+.monthfilters {
+    -webkit-appearance: none;
+}
 
 
 .head {
@@ -698,7 +700,7 @@ article {
     margin-inline-start: 254px;
  }
 
- 
+
 
 
 /*   MEDIA QUERRIES EACH BREAK POINT     */

@@ -265,7 +265,7 @@ const editPersonpopup = async function (id) {
         </fieldset>
         <div class="button-sub">
           <button class="button__save" type="submit">Save changes</button>
-          <button class="button__cancel" type="button">Cancel</button>
+          <button class="button__cancel cancel" type="button">Cancel</button>
         </div>
         </div>
         </div>
@@ -310,7 +310,7 @@ const editPersonpopup = async function (id) {
     function (event) {
       if (
         event.target.matches(".button__cancel") ||
-        event.target.closest(".popupedit")
+        event.target.matches(".popupedit") ||  event.target.matches(".close1")
       ) {
         closeModal();
       }
@@ -404,13 +404,12 @@ addButon.addEventListener("click", function addNewPeople() {
   const popup = document.createElement("form");
   popup.classList.add("popupadd");
   document.body.style.overflow = "hidden"
-  popup.insertAdjacentHTML(
-    "afterbegin",
+  popup.insertAdjacentHTML(    "afterbegin",
 
     // ` <div class = "popup">
     `
       <div class="container">
-        <button class="close2">X</button>
+        <button class="close2" type="button" name="close">X</button>
        <h2 class="add__title"> Add new person </h2>
         <fieldset style="border: none;">
           <label class="add__label" for="picture">Url image</label><br>
@@ -430,7 +429,7 @@ addButon.addEventListener("click", function addNewPeople() {
         </fieldset>
         <div class="button-sub add__submit">
           <button class="add__button" type="button">Add</button>
-          <button class="close" type="button"> Close </button>
+          <button class="close" type="button" name="close"> Close </button>
         </div>
         </div>
         </div>
@@ -439,7 +438,7 @@ addButon.addEventListener("click", function addNewPeople() {
 
   // hideScroll()
   document.body.appendChild(popup);
-  popup.classList.add("add");
+  // popup.classList.add("add");
 
   const addButon = document.querySelector(".add__button");
   addButon.addEventListener("click", (e) => {
@@ -459,8 +458,6 @@ addButon.addEventListener("click", function addNewPeople() {
     popup.reset();
     // addNewPeople();
     list.dispatchEvent(new CustomEvent("itemUpdated"));
-
-
   });
 
   // Close the popup when the user does need to add a new person
@@ -470,12 +467,11 @@ addButon.addEventListener("click", function addNewPeople() {
     // e.preventDefault()
 
     const isCloseButton = e.target.matches(".close");
-    const isCloseX = e.target.matches(".close2");
+    const isCloseX = e.target.closest(".close2");
     // const isInputBar = e.target.matches(".add_input");
-    const isAddButton = e.target.matches(".add__button")
+    const isAddButton = e.target.closest(".add__button")
     // || !e.target.closest(".popupadd")
     const shouldClose = isCloseButton || isCloseX || isAddButton;
-
     if (shouldClose) {
       closeModal()
 
@@ -485,7 +481,8 @@ addButon.addEventListener("click", function addNewPeople() {
   );
 
   function closeModal() {
-    document.querySelector(".popupadd").style.display = "none";
+    console.log(popup)
+  popup.classList.remove("add");
     document.body.style.overflow = "visible"
   }
 
