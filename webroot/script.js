@@ -152,14 +152,12 @@ function displayDatalist(peopleStore) {
       } 
       ${personList.MoreDay === 0 ? "" + "🎂 Happy birthday 🍰 " : ""}
             </div>
-             <p class = "icons">
-             <button class="edit" id="${personList.id}">
-             </button>
-             <button class="delete" id="${personList.id}">
-             </button>
-           </p>
+              <p class = "icons">
+                <button class="edit" id="${personList.id}"></button>  
+                <button class="delete" id="${personList.id}"></button>
+              </p>
                 
-             </div>
+            </div>
 
            </li>
      `
@@ -243,7 +241,7 @@ const editPersonpopup = async function (id) {
   document.body.style.overflow = "hidden"
   popup.insertAdjacentHTML(
     "afterbegin",
-    ` <div class="container">
+    ` <div class="container__edit">
        <button class="close1">X</button>
        <h2 class="TitleEdite"> Edit Sherwood Keeling </h2>
        <div class="second__container">
@@ -408,7 +406,7 @@ addButon.addEventListener("click", function addNewPeople() {
 
     // ` <div class = "popup">
     `
-      <div class="container">
+      <div class="container__add">
         <button class="close2" type="button" name="close">X</button>
        <h2 class="add__title"> Add new person </h2>
         <fieldset style="border: none;">
