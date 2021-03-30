@@ -14,10 +14,12 @@ let peopleStore = [];
 //  Fetch the file in the people.json
 async function fetchPeople() {
   const response = await fetch(dataurl);
-  const data = await response.json();
+  // const data = await response.json();
+  const data = JSON.parse(localStorage.getItem("peopleStore"))
   peopleStore = [...data];
   displayDatalist(peopleStore);
-
+  const ListOfBirthday = peopleStore && data.length ? data : await res.json();
+  console.log(ListOfBirthday);
   return data;
 }
 
@@ -142,10 +144,10 @@ function displayDatalist(peopleStore) {
                 <div class="name">
                    ${personList.lastName} - ${personList.firstName}
                  </div>
-                 <time class="birthday"> Turns <span class="age"> ${personList.age} </span> on ${personList.birthdayMonth} <span> ${personList.DateNow} </span> </time>
+                 <time class="birthday"> Turns <span class="age"> ${personList.age} </span> on  ${personList.birthdayMonth} <span> ${personList.DateNow} </span> </time>
              </div>
              <div class="days">
-             <div class="left-day"> In
+             <div class="left-day"> In 
              ${personList.MoreDay <= 1
         ? personList.MoreDay + "" + "day"
         : personList.MoreDay + "days"
@@ -161,11 +163,10 @@ function displayDatalist(peopleStore) {
 
            </li>
      `
-
-
   }).join("")
 
   list.innerHTML = displayList;
+  list.dispatchEvent(new CustomEvent("itemUpdated"));
 }
 
 displayDatalist();
@@ -262,7 +263,7 @@ const editPersonpopup = async function (id) {
           <input class="edit-input input__date" type="date" max="${maxDate}" value="${formatedDate}" id="birthday1">
         </fieldset>
         <div class="button-sub">
-          <button class="button__save" type="submit">Save changes</button>
+          <button class="button__save" type="submit"> Save changes</button>
           <button class="button__cancel cancel" type="button">Cancel</button>
         </div>
         </div>
@@ -323,11 +324,6 @@ const editPersonpopup = async function (id) {
 };
 
 
-
-
-
-
-
 //  Function for deleting the birthday
 
 async function deletePersonPopup(id) {
@@ -353,8 +349,7 @@ async function deletePersonPopup(id) {
 
   document.body.appendChild(popup);
   popup.classList.add(".confirm");
-
-
+  list.dispatchEvent(new CustomEvent("itemUpdated"));
 
 
 
@@ -386,7 +381,7 @@ async function deletePersonPopup(id) {
   };
 
   window.addEventListener("click", confirm);
-  list.dispatchEvent(new CustomEvent("itemUpdated"));
+  
 }
 
 
@@ -454,8 +449,7 @@ addButon.addEventListener("click", function addNewPeople() {
     peopleStore.push(newList);
     displayDatalist(peopleStore);
     popup.reset();
-    // addNewPeople();
-    list.dispatchEvent(new CustomEvent("itemUpdated"));
+  
   });
 
   // Close the popup when the user does need to add a new person
@@ -488,29 +482,35 @@ addButon.addEventListener("click", function addNewPeople() {
 });
 
 
-
-
-
-//  Local storage function
-
-const recordeLocalStorage = () => {
-  const isItems = JSON.parse(localStorage.getItem("peopleStore"));
-  if (isItems) {
-    peopleStore = isItems;
-    displayDatalist();
-  }
-  list.dispatchEvent(new CustomEvent("itemUpdated"));
-};
-
-
-
-
 // restoreLocalStorage();
 
 function restoreLocalStorage() {
 
   localStorage.setItem("peopleStore", JSON.stringify(peopleStore));
 }
+
+
+//  Local storage function
+
+const recordeLocalStorage = () => {
+  const isItems = JSON.parse(localStorage.getItem("peopleStore"));
+  if (isItems !==[]) {
+    peopleStore = isItems;
+    displayDatalist();
+  }
+
+  else {
+    peopleStore = data
+  }
+
+  displayDatalist(peopleStore);
+  
+};
+
+
+
+
+
 
 
 

@@ -316,32 +316,50 @@ img {
  }
 
 .button__save {
-   background-color: #EF4565;
-   border-radius: 5px;
-   padding: 0.5rem;
-   padding-left: 2rem;
-   padding-right: 2rem;
-   color: white;
-   cursor: pointer;
-   width: 158px;
-   height: 50px;
-   border: none;
-   margin-right: 20px;
+    background-color: #EF4565;
+    border-radius: 5px;
+    padding: 0.5rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    cursor: pointer;
+    width: 158px;
+    height: 50px;
+    border: none;
+    margin-right: 20px;
+    font-family: Rubik;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 18px;
+    /* line-height: 21px; */
+
+    color: #FFFFFE;
 }
 
 .button__cancel {
-   background-color: white;
-   border-radius: 5px;
-   padding: 0.5rem;
-   padding-left: 2rem;
-   padding-right: 2rem;
-   cursor: pointer;
-   width: 158px;
-   height: 50px;
+    background-color: white;
+    border-radius: 5px;
+    padding: 0.5rem;
+    padding-left: 2rem;
+    padding-right: 2rem;
+    cursor: pointer;
+    width: 158px;
+    height: 50px;
+
+
+
+    font-family: Rubik;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 21px;
+
+    color: #5F6C7B;
    
    
 
 }
+
+
 
 /* .input__date {
     margin-right: 200px;
@@ -363,7 +381,7 @@ img {
 }
 
 
-.edit-input[value^=""] {
+.edit-input {
     width: 88px;
     height: 21px;
     font-family: Rubik;
@@ -571,9 +589,10 @@ img {
     border: 2px solid #094067;
     background-color: transparent;
     border: none;
-    top: 10.5px;
-    right: 10.5px;
-    position: absolute
+    top: 53.5px;
+    right: 63.5px;
+    position: absolute;
+    cursor: pointer;
 
 }
 
