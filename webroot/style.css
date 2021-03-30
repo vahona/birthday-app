@@ -117,9 +117,17 @@ select::-ms-expand {
     margin-top: 1rem;
     margin-bottom: 1rem;
     padding-left: 20.20px;
-    margin-right:  34px
+    margin-right:  34px;
+    background-image: url('./assets/vector.svg');
+    background-repeat: no-repeat;
+    background-image: 100%;
+    background-position: 250px 20px;
    
 
+}
+
+select {
+ 
 }
 
 

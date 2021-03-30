@@ -429,7 +429,7 @@ addButon.addEventListener("click", function addNewPeople() {
         </fieldset>
         <div class="button-sub add__submit">
           <button class="add__button" type="button">Add</button>
-          <button class="close" type="button" name="close"> Close </button>
+          <button class="close" type="button" id="cancel__button" name="close"> Close </button>
         </div>
         </div>
         </div>
@@ -466,10 +466,10 @@ addButon.addEventListener("click", function addNewPeople() {
   popup.addEventListener("click", (e) => {
     // e.preventDefault()
 
-    const isCloseButton = e.target.matches(".close");
-    const isCloseX = e.target.closest(".close2");
+    const isCloseButton = e.target.matches("#cancel__button");
+    const isCloseX = e.target.matches(".close2");
     // const isInputBar = e.target.matches(".add_input");
-    const isAddButton = e.target.closest(".add__button")
+    const isAddButton = e.target.matches(".add__button")
     // || !e.target.closest(".popupadd")
     const shouldClose = isCloseButton || isCloseX || isAddButton;
     if (shouldClose) {
@@ -482,7 +482,8 @@ addButon.addEventListener("click", function addNewPeople() {
 
   function closeModal() {
     console.log(popup)
-  popup.classList.remove("add");
+    // popup.classList.remove("add");
+    document.querySelector(".popupadd").style.display = "none";
     document.body.style.overflow = "visible"
   }
 
