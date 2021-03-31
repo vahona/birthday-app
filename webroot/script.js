@@ -509,11 +509,6 @@ const recordeLocalStorage = () => {
 
 
 
-
-
-
-
-
 // Event listner function
 
 async function handleClick(e) {
