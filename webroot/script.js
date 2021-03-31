@@ -12,7 +12,7 @@ const inputs = document.querySelector(".namefilter")
 let peopleStore = [];
 
 //  Fetch the file in the people.json
-  async function fetchPeople() {
+async function fetchPeople() {
   const response = await fetch(dataurl);
   // const data = await response.json();
   const data = JSON.parse(localStorage.getItem("peopleStore"))
@@ -106,7 +106,20 @@ function displayDatalist(peopleStore) {
         return monthName;
       }
 
+      let BirthdayShown = ""
+      if (newDay === 0) {
+        BirthdayShown = ` 🎂 Happy birthday 🍰`
+       
+        
+      }
+      if(newDay === 1) {
+        BirthdayShown = `In ${newDay} day`
+      }
+      if(newDay > 1) {
+        BirthdayShown = `In ${newDay} days`
+      }
 
+    
 
       const persons = {
         firstName: person.firstName,
@@ -117,6 +130,7 @@ function displayDatalist(peopleStore) {
         birthdayMonth: birthdayMonth,
         Nowday: Nowday,
         DateNow: day,
+        BirthdayShown,
         MoreDay: newDay,
       }
       return persons;
@@ -137,8 +151,7 @@ function displayDatalist(peopleStore) {
                   <time class="birthday"> Turns <span class="age"> ${personList.age} </span> on  ${personList.birthdayMonth} <span> ${personList.DateNow} </span> </time>
                 </div>
                 <div class="days">
-                <div class="left-day"> In ${personList.MoreDay <= 1 ? personList.MoreDay + "" + "day" : personList.MoreDay + "days"} 
-                  ${personList.MoreDay === 0 ? "" + "🎂 Happy birthday 🍰 " : ""}
+                <div class="left-day">${personList.BirthdayShown}
                 </div>
                 <p class = "icons">
                     <button class="edit" id="${personList.id}"></button> 
@@ -174,7 +187,7 @@ function filterByNameMonth() {
     const birthdayDate = new Date(person.birthday);
     const month = birthdayDate.getMonth().toString();
     const condition = month === selectvalue.toString() || selectvalue.toString() === "empty";
-    
+
     return condition
   })
 
@@ -286,7 +299,7 @@ const editPersonpopup = async function (id) {
     function (event) {
       if (
         event.target.matches(".button__cancel") ||
-        event.target.matches(".popupedit") ||  event.target.matches(".close1")
+        event.target.matches(".popupedit") || event.target.matches(".close1")
       ) {
         closeModal();
       }
@@ -356,7 +369,7 @@ async function deletePersonPopup(id) {
   };
 
   window.addEventListener("click", confirm);
-  
+
 }
 
 
@@ -370,7 +383,7 @@ addButon.addEventListener("click", function addNewPeople() {
   const popup = document.createElement("form");
   popup.classList.add("popupadd");
   document.body.style.overflow = "hidden"
-  popup.insertAdjacentHTML(    "afterbegin",
+  popup.insertAdjacentHTML("afterbegin",
     `
       <div class="container__add">
         <button class="close2" type="button" name="close">X</button>
@@ -419,7 +432,7 @@ addButon.addEventListener("click", function addNewPeople() {
     peopleStore.push(newList);
     displayDatalist(peopleStore);
     popup.reset();
-  
+
   });
 
   // Close the popup when the user does need to add a new person
@@ -459,7 +472,7 @@ function restoreLocalStorage() {
 
 const recordeLocalStorage = () => {
   const isItems = JSON.parse(localStorage.getItem("peopleStore"));
-  if (isItems !==[]) {
+  if (isItems !== []) {
     peopleStore = isItems;
     displayDatalist();
   }
@@ -468,7 +481,7 @@ const recordeLocalStorage = () => {
     peopleStore = data
   }
   displayDatalist(peopleStore);
-  
+
 };
 
 

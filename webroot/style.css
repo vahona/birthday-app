@@ -204,11 +204,11 @@ img {
     margin-inline-end: 1rem;
     background-image: url('./assets/edit-icon.png');
     width: 25.15px;
-    height: 60px;
+    height: 25.15px;
     background-repeat: no-repeat;
     padding: 1rem;
     margin-inline-start: 2rem;
-    background-position: 2px 15px;
+  
 
 }
 
@@ -359,11 +359,11 @@ img {
     margin-inline-end: 1rem;
     background-image: url('./assets/red-delete-icon.png');
     width: 27.5px;
-    height: 60px;
+    height: 20px;
     background-repeat: no-repeat;
     padding: 1rem;
     margin-left: 1rem;
-    background-position: 1px 20px;
+  
 
 }
 
@@ -757,6 +757,20 @@ article {
     .header__container {
         display: flex;
         justify-content: space-between;
+    }
+
+
+    .edit {
+        height: 60px;
+        background-position: 2px 15px;
+    
+    }
+
+
+    .delete {
+        height: 60px;
+        background-position: 1px 20px;
+    
     }
 }
 
