@@ -12,7 +12,7 @@ const inputs = document.querySelector(".namefilter")
 let peopleStore = [];
 
 //  Fetch the file in the people.json
-async function fetchPeople() {
+  async function fetchPeople() {
   const response = await fetch(dataurl);
   // const data = await response.json();
   const data = JSON.parse(localStorage.getItem("peopleStore"))
@@ -25,11 +25,7 @@ async function fetchPeople() {
 
 fetchPeople();
 
-
-
-
 function displayDatalist(peopleStore) {
-
   if (!peopleStore) {
     return
   }
@@ -53,7 +49,6 @@ function displayDatalist(peopleStore) {
       // Converting date 
 
       const DateNow = new Date(person.birthday);
-
       const Now = new Date();
       const month = DateNow.getMonth();
       const Nowday = DateNow.getDate();
@@ -79,8 +74,6 @@ function displayDatalist(peopleStore) {
       const Alldate = `${DateNow}${nthDate(DateNow)} / ${month + 1} / ${year}`;
       const age = yearForNow - year + 1;
       const birthdayMonth = getMonthName(month);
-
-
 
 
       // Variable to store the day
@@ -130,38 +123,29 @@ function displayDatalist(peopleStore) {
     })
 
 
-
-
   const sortedPeople = html.sort((a, b) => ((a.MoreDay) - b.MoreDay));
   const displayList = sortedPeople.map((personList) => {
     return `
-             <li data-id= "${personList.id}" class=" row-container list-of-people">
-               <div>
-             <img src="${personList.picture}" alt="${personList.firstName + " " + personList.lastName
-      }"/>
-           </div>
-             <div class="name-birthday">
-                <div class="name">
-                   ${personList.lastName} - ${personList.firstName}
-                 </div>
-                 <time class="birthday"> Turns <span class="age"> ${personList.age} </span> on  ${personList.birthdayMonth} <span> ${personList.DateNow} </span> </time>
-             </div>
-             <div class="days">
-             <div class="left-day"> In 
-             ${personList.MoreDay <= 1
-        ? personList.MoreDay + "" + "day"
-        : personList.MoreDay + "days"
-      } 
-      ${personList.MoreDay === 0 ? "" + "🎂 Happy birthday 🍰 " : ""}
-            </div>
-              <p class = "icons">
-                <button class="edit" id="${personList.id}"></button>  
-                <button class="delete" id="${personList.id}"></button>
-              </p>
-                
-            </div>
-
-           </li>
+            <li data-id= "${personList.id}" class=" row-container list-of-people">
+                <div>
+                  <img src="${personList.picture}" alt="${personList.firstName + " " + personList.lastName}"/>
+                </div>
+                <div class="name-birthday">
+                  <div class="name">
+                    ${personList.lastName} - ${personList.firstName}
+                  </div>
+                  <time class="birthday"> Turns <span class="age"> ${personList.age} </span> on  ${personList.birthdayMonth} <span> ${personList.DateNow} </span> </time>
+                </div>
+                <div class="days">
+                <div class="left-day"> In ${personList.MoreDay <= 1 ? personList.MoreDay + "" + "day" : personList.MoreDay + "days"} 
+                  ${personList.MoreDay === 0 ? "" + "🎂 Happy birthday 🍰 " : ""}
+                </div>
+                <p class = "icons">
+                    <button class="edit" id="${personList.id}"></button> 
+                    <button class="delete" id="${personList.id}"></button>
+                </p>
+                </div>
+            </li>
      `
   }).join("")
 
@@ -170,7 +154,6 @@ function displayDatalist(peopleStore) {
 }
 
 displayDatalist();
-
 
 const nameInput = document.getElementById("input-name")
 const month = document.getElementById("month-select")
@@ -207,7 +190,6 @@ function filterByNameMonth() {
 
   displayDatalist(filterByMonthAndName)
 
-
 }
 
 
@@ -221,12 +203,10 @@ inputs.addEventListener("input", e => {
 })
 
 // Filtering by month
-
 month.addEventListener("change", function () {
   filterByNameMonth()
 
 })
-
 
 
 //  Popup for editing people
@@ -243,30 +223,30 @@ const editPersonpopup = async function (id) {
   popup.insertAdjacentHTML(
     "afterbegin",
     ` <div class="container__edit">
-       <button class="close1">X</button>
-       <h2 class="TitleEdite"> Edit Sherwood Keeling </h2>
-       <div class="second__container">
-        <fieldset style="border: none;">
-         <label class="edit__label" for="picture1">Url image</label><br>
-          <input class="edit-input" type="url" value="${selectedPerson.picture}" id="picture1">
-        </fieldset>
-        <fieldset style="border: none;">
-          <label class="edit__label" for="lastname1">LastName</label><br>
-          <input class="edit-input" type="text" value="${selectedPerson.lastName}" id="lastname1">
-        </fieldset>
-        <fieldset style="border: none;">
-          <label class="edit__label" for="firstname1">FisrtName</label><br>
-          <input class="edit-input" type="text" value="${selectedPerson.firstName}" id="firstname1">
-        </fieldset style="border: none;">
-        <fieldset style="border: none;">
-          <label class="label__date"  for="birthday1">Birthday</label><br>
-          <input class="edit-input input__date" type="date" max="${maxDate}" value="${formatedDate}" id="birthday1">
-        </fieldset>
-        <div class="button-sub">
-          <button class="button__save" type="submit"> Save changes</button>
-          <button class="button__cancel cancel" type="button">Cancel</button>
-        </div>
-        </div>
+        <button class="close1">X</button>
+        <h2 class="TitleEdite"> Edit Sherwood Keeling </h2>
+        <div class="second__container">
+          <fieldset style="border: none;">
+          <label class="edit__label" for="picture1">Url image</label><br>
+            <input class="edit-input" type="url" value="${selectedPerson.picture}" id="picture1">
+          </fieldset>
+          <fieldset style="border: none;">
+            <label class="edit__label" for="lastname1">LastName</label><br>
+            <input class="edit-input" type="text" value="${selectedPerson.lastName}" id="lastname1">
+          </fieldset>
+          <fieldset style="border: none;">
+            <label class="edit__label" for="firstname1">FisrtName</label><br>
+            <input class="edit-input" type="text" value="${selectedPerson.firstName}" id="firstname1">
+          </fieldset style="border: none;">
+          <fieldset style="border: none;">
+            <label class="label__date"  for="birthday1">Birthday</label><br>
+            <input class="edit-input input__date" type="date" max="${maxDate}" value="${formatedDate}" id="birthday1">
+          </fieldset>
+          <div class="button-sub">
+            <button class="button__save" type="submit"> Save changes</button>
+            <button class="button__cancel cancel" type="button">Cancel</button>
+          </div>
+          </div>
         </div>
         `
   );
@@ -297,9 +277,6 @@ const editPersonpopup = async function (id) {
     list.dispatchEvent(new CustomEvent("itemUpdated"));
 
   });
-
-
-
 
   //  Close the popup when the user does not want the change they have made in the person's information
 
@@ -335,7 +312,7 @@ async function deletePersonPopup(id) {
   popup.insertAdjacentHTML(
     "afterbegin",
     `
-       <div class="confirme">
+      <div class="confirme">
         <p class="deleteparagraph">
           Are you sure you want to delete this person
         </p>
@@ -343,15 +320,13 @@ async function deletePersonPopup(id) {
           <button class="confirm_buttom yes__sure"> Yes </button>
           <button class="confirm_buttom no__want"> No </button>
         </div>
-        </div>
+      </div>
         `
   );
 
   document.body.appendChild(popup);
   popup.classList.add(".confirm");
   list.dispatchEvent(new CustomEvent("itemUpdated"));
-
-
 
   //  Fuction to confirm the deletion of the birthday
 
@@ -390,42 +365,37 @@ async function deletePersonPopup(id) {
 
 addButon.addEventListener("click", function addNewPeople() {
 
-
-
   const maxDate = new Date().toISOString().slice(0, 10)
 
   const popup = document.createElement("form");
   popup.classList.add("popupadd");
   document.body.style.overflow = "hidden"
   popup.insertAdjacentHTML(    "afterbegin",
-
-    // ` <div class = "popup">
     `
       <div class="container__add">
         <button class="close2" type="button" name="close">X</button>
-       <h2 class="add__title"> Add new person </h2>
-        <fieldset style="border: none;">
-          <label class="add__label" for="picture">Url image</label><br>
-          <input class="add_input" type="url" value="" id="picture" required>
-        </fieldset>
-        <fieldset style="border: none;">
-          <label class="add__label" for="lastname">LastName</label><br>
-          <input class="add_input" type="text" value="" id="lastname" required>
-        </fieldset>
-        <fieldset style="border: none;">
-          <label class="add__label" for="firstname">FisrtName</label><br>
-          <input class="add_input" type="text" value="" id="firstname" required>
-        </fieldset style="border: none;">
-        <fieldset style="border: none;">
-          <label class="add__label date__label__add" for="birthdaya">Birthday</label><br>
-          <input class="add_input add__date" type="date" max="${maxDate}" value="" id="birthday" required>
-        </fieldset>
-        <div class="button-sub add__submit">
-          <button class="add__button" type="button">Add</button>
-          <button class="close" type="button" id="cancel__button" name="close"> Close </button>
-        </div>
-        </div>
-        </div>
+        <h2 class="add__title"> Add new person </h2>
+          <fieldset style="border: none;">
+            <label class="add__label" for="picture">Url image</label><br>
+            <input class="add_input" type="url" value="" id="picture" required>
+          </fieldset>
+          <fieldset style="border: none;">
+            <label class="add__label" for="lastname">LastName</label><br>
+            <input class="add_input" type="text" value="" id="lastname" required>
+          </fieldset>
+          <fieldset style="border: none;">
+            <label class="add__label" for="firstname">FisrtName</label><br>
+            <input class="add_input" type="text" value="" id="firstname" required>
+          </fieldset style="border: none;">
+          <fieldset style="border: none;">
+            <label class="add__label date__label__add" for="birthdaya">Birthday</label><br>
+            <input class="add_input add__date" type="date" max="${maxDate}" value="" id="birthday" required>
+          </fieldset>
+          <div class="button-sub add__submit">
+            <button class="add__button" type="button">Add</button>
+            <button class="close" type="button" id="cancel__button" name="close"> Close </button>
+          </div>
+      </div>
   `
   );
 
@@ -454,7 +424,6 @@ addButon.addEventListener("click", function addNewPeople() {
 
   // Close the popup when the user does need to add a new person
 
-
   popup.addEventListener("click", (e) => {
     // e.preventDefault()
 
@@ -473,7 +442,6 @@ addButon.addEventListener("click", function addNewPeople() {
   );
 
   function closeModal() {
-    console.log(popup)
     // popup.classList.remove("add");
     document.querySelector(".popupadd").style.display = "none";
     document.body.style.overflow = "visible"
@@ -481,14 +449,11 @@ addButon.addEventListener("click", function addNewPeople() {
 
 });
 
-
 // restoreLocalStorage();
 
 function restoreLocalStorage() {
-
   localStorage.setItem("peopleStore", JSON.stringify(peopleStore));
 }
-
 
 //  Local storage function
 
@@ -502,11 +467,9 @@ const recordeLocalStorage = () => {
   else {
     peopleStore = data
   }
-
   displayDatalist(peopleStore);
   
 };
-
 
 
 // Event listner function

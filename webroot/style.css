@@ -159,7 +159,7 @@ li {
 }
 
 .left-day {
-    margin-top: 10px;
+    margin-top: 35px;
     margin-right: -17px;
 }
 
@@ -204,10 +204,11 @@ img {
     margin-inline-end: 1rem;
     background-image: url('./assets/edit-icon.png');
     width: 25.15px;
-    height: 25.15px;
+    height: 60px;
     background-repeat: no-repeat;
     padding: 1rem;
     margin-inline-start: 2rem;
+    background-position: 2px 15px;
 
 }
 
@@ -358,10 +359,11 @@ img {
     margin-inline-end: 1rem;
     background-image: url('./assets/red-delete-icon.png');
     width: 27.5px;
-    height: 20px;
+    height: 60px;
     background-repeat: no-repeat;
     padding: 1rem;
     margin-left: 1rem;
+    background-position: 1px 20px;
 
 }
 
@@ -722,9 +724,9 @@ article {
     li {
         display: flex;   
     }
+
     
 }
-
 
 @media(min-width: 800px) {
     fieldset {
