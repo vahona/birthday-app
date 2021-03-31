@@ -126,10 +126,6 @@ select::-ms-expand {
 
 }
 
-select {
- 
-}
-
 
 option {
     padding-right: 23px;
@@ -155,7 +151,6 @@ li {
     margin-top: 31px;
     place-items: center;
     gap: 5%;
-    /* padding: 1rem 2rem; */
     list-style: none;
     width: 779px;
     height: 139px;
@@ -276,9 +271,6 @@ img {
     margin-inline-start: 13px;
 }
 
-/* .icons {
-    margin-top: 48px;
-} */
 
 .monthfilters {
     -webkit-appearance: none;
@@ -330,8 +322,6 @@ img {
     font-style: normal;
     font-weight: 500;
     font-size: 18px;
-    /* line-height: 21px; */
-
     color: #FFFFFE;
 }
 
@@ -359,11 +349,6 @@ img {
 
 }
 
-
-
-/* .input__date {
-    margin-right: 200px;
-} */
 
 
 .delete {
@@ -481,7 +466,6 @@ img {
 
 .popupadd {
     color: black;
-    /* margin-inline-start: auto; */
     margin-inline-end: auto;
     background-color:  rgba(255, 255, 255, 0.8);
     width: 100%;
@@ -517,9 +501,6 @@ img {
     display: none;
 }
 
-/* input {
-    max-width: 100%;
-} */
 
 .button__cancel {
     text-decoration: none;
@@ -612,13 +593,11 @@ select {
     height: 21px;
     left: 655.22px;
     top: 230px;
-
     font-family: Rubik;
     font-style: normal;
     font-weight: 500;
     font-size: 18px;
     line-height: 21px;
-
     color: #5F6C7B;
 }
 
@@ -740,15 +719,9 @@ article {
 /*   MEDIA QUERRIES EACH BREAK POINT     */
 
 @media(min-width: 600px) {
-
-
     li {
-        display: flex;
-        
+        display: flex;   
     }
-
-    
-
     
 }
 
@@ -775,9 +748,7 @@ article {
     top: 32px;
     position: relative;
 
-}
-
- 
+   }
 }
 
 @media(min-width: 1020px) {
@@ -793,158 +764,148 @@ article {
 
 @media(max-width: 800px) {
 
-header {
-    margin-inline-start: 2%;
-}
+    header {
+        margin-inline-start: 2%;
+    }
 
-li {
-    margin-inline-start: 2%;
-    height: 80%;
-    width: 100%; 
-}
+    li {
+        margin-inline-start: 2%;
+        height: 80%;
+        width: 100%; 
+    }
 
-img {
-    margin-top: 24px
-}
+    img {
+        margin-top: 24px
+    }
 
-.name {
-    margin-inline-start: 32px;
-    margin-top: 24px;
-    width: 90%;
-    height: 80%;
-}
+    .name {
+        margin-inline-start: 32px;
+        margin-top: 24px;
+        width: 90%;
+        height: 80%;
+    }
 
-.span {
-    margin-inline-start: 24px;
-}
+    .span {
+        margin-inline-start: 24px;
+    }
 
-.birthday {
-    margin-inline-start: 32px;
-    margin-top: 32px;
-}
+    .birthday {
+        margin-inline-start: 32px;
+        margin-top: 32px;
+    }
 
-.days {
-    margin-inline-start: 34px;
-}
+    .days {
+        margin-inline-start: 34px;
+    }
 
-.icons {
-    margin-inline-start: -32px;
-    padding-bottom: 24px;
-}
+    .icons {
+        margin-inline-start: -32px;
+        padding-bottom: 24px;
+    }
 
-.container__add {
-    width: 85%;
-    margin-top: -40px;
-    margin-inline-start: 25px;
+    .container__add {
+        width: 85%;
+        margin-top: -40px;
+        margin-inline-start: 25px;   
+        
+    }
+
+    .container__edit {
+        width: 85%;
+        margin-top: -40px;
+        margin-inline-start: 5px;
+           
+    }
+
+    .add_input {
+        margin-inline-start: -50px;
+    
+    }
+
+    .add__title {
+        padding-top: 20px;
+        margin-top: -5%;
+        margin-inline-start: 16px;
+        width: 90%;
+        margin-bottom: 100px;
+    }
+
+    .popupadd {
+        margin-inline-start: -24px;
+        
+    }
+
+    .button-sub {
+        margin-inline-start: 16px;
+    }
+
+    .close {
+        margin-top: 16px;
+    }
+
+    .add_input[type="date"] {
+        margin-inline-start: -55px;
+    }
+
+    .add__label {
+        margin-inline-start: -235px
+    }
+
+
+    .close2 {
+        top: 16px;
+        right: 16px;
+        position: absolute;
     
     
-}
+    }
 
-.container__edit {
-    width: 85%;
-    margin-top: -40px;
-    margin-inline-start: 5px;
-    
-    
-}
+    .TitleEdite {
+        margin-top: 3%;
+        margin-inline-start: 16px;
+        width: 90%;
+        margin-bottom: 8px;
+        text-align: start;
+    }
 
-.add_input {
-    margin-inline-start: -50px;
-  
-    
-}
+    .edit-input {
+        margin-inline-start: -100px;
+        
+    }
 
-.add__title {
-    padding-top: 20px;
-    margin-top: -5%;
-    margin-inline-start: 16px;
-    width: 90%;
-    margin-bottom: 100px;
-    
-    
-}
+    .edit_input[type="date"] {
+        margin-inline-start: 100px;
+    }
 
-.popupadd {
-    margin-inline-start: -24px;
-    
-}
+    .edit__label {
+        margin-inline-start: -70%;
+    }
 
-.button-sub {
-    margin-inline-start: 16px;
- }
-
- .close {
-     margin-top: 16px;
- }
-
- .add_input[type="date"] {
-    margin-inline-start: -55px;
-}
-
-.add__label {
-    margin-inline-start: -235px
-}
-
-
-.close2 {
-    top: 16px;
-    right: 16px;
-    position: absolute;
-  
- 
- }
-
- .TitleEdite {
-     
-       margin-top: 3%;
-       margin-inline-start: 16px;
-       width: 90%;
-       margin-bottom: 8px;
-       text-align: start;
- }
-
- .edit-input {
-     margin-inline-start: -100px;
-     /* width: 80%; */
- }
-
- .edit_input[type="date"] {
-    margin-inline-start: 100px;
-}
-
-.edit__label {
-    margin-inline-start: -70%;
-}
-
-.button__save {
-  margin-top: 16px;
-  margin-bottom: 24px;
-}
-
-.button__cancel {
+    .button__save {
     margin-top: 16px;
     margin-bottom: 24px;
-}
+    }
+
+    .button__cancel {
+        margin-top: 16px;
+        margin-bottom: 24px;
+    }
 
 
-/* .second__container {
-    margin-inline-start: -300px;
-} */
+    .label__date {
+        margin-inline-start: -75%;
+    }
 
-.label__date {
-    margin-inline-start: -75%;
-}
+    .no__want {
+        margin-top: 24px;
+        margin-inline-start: -16px;
+    }
 
-.no__want {
-    margin-top: 24px;
-    margin-inline-start: -16px;
-}
-
-.confirme {
-    width: 50%;
-    left: 10%;
-    
-}
+    .confirme {
+        width: 50%;
+        left: 10%;
+        
+    }
 
 }
 
