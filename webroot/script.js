@@ -14,11 +14,13 @@ let peopleStore = [];
 //  Fetch the file in the people.json
 async function fetchPeople() {
   const response = await fetch(dataurl);
-  // const data = await response.json();
-  const data = JSON.parse(localStorage.getItem("peopleStore"))
+  const data = await response.json();
   peopleStore = [...data];
-  displayDatalist(peopleStore);
+  // displayDatalist(peopleStore);
+  recordeLocalStorage(peopleStore)
+
   const ListOfBirthday = peopleStore && data.length ? data : await res.json();
+  list.dispatchEvent(new CustomEvent("itemUpdated"));
   console.log(ListOfBirthday);
   return data;
 }
@@ -106,32 +108,32 @@ function displayDatalist(peopleStore) {
         return monthName;
       }
 
-      
+
 
 
       let BirthdayShown = ""
       if (newDay === 0) {
         BirthdayShown = ` 🎂 Happy birthday 🍰`
-       
-        
+
+
       }
-      if(newDay === 1) {
+      if (newDay === 1) {
         BirthdayShown = `In ${newDay} day`
       }
-      if(newDay > 1) {
+      if (newDay > 1) {
         BirthdayShown = `In ${newDay} days`
       }
 
       let dateBirthdayAge = "";
 
-      if(newDay === 0) {
+      if (newDay === 0) {
         dateBirthdayAge = `today`
       }
 
       else {
         dateBirthdayAge = `on  ${birthdayMonth} <span> ${day}`
       }
-    
+
       const persons = {
         firstName: person.firstName,
         lastName: person.lastName,
@@ -444,6 +446,7 @@ addButon.addEventListener("click", function addNewPeople() {
     peopleStore.push(newList);
     displayDatalist(peopleStore);
     popup.reset();
+    list.dispatchEvent(new CustomEvent("itemUpdated"));
 
   });
 
