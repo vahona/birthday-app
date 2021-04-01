@@ -106,6 +106,9 @@ function displayDatalist(peopleStore) {
         return monthName;
       }
 
+      
+
+
       let BirthdayShown = ""
       if (newDay === 0) {
         BirthdayShown = ` 🎂 Happy birthday 🍰`
@@ -119,18 +122,18 @@ function displayDatalist(peopleStore) {
         BirthdayShown = `In ${newDay} days`
       }
 
-      // let dateBirthdayAge = "";
+      let dateBirthdayAge = "";
 
-      // if(newDay === 0) {
-      //   dateBirthdayAge = `today`
-      // }
+      if(newDay === 0) {
+        dateBirthdayAge = `today`
+      }
 
-      // else {
-      //   dateBirthdayAge = `on  ${personList.birthdayMonth} <span> ${personList.DateNow}`
-      // }
+      else {
+        dateBirthdayAge = `on  ${birthdayMonth} <span> ${day}`
+      }
+      console.log(day);
+      console.log(birthdayMonth);
     
-      // dateBirthdayAge,
-
       const persons = {
         firstName: person.firstName,
         lastName: person.lastName,
@@ -141,7 +144,7 @@ function displayDatalist(peopleStore) {
         Nowday: Nowday,
         DateNow: day,
         BirthdayShown,
-       
+        dateBirthdayAge,
         MoreDay: newDay,
       }
       return persons;
@@ -159,7 +162,7 @@ function displayDatalist(peopleStore) {
                   <div class="name">
                     ${personList.lastName} - ${personList.firstName}
                   </div>
-                  <time class="birthday"> Turns <span class="age"> ${personList.age} </span> n  ${personList.birthdayMonth} <span> ${personList.DateNow} </time>
+                  <time class="birthday"> Turns <span class="age"> ${personList.age} </span> on  ${personList.dateBirthdayAge} </time>
                 </div>
                 <div class="days">
                 <div class="left-day">${personList.BirthdayShown}
