@@ -488,6 +488,7 @@ img {
     height: 50px;
     border: none;
     margin-right: 20px;
+    margin-inline-start: -19px;
     
 }
 
@@ -542,7 +543,7 @@ img {
     position: relative;
     background-color: white;
     padding: 0.5rem;
-    width: 1079px;
+    width: 75%;
     margin-block-end: 2rem;
     margin-block-start: -8rem;
     height: 751px;
@@ -555,7 +556,7 @@ img {
     position: relative;
     background-color: white;
     padding: 0.5rem;
-    width: 1079px;
+    width: 75%;
     margin-block-end: 2rem;
     margin-block-start: -8rem;
     height: 751px;
@@ -629,7 +630,8 @@ select {
     font-size: 48px;
     line-height: 57px;
     color: #094067;
-    margin-inline-start: 255px;
+    margin-inline-start: 233px;
+    margin-block-start: 87px;
 }
 
 .popupedit, .popupadd {
@@ -647,7 +649,7 @@ select {
 
 .add__title {
     text-align: start;
-    margin-inline-start: 264px;
+    margin-inline-start: 231px;
     width: 518px;
     height: 57px;
 
@@ -713,7 +715,7 @@ article {
 
 .button-sub {
     text-align: start;
-    margin-inline-start: 254px;
+    margin-inline-start: 235px;
  }
 
 
@@ -773,7 +775,15 @@ article {
         background-position: 1px 20px;
     
     }
+
+    .add__title {
+        margin-block-start: 100px;
+    }
+    
 }
+
+
+
 
 .list-of-people {
     text-align: start;
