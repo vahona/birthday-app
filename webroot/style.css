@@ -867,7 +867,7 @@ article {
     }
 
     .button-sub {
-        margin-inline-start: 35px;
+        margin-inline-start: 18px;
     }
 
     .close {
@@ -926,6 +926,7 @@ article {
     .button__cancel {
         margin-top: 16px;
         margin-bottom: 24px;
+        margin-inline-start: -6px;
     }
 
 
