@@ -155,6 +155,7 @@ li {
     width: 779px;
     height: 139px;
     margin-inline-start: 19%;  
+    border-radius: 5px;
   
 }
 
@@ -574,7 +575,7 @@ img {
     border: 2px solid #094067;
     background-color: transparent;
     border: none;
-    top: 53.5px;
+    top: 70px;
     right: 63.5px;
     position: absolute;
     cursor: pointer;
@@ -843,6 +844,7 @@ article {
         width: 85%;
         margin-top: -40px;
         margin-inline-start: 5px;
+        position: relative;
            
     }
 
@@ -870,6 +872,7 @@ article {
 
     .close {
         margin-top: 16px;
+        margin-inline-start: -6px;
     }
 
     .add_input[type="date"] {
@@ -880,6 +883,11 @@ article {
         margin-inline-start: -235px
     }
 
+    .close1 {
+     top: 16px;
+     right: 25px;
+   
+    }
 
     .close2 {
         top: 16px;
@@ -939,6 +947,8 @@ article {
     .left-day {
         margin-inline-start: -4px;
     }
+
+    
 
 }
 
