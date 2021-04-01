@@ -718,7 +718,9 @@ article {
     margin-inline-start: 235px;
  }
 
-
+ .add__submit {
+    margin-inline-start: 260px;
+ }
 
 
 /*   MEDIA QUERRIES EACH BREAK POINT     */
