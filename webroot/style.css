@@ -305,6 +305,7 @@ img {
  .no__want {
      background-color: white;
      color:  #EF4565; 
+     border: gainsboro 2px solid;
    
  }
 
@@ -923,6 +924,10 @@ article {
         
     }
 
+    .left-day {
+        margin-inline-start: -4px;
+    }
+
 }
 
 @media(max-width: 600px) {
@@ -930,6 +935,23 @@ article {
         width: 65%;
     }
 }
+
+@media(max-width: 900px) {
+    header {
+        margin-inline-start: 2%;
+    }
+
+    li {
+        margin-inline-start: 2%;  
+      
+    }
+
+    .add-people {
+        margin-bottom: 10%;
+    }
+
+}
+
 
 
 

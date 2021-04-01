@@ -131,8 +131,6 @@ function displayDatalist(peopleStore) {
       else {
         dateBirthdayAge = `on  ${birthdayMonth} <span> ${day}`
       }
-      console.log(day);
-      console.log(birthdayMonth);
     
       const persons = {
         firstName: person.firstName,
