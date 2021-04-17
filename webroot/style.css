@@ -780,7 +780,7 @@ article {
    }
 }
 
-@media(min-width: 1020px) {
+@media(min-width: 1000px) {
     .header__container {
         display: flex;
         justify-content: space-between;
@@ -803,8 +803,18 @@ article {
     .add__title {
         margin-block-start: 100px;
     }
+
+   
     
 }
+@media(max-width: 800px) {
+    .Title {
+        margin-block-start: 20px;
+        margin-block-end: 20px;
+    }
+}
+
+
 
 
 
@@ -994,14 +1004,21 @@ article {
       
     }
 
-    .add-people {
+    /* .add-people {
         margin-bottom: 10%;
-    }
+    } */
 
 }
 
-@media(max-width: 1123px) {
-   
+@media(max-width: 1000px) {
+   .add-people {
+       margin-bottom: 10px;
+       margin-top: 0;
+       top: 0px;
+       position: relative;
+   }
+
+  
 }
 
 
