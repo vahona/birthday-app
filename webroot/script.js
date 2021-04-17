@@ -247,6 +247,7 @@ const editPersonpopup = async function (id) {
     "afterbegin",
     ` <div class="container__edit">
         <button class="close1">X</button>
+        <div class="editcontainer">
         <h2 class="TitleEdite"> Edit Sherwood Keeling </h2>
         <div class="second__container">
           <fieldset style="border: none;">
@@ -270,6 +271,7 @@ const editPersonpopup = async function (id) {
             <button class="button__cancel cancel" type="button">Cancel</button>
           </div>
           </div>
+          </di>
         </div>
         `
   );
