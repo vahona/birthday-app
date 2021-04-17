@@ -160,7 +160,7 @@ function displayDatalist(peopleStore) {
                 </div>
                 <div class="name-birthday">
                   <div class="name">
-                    ${personList.lastName} - ${personList.firstName}
+                    ${personList.lastName}  ${personList.firstName}
                   </div>
                   <time class="birthday"> Turns <span class="age"> ${personList.age} </span> on  ${personList.dateBirthdayAge} </time>
                 </div>

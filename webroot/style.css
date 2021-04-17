@@ -90,7 +90,7 @@ select::-ms-expand {
 .label__input__month {
     width: 133.35px;
     height: 21px;
-   margin-bottom: -4px;
+    margin-bottom: -4px;
     
     font-family: Rubik;
     font-style: normal;
@@ -261,7 +261,7 @@ img {
 }
 
 .birthday {
-    width: 278px;
+    /* width: 278px; */
     height: 28px;
 }
 
@@ -389,7 +389,8 @@ img {
     opacity: 1;
     background-color: #D8EEFE;
     border: none;
-    margin-inline-start: 220px;
+    margin-inline-start: 45% ;
+    /* 220px */
     width: 264px;
     height: 35px;
     border-radius: 5px;
@@ -407,7 +408,8 @@ img {
 }
 
 .add_input[type="date"] {
-    margin-inline-start: 220px;
+    margin-inline-start:45% ;
+    /* 220px */
 }
 
 .add__submit {
@@ -650,7 +652,8 @@ select {
 
 .add__title {
     text-align: start;
-    margin-inline-start: 231px;
+    margin-inline-start: 23.5%;
+    /* 231px; */
     width: 518px;
     height: 57px;
 
@@ -720,7 +723,8 @@ article {
  }
 
  .add__submit {
-    margin-inline-start: 260px;
+    margin-inline-start: 25.5% ;
+    /* 260px */
  }
 
 
@@ -849,14 +853,16 @@ article {
     }
 
     .add_input {
-        margin-inline-start: -50px;
+        margin-inline-start: -15% ;
+        /* -50px */
     
     }
 
     .add__title {
         padding-top: 20px;
         margin-top: -5%;
-        margin-inline-start: 16px;
+        margin-inline-start: 2%;
+        /* 16px; */
         width: 90%;
         margin-bottom: 100px;
     }
@@ -867,7 +873,7 @@ article {
     }
 
     .button-sub {
-        margin-inline-start: 18px;
+        margin-inline-start: 6%;
     }
 
     .close {
@@ -876,7 +882,8 @@ article {
     }
 
     .add_input[type="date"] {
-        margin-inline-start: -55px;
+        margin-inline-start: -15%;
+        /* -55px */
     }
 
     .add__label {
@@ -947,9 +954,7 @@ article {
 
     .left-day {
         margin-inline-start: -4px;
-    }
-
-    
+    }   
 
 }
 
@@ -973,6 +978,10 @@ article {
         margin-bottom: 10%;
     }
 
+}
+
+@media(max-width: 1123px) {
+   
 }
 
 
