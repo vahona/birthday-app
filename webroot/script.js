@@ -113,7 +113,7 @@ function displayDatalist(peopleStore) {
 
       let BirthdayShown = ""
       if (newDay === 0) {
-        BirthdayShown = ` 🎂 Happy birthday 🍰`
+        BirthdayShown = `taddaaa!!!`
 
 
       }
@@ -127,7 +127,7 @@ function displayDatalist(peopleStore) {
       let dateBirthdayAge = "";
 
       if (newDay === 0) {
-        dateBirthdayAge = `today`
+        dateBirthdayAge = `today  🎂 Happy birthday 🍰`
       }
 
       else {
@@ -162,9 +162,9 @@ function displayDatalist(peopleStore) {
                   <div class="name">
                     ${personList.lastName}  ${personList.firstName}
                   </div>
-                  <time class="birthday"> Turns <span class="age"> ${personList.age} </span> on  ${personList.dateBirthdayAge} </time>
+                  <time class="birthday"> Turns <span class="age"> ${personList.age} </span>  ${personList.dateBirthdayAge}   </time>
                 </div>
-                <div class="days">
+                <div class="days"> 
                 <div class="left-day">${personList.BirthdayShown}
                 </div>
                 <p class = "icons">
