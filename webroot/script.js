@@ -18,10 +18,8 @@ async function fetchPeople() {
   peopleStore = [...data];
   // displayDatalist(peopleStore);
   recordeLocalStorage(peopleStore)
-
-  const ListOfBirthday = peopleStore && data.length ? data : await res.json();
+  // const ListOfBirthday = peopleStore ? peopleStore : data;
   list.dispatchEvent(new CustomEvent("itemUpdated"));
-  console.log(ListOfBirthday);
   return data;
 }
 
@@ -114,8 +112,6 @@ function displayDatalist(peopleStore) {
       let BirthdayShown = ""
       if (newDay === 0) {
         BirthdayShown = `taddaaa!!!`
-
-
       }
       if (newDay === 1) {
         BirthdayShown = `In ${newDay} day`
@@ -162,7 +158,7 @@ function displayDatalist(peopleStore) {
                   <div class="name">
                     ${personList.lastName}  ${personList.firstName}
                   </div>
-                  <time class="birthday"> Turns <span class="age"> ${personList.age} </span>  ${personList.dateBirthdayAge}   </time>
+                  <div class="time-date"><time class="birthday"> Turns <span class="age"> ${personList.age} </span>  ${personList.dateBirthdayAge}   </time></div>
                 </div>
                 <div class="days"> 
                 <div class="left-day">${personList.BirthdayShown}
