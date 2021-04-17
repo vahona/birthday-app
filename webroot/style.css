@@ -384,12 +384,26 @@ img {
 
 
 
-.edit-input, .add_input {
+.add_input {
     padding: 0.5rem;
     opacity: 1;
     background-color: #D8EEFE;
     border: none;
     margin-inline-start: 45% ;
+    /* 220px */
+    width: 264px;
+    height: 35px;
+    border-radius: 5px;
+    
+}
+
+
+.edit-input{
+    padding: 0.5rem;
+    opacity: 1;
+    background-color: #D8EEFE;
+    border: none;
+    margin-inline-start: 42% ;
     /* 220px */
     width: 264px;
     height: 35px;
@@ -587,7 +601,8 @@ img {
 
 .edit__label {
     text-align: start;
-    margin-inline-start: 40px;
+    margin-inline-start: 10%;
+    /* 40px */
  }
 
  .label__date {
@@ -633,7 +648,8 @@ select {
     font-size: 48px;
     line-height: 57px;
     color: #094067;
-    margin-inline-start: 233px;
+    margin-inline-start: 23% ;
+    /* 233px */
     margin-block-start: 87px;
 }
 
@@ -719,7 +735,8 @@ article {
 
 .button-sub {
     text-align: start;
-    margin-inline-start: 235px;
+    margin-inline-start: 23%;
+    /* 235px; */
  }
 
  .add__submit {
@@ -853,7 +870,7 @@ article {
     }
 
     .add_input {
-        margin-inline-start: -15% ;
+        margin-inline-start: -15%;
         /* -50px */
     
     }
@@ -861,7 +878,7 @@ article {
     .add__title {
         padding-top: 20px;
         margin-top: -5%;
-        margin-inline-start: 2%;
+        margin-inline-start: 5%;
         /* 16px; */
         width: 90%;
         margin-bottom: 100px;
@@ -873,7 +890,7 @@ article {
     }
 
     .button-sub {
-        margin-inline-start: 6%;
+        margin-inline-start: 10%;
     }
 
     .close {
@@ -887,7 +904,8 @@ article {
     }
 
     .add__label {
-        margin-inline-start: -235px
+        margin-inline-start: -70%; 
+        /* -235px */
     }
 
     .close1 {
@@ -906,14 +924,16 @@ article {
 
     .TitleEdite {
         margin-top: 3%;
-        margin-inline-start: 16px;
+        margin-inline-start: 5%;
+        /* 16px */
         width: 90%;
         margin-bottom: 8px;
         text-align: start;
     }
 
     .edit-input {
-        margin-inline-start: -100px;
+        margin-inline-start: -29%;
+        /* -100px */
         
     }
 
